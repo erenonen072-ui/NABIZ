@@ -1,88 +1,198 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    const sorted = [...haberler].sort((a, b) => b.id - a.id);
-
-    renderDate();
-    renderBreaking(sorted);
-    renderHero(sorted);
-    renderLatest(sorted);
-    renderPopular();
-    setupMenu();
-    setupSearch();
-
-});
+        const haberlerSirali =
+            [...haberler]
+            .sort(
+                (a, b) =>
+                    b.id - a.id
+            );
 
 
-function renderDate() {
+        /* TARİH */
 
-    const el = document.getElementById("currentDate");
+        const date =
+            document.getElementById(
+                "date"
+            );
 
-    if (!el) return;
+        if (date) {
 
-    const now = new Date();
+            date.textContent =
+                new Date()
+                .toLocaleDateString(
+                    "tr-TR",
+                    {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
 
-    el.textContent = now.toLocaleDateString("tr-TR", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-    });
-
-}
-
-
-function renderBreaking(news) {
-
-    const container = document.getElementById("breakingNews");
-
-    if (!container) return;
-
-    const items = news.slice(0, 6);
-
-    container.innerHTML = items.map(haber => `
-
-        <a href="haber.html?id=${haber.id}">
-            ${haber.baslik}
-        </a>
-
-    `).join("");
-
-}
+        }
 
 
-function renderHero(news) {
 
-    const container = document.getElementById("heroNews");
+        /* SON DAKİKA */
 
-    if (!container) return;
+        const breaking =
+            document.getElementById(
+                "breakingList"
+            );
 
-    const hero = news[0];
+        if (breaking) {
 
-    const secondary = news.slice(1, 4);
+            breaking.innerHTML =
+                haberlerSirali
+                .filter(
+                    h => h.sonDakika
+                )
+                .map(
+                    h => `
 
-    container.innerHTML = `
+                    <a
+                        href="haber.html?id=${h.id}"
+                    >
+                        ${h.baslik}
+                    </a>
 
-        <a class="hero-main" href="haber.html?id=${hero.id}">
+                `
+                )
+                .join("");
 
-            <img src="${hero.gorsel}" alt="${hero.baslik}">
+        }
+
+
+
+        /* MANŞET */
+
+        renderHero(
+            haberlerSirali
+        );
+
+
+
+        /* HABERLER */
+
+        renderNews(
+            haberlerSirali
+        );
+
+
+
+        /* ÇOK OKUNANLAR */
+
+        renderPopular();
+
+
+
+        /* MOBİL MENÜ */
+
+        const menuButton =
+            document.getElementById(
+                "menuButton"
+            );
+
+        const mobileNav =
+            document.getElementById(
+                "mobileNav"
+            );
+
+        if (
+            menuButton &&
+            mobileNav
+        ) {
+
+            menuButton.addEventListener(
+                "click",
+                () => {
+
+                    mobileNav.classList.toggle(
+                        "open"
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* ARAMA */
+
+        setupSearch();
+
+    }
+);
+
+
+
+/* =========================
+   MANŞET
+========================= */
+
+function renderHero(
+    news
+) {
+
+    const hero =
+        document.getElementById(
+            "hero"
+        );
+
+    if (!hero) return;
+
+
+    const main =
+        news.find(
+            h => h.manset
+        ) || news[0];
+
+
+    const side =
+        news
+        .filter(
+            h => h.id !== main.id
+        )
+        .slice(
+            0,
+            3
+        );
+
+
+    hero.innerHTML = `
+
+        <a
+            class="hero-main"
+            href="haber.html?id=${main.id}"
+        >
+
+            <img
+                src="${main.gorsel}"
+                alt="${main.baslik}"
+            >
 
             <div class="hero-overlay">
 
-                <span class="category">
-                    ${hero.kategori}
+                <span>
+                    ${main.kategori}
                 </span>
 
                 <h1>
-                    ${hero.baslik}
+                    ${main.baslik}
                 </h1>
 
                 <p>
-                    ${hero.spot}
+                    ${main.spot}
                 </p>
 
-                <div class="hero-meta">
-                    ${hero.tarih} · ${hero.saat}
-                </div>
+                <small>
+                    ${main.tarih}
+                    ·
+                    ${main.saat}
+                </small>
 
             </div>
 
@@ -91,38 +201,37 @@ function renderHero(news) {
 
         <div class="hero-side">
 
-            ${secondary.map(haber => `
+            ${side.map(
+                h => `
 
-                <a class="side-card" href="haber.html?id=${haber.id}">
+                <a
+                    class="side-card"
+                    href="haber.html?id=${h.id}"
+                >
 
-                    <div class="side-image">
+                    <img
+                        src="${h.gorsel}"
+                        alt="${h.baslik}"
+                    >
 
-                        <img
-                            src="${haber.gorsel}"
-                            alt="${haber.baslik}"
-                        >
-
-                        <span>
-                            ${haber.kategori}
-                        </span>
-
-                    </div>
-
-                    <div class="side-content">
-
-                        <h3>
-                            ${haber.baslik}
-                        </h3>
+                    <div>
 
                         <small>
-                            ${haber.saat}
+                            ${h.kategori}
+                            ·
+                            ${h.saat}
                         </small>
+
+                        <h3>
+                            ${h.baslik}
+                        </h3>
 
                     </div>
 
                 </a>
 
-            `).join("")}
+            `
+            ).join("")}
 
         </div>
 
@@ -131,179 +240,285 @@ function renderHero(news) {
 }
 
 
-function renderLatest(news) {
 
-    const container = document.getElementById("latestNews");
+/* =========================
+   HABERLER
+========================= */
 
-    if (!container) return;
+function renderNews(
+    news
+) {
 
-    container.innerHTML = news.slice(0, 8).map(haber => `
+    const grid =
+        document.getElementById(
+            "newsGrid"
+        );
 
-        <a class="news-card" href="haber.html?id=${haber.id}">
+    if (!grid) return;
 
-            <div class="news-image">
 
-                <img
-                    src="${haber.gorsel}"
-                    alt="${haber.baslik}"
-                    loading="lazy"
-                >
+    grid.innerHTML =
+        news
+        .slice(
+            0,
+            8
+        )
+        .map(
+            h => `
 
-                <span>
-                    ${haber.kategori}
-                </span>
+            <a
+                class="news-card"
+                href="haber.html?id=${h.id}"
+            >
 
-            </div>
+                <div class="news-image">
 
-            <div class="news-card-content">
+                    <img
+                        src="${h.gorsel}"
+                        alt="${h.baslik}"
+                        loading="lazy"
+                    >
 
-                <div class="news-time">
-                    ${haber.tarih} · ${haber.saat}
+                    <span>
+                        ${h.kategori}
+                    </span>
+
                 </div>
 
-                <h3>
-                    ${haber.baslik}
-                </h3>
 
-                <p>
-                    ${haber.spot}
-                </p>
+                <div class="news-content">
 
-            </div>
+                    <small>
+                        ${h.tarih}
+                        ·
+                        ${h.saat}
+                    </small>
 
-        </a>
+                    <h3>
+                        ${h.baslik}
+                    </h3>
 
-    `).join("");
+                    <p>
+                        ${h.spot}
+                    </p>
+
+                </div>
+
+            </a>
+
+        `
+        )
+        .join("");
 
 }
 
+
+
+/* =========================
+   ÇOK OKUNANLAR
+========================= */
 
 function renderPopular() {
 
-    const container = document.getElementById("popularNews");
+    const container =
+        document.getElementById(
+            "popular"
+        );
 
     if (!container) return;
 
-    const popular = [...haberler]
-        .sort((a, b) => b.goruntulenme - a.goruntulenme)
-        .slice(0, 5);
 
-    container.innerHTML = popular.map((haber, index) => `
+    const popular =
+        [...haberler]
+        .sort(
+            (a, b) =>
+                b.goruntulenme -
+                a.goruntulenme
+        )
+        .slice(
+            0,
+            5
+        );
 
-        <a class="popular-item" href="haber.html?id=${haber.id}">
 
-            <strong>
-                ${String(index + 1).padStart(2, "0")}
-            </strong>
+    container.innerHTML =
+        popular
+        .map(
+            (h, index) => `
 
-            <div>
+            <a
+                class="popular-item"
+                href="haber.html?id=${h.id}"
+            >
 
-                <span>
-                    ${haber.kategori}
-                </span>
+                <strong>
+                    ${String(
+                        index + 1
+                    ).padStart(
+                        2,
+                        "0"
+                    )}
+                </strong>
 
-                <h4>
-                    ${haber.baslik}
-                </h4>
+                <div>
 
-            </div>
+                    <small>
+                        ${h.kategori}
+                    </small>
 
-        </a>
+                    <h4>
+                        ${h.baslik}
+                    </h4>
 
-    `).join("");
+                </div>
+
+            </a>
+
+        `
+        )
+        .join("");
 
 }
 
 
-function setupMenu() {
 
-    const btn = document.getElementById("menuBtn");
-    const menu = document.getElementById("mobileMenu");
-
-    if (!btn || !menu) return;
-
-    btn.addEventListener("click", () => {
-
-        menu.classList.toggle("active");
-
-        btn.textContent =
-            menu.classList.contains("active")
-            ? "×"
-            : "☰";
-
-    });
-
-}
-
+/* =========================
+   ARAMA
+========================= */
 
 function setupSearch() {
 
-    const searchBtn = document.getElementById("searchBtn");
-    const overlay = document.getElementById("searchOverlay");
-    const closeBtn = document.getElementById("closeSearch");
-    const input = document.getElementById("searchInput");
-    const results = document.getElementById("searchResults");
-
-    if (!searchBtn) return;
-
-    searchBtn.addEventListener("click", () => {
-
-        overlay.classList.add("active");
-
-        setTimeout(() => input.focus(), 100);
-
-    });
-
-
-    closeBtn.addEventListener("click", () => {
-
-        overlay.classList.remove("active");
-
-    });
-
-
-    input.addEventListener("input", () => {
-
-        const value = input.value
-            .toLocaleLowerCase("tr-TR")
-            .trim();
-
-        if (!value) {
-
-            results.innerHTML = "";
-
-            return;
-
-        }
-
-        const found = haberler.filter(haber =>
-            `${haber.baslik} ${haber.spot} ${haber.kategori}`
-                .toLocaleLowerCase("tr-TR")
-                .includes(value)
+    const button =
+        document.getElementById(
+            "searchButton"
         );
 
-        results.innerHTML = found.length
+    const overlay =
+        document.getElementById(
+            "searchOverlay"
+        );
 
-            ? found.map(haber => `
+    const close =
+        document.getElementById(
+            "closeSearch"
+        );
 
-                <a href="haber.html?id=${haber.id}">
+    const input =
+        document.getElementById(
+            "searchInput"
+        );
 
-                    <img src="${haber.gorsel}">
+    const results =
+        document.getElementById(
+            "searchResults"
+        );
 
-                    <div>
 
-                        <small>${haber.kategori}</small>
+    if (!button) return;
 
-                        <h3>${haber.baslik}</h3>
 
-                    </div>
+    button.addEventListener(
+        "click",
+        () => {
 
-                </a>
+            overlay.classList.add(
+                "open"
+            );
 
-            `).join("")
+            input.focus();
 
-            : `<p class="no-result">Haber bulunamadı.</p>`;
+        }
+    );
 
-    });
+
+    close.addEventListener(
+        "click",
+        () => {
+
+            overlay.classList.remove(
+                "open"
+            );
+
+        }
+    );
+
+
+    input.addEventListener(
+        "input",
+        () => {
+
+            const query =
+                input.value
+                .toLocaleLowerCase(
+                    "tr-TR"
+                )
+                .trim();
+
+
+            if (!query) {
+
+                results.innerHTML =
+                    "";
+
+                return;
+
+            }
+
+
+            const found =
+                haberler.filter(
+                    h =>
+
+                        `${h.baslik}
+                        ${h.spot}
+                        ${h.kategori}`
+                        .toLocaleLowerCase(
+                            "tr-TR"
+                        )
+                        .includes(
+                            query
+                        )
+                );
+
+
+            results.innerHTML =
+                found.length
+
+                    ? found.map(
+                        h => `
+
+                        <a
+                            href="haber.html?id=${h.id}"
+                        >
+
+                            <img
+                                src="${h.gorsel}"
+                            >
+
+                            <div>
+
+                                <small>
+                                    ${h.kategori}
+                                </small>
+
+                                <h3>
+                                    ${h.baslik}
+                                </h3>
+
+                            </div>
+
+                        </a>
+
+                    `
+                    ).join("")
+
+                    :
+
+                    `<p>
+                        Haber bulunamadı.
+                    </p>`;
+
+        }
+    );
 
 }
