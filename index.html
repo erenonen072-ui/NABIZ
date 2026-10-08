@@ -1,160 +1,61 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NABIZ | Son Dakika Haberleri</title>
-    <meta name="description" content="Türkiye ve dünyadan gündem, ekonomi, spor, teknoloji ve magazin haberleri.">
+  <title>NABIZ Haber</title>
+  <meta name="description" content="Türkiye'nin uzay hedefinde yeni adım: Salda Bilim Merkezi açıldı.">
 
-    <link rel="canonical" href="https://nabiz-sandy.vercel.app/">
-    <link rel="stylesheet" href="/css/style.css">
+  <meta property="og:title" content="Türkiye'nin uzay hedefinde yeni adım: Salda Bilim Merkezi açıldı">
+  <meta property="og:description" content="Salda Bilim Merkezi ve Milli Teknoloji Atölyesi açıldı.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/images/haber11.jpg">
+
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
 <header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">NABIZ</a>
 
-    <div class="header-inner">
-
-        <a href="/" class="logo">NABIZ</a>
-
-        <nav class="main-nav">
-            <a href="/">Ana Sayfa</a>
-            <a href="/gundem/">Gündem</a>
-            <a href="/dunya/">Dünya</a>
-            <a href="/ekonomi/">Ekonomi</a>
-            <a href="/spor/">Spor</a>
-            <a href="/teknoloji/">Teknoloji</a>
-            <a href="/magazin/">Magazin</a>
-            <a href="/kultur-sanat/">Kültür-Sanat</a>
-        </nav>
-
-        <a href="/arama/" class="search-button">⌕</a>
-
-        <button class="mobile-button" id="mobileButton">☰</button>
-
-    </div>
-
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="/">Ana Sayfa</a>
-        <a href="/gundem/">Gündem</a>
-        <a href="/dunya/">Dünya</a>
-        <a href="/ekonomi/">Ekonomi</a>
-        <a href="/spor/">Spor</a>
-        <a href="/teknoloji/">Teknoloji</a>
-        <a href="/magazin/">Magazin</a>
-        <a href="/kultur-sanat/">Kültür-Sanat</a>
+    <nav class="main-nav">
+      <a href="/gundem/">Gündem</a>
+      <a href="/dunya/">Dünya</a>
+      <a href="/ekonomi/">Ekonomi</a>
+      <a href="/spor/">Spor</a>
+      <a href="/teknoloji/">Teknoloji</a>
+      <a href="/magazin/">Magazin</a>
+      <a href="/kultur-sanat/">Kültür-Sanat</a>
+      <a href="/arama/">Arama</a>
     </nav>
-
+  </div>
 </header>
 
+<main class="container article-page">
 
-<main>
-
-    <section class="hero" id="hero"></section>
-
-
-    <section class="section">
-
-        <div class="section-title">
-            <h2>Gündem</h2>
-            <a href="/gundem/">Tümünü Gör →</a>
-        </div>
-
-        <div class="news-grid" id="gundemNews"></div>
-
-    </section>
-
-
-    <section class="section">
-
-        <div class="section-title">
-            <h2>Dünya</h2>
-            <a href="/dunya/">Tümünü Gör →</a>
-        </div>
-
-        <div class="news-grid" id="dunyaNews"></div>
-
-    </section>
-
-
-    <section class="section">
-
-        <div class="section-title">
-            <h2>Ekonomi</h2>
-            <a href="/ekonomi/">Tümünü Gör →</a>
-        </div>
-
-        <div class="news-grid" id="ekonomiNews"></div>
-
-    </section>
-
-
-    <section class="section">
-
-        <div class="section-title">
-            <h2>Spor</h2>
-            <a href="/spor/">Tümünü Gör →</a>
-        </div>
-
-        <div class="news-grid" id="sporNews"></div>
-
-    </section>
-
-
-    <section class="section">
-
-        <div class="section-title">
-            <h2>Teknoloji</h2>
-            <a href="/teknoloji/">Tümünü Gör →</a>
-        </div>
-
-        <div class="news-grid" id="teknolojiNews"></div>
-
-    </section>
-
-
-    <section class="section">
-
-        <div class="section-title">
-            <h2>Magazin</h2>
-            <a href="/magazin/">Tümünü Gör →</a>
-        </div>
-
-        <div class="news-grid" id="magazinNews"></div>
-
-    </section>
+  <div id="article"></div>
 
 </main>
 
+<footer class="site-footer">
+  <div class="container">
+    <strong>NABIZ</strong>
+    <p>Türkiye'nin haber portalı</p>
 
-<footer>
-
-    <div class="footer-inner">
-
-        <div>
-            <div class="footer-logo">NABIZ</div>
-            <p>Türkiye ve dünyadan gündemin nabzı.</p>
-        </div>
-
-        <div class="footer-links">
-            <a href="/hakkimizda/">Hakkımızda</a>
-            <a href="/iletisim/">İletişim</a>
-            <a href="/gizlilik/">Gizlilik Politikası</a>
-            <a href="/kullanim-sartlari/">Kullanım Şartları</a>
-        </div>
-
+    <div>
+      <a href="/hakkimizda/">Hakkımızda</a>
+      <a href="/iletisim/">İletişim</a>
+      <a href="/gizlilik/">Gizlilik</a>
+      <a href="/kullanim-sartlari/">Kullanım Şartları</a>
     </div>
-
-    <div class="copyright">
-        © 2026 NABIZ
-    </div>
-
+  </div>
 </footer>
 
 <script src="/js/haberler.js"></script>
-<script src="/js/app.js"></script>
+<script src="/js/haber.js"></script>
 
 </body>
 </html>
