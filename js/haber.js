@@ -2,52 +2,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const haberler = window.haberler || [];
 
-    const path = window.location.pathname;
+    const path =
+        window.location.pathname
+            .split("/")
+            .filter(Boolean);
 
-    const parts = path
-        .split("/")
-        .filter(Boolean);
+    const current =
+        path[path.length - 1];
 
-    const slug = parts[parts.length - 1];
+    const haber =
+        haberler.find(item => {
 
-    if (!slug) return;
+            const slug = item.baslik
+                .toLowerCase()
+                .trim()
+                .replace(/ğ/g, "g")
+                .replace(/ü/g, "u")
+                .replace(/ş/g, "s")
+                .replace(/ı/g, "i")
+                .replace(/ö/g, "o")
+                .replace(/ç/g, "c")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "");
 
+            return `${item.id}-${slug}` === current;
 
-    const haber = haberler.find(haber => {
-
-        const generatedSlug = haber.baslik
-            .toLowerCase()
-            .trim()
-            .replace(/ğ/g, "g")
-            .replace(/ü/g, "u")
-            .replace(/ş/g, "s")
-            .replace(/ı/g, "i")
-            .replace(/ö/g, "o")
-            .replace(/ç/g, "c")
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-+|-+$/g, "");
-
-        return `${haber.id}-${generatedSlug}` === slug;
-
-    });
+        });
 
 
-    const container =
+    const content =
         document.getElementById("articleContent");
-
 
     if (!haber) {
 
-        container.innerHTML = `
-            <div class="not-found">
-
-                <h1>Haber bulunamadı</h1>
-
-                <a href="/">
-                    Ana sayfaya dön
-                </a>
-
-            </div>
+        content.innerHTML = `
+            <h1>Haber bulunamadı</h1>
+            <p>
+                Aradığınız haber mevcut değil.
+            </p>
+            <a href="/">Ana sayfaya dön</a>
         `;
 
         return;
@@ -59,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `${haber.baslik} | NABIZ`;
 
 
-    container.innerHTML = `
+    content.innerHTML = `
 
         <div class="article-category">
             ${haber.kategori}
@@ -70,18 +63,14 @@ document.addEventListener("DOMContentLoaded", () => {
         </h1>
 
         <p class="article-spot">
-            ${haber.spot || ""}
+            ${haber.spot}
         </p>
 
         <div class="article-meta">
 
-            <span>
-                ${haber.tarih || ""}
-            </span>
+            <span>${haber.tarih}</span>
 
-            <span>
-                ${haber.kaynak || "NABIZ"}
-            </span>
+            <span>${haber.kaynak}</span>
 
         </div>
 
@@ -92,77 +81,59 @@ document.addEventListener("DOMContentLoaded", () => {
         >
 
         <div class="article-text">
-
-            ${haber.icerik || ""}
-
+            ${haber.icerik}
         </div>
 
     `;
 
 
-    const currentUrl =
+    const url =
         window.location.href;
 
-
     const encodedUrl =
-        encodeURIComponent(currentUrl);
+        encodeURIComponent(url);
 
     const encodedTitle =
         encodeURIComponent(haber.baslik);
 
 
-    const whatsapp =
-        document.getElementById("whatsappShare");
-
-    const x =
-        document.getElementById("xShare");
-
-    const copy =
-        document.getElementById("copyShare");
-
-    const native =
-        document.getElementById("nativeShare");
-
-
-    whatsapp.href =
+    document.getElementById("whatsappShare").href =
         `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
 
-
-    x.href =
+    document.getElementById("xShare").href =
         `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
 
 
-    copy.addEventListener("click", async () => {
+    document.getElementById("copyShare")
+        .addEventListener("click", async () => {
 
-        await navigator.clipboard.writeText(currentUrl);
+            await navigator.clipboard.writeText(url);
 
-        copy.textContent = "Kopyalandı ✓";
+            const button =
+                document.getElementById("copyShare");
 
-        setTimeout(() => {
+            button.textContent = "Kopyalandı ✓";
 
-            copy.textContent = "Linki Kopyala";
+            setTimeout(() => {
+                button.textContent = "Linki Kopyala";
+            }, 2000);
 
-        }, 2000);
-
-    });
+        });
 
 
-    native.addEventListener("click", async () => {
+    document.getElementById("nativeShare")
+        .addEventListener("click", async () => {
 
-        if (navigator.share) {
+            if (navigator.share) {
 
-            await navigator.share({
+                await navigator.share({
+                    title: haber.baslik,
+                    text: haber.spot,
+                    url: url
+                });
 
-                title: haber.baslik,
+            }
 
-                text: haber.spot || "",
-
-                url: currentUrl
-
-            });
-
-        }
-
-    });
+        });
 
 });
