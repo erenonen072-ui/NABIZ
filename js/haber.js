@@ -1,139 +1,176 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const haberler = window.haberler || [];
+  const haberler = window.haberler || [];
 
-    const path =
-        window.location.pathname
-            .split("/")
-            .filter(Boolean);
+  const path = window.location.pathname
+    .split("/")
+    .filter(Boolean);
 
-    const current =
-        path[path.length - 1];
+  const current = path[path.length - 1];
 
-    const haber =
-        haberler.find(item => {
+  function slugify(text) {
+    return text
+      .toLowerCase()
+      .trim()
+      .replace(/ğ/g, "g")
+      .replace(/ü/g, "u")
+      .replace(/ş/g, "s")
+      .replace(/ı/g, "i")
+      .replace(/ö/g, "o")
+      .replace(/ç/g, "c")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
 
-            const slug = item.baslik
-                .toLowerCase()
-                .trim()
-                .replace(/ğ/g, "g")
-                .replace(/ü/g, "u")
-                .replace(/ş/g, "s")
-                .replace(/ı/g, "i")
-                .replace(/ö/g, "o")
-                .replace(/ç/g, "c")
-                .replace(/[^a-z0-9]+/g, "-")
-                .replace(/^-+|-+$/g, "");
+  const haber = haberler.find(item => {
+    const slug = slugify(item.baslik);
+    return `${item.id}-${slug}` === current;
+  });
 
-            return `${item.id}-${slug}` === current;
+  const content = document.getElementById("articleContent");
 
-        });
+  if (!content) {
+    console.error("articleContent bulunamadı.");
+    return;
+  }
 
-
-    const content =
-        document.getElementById("articleContent");
-
-    if (!haber) {
-
-        content.innerHTML = `
-            <h1>Haber bulunamadı</h1>
-            <p>
-                Aradığınız haber mevcut değil.
-            </p>
-            <a href="/">Ana sayfaya dön</a>
-        `;
-
-        return;
-
-    }
-
-
-    document.title =
-        `${haber.baslik} | NABIZ`;
-
-
+  if (!haber) {
     content.innerHTML = `
-
-        <div class="article-category">
-            ${haber.kategori}
-        </div>
-
-        <h1 class="article-title">
-            ${haber.baslik}
-        </h1>
-
-        <p class="article-spot">
-            ${haber.spot}
-        </p>
-
-        <div class="article-meta">
-
-            <span>${haber.tarih}</span>
-
-            <span>${haber.kaynak}</span>
-
-        </div>
-
-        <img
-            class="article-image"
-            src="${haber.gorsel}"
-            alt="${haber.baslik}"
-        >
-
-        <div class="article-text">
-            ${haber.icerik}
-        </div>
-
+      <div class="article-not-found">
+        <h1>Haber bulunamadı</h1>
+        <p>Aradığınız haber mevcut değil veya bağlantı hatalı.</p>
+        <a href="/">Ana sayfaya dön</a>
+      </div>
     `;
+    return;
+  }
 
+  /* SAYFA BAŞLIĞI */
+  document.title = `${haber.baslik} | NABIZ`;
 
-    const url =
-        window.location.href;
+  /* HABERİ GÖSTER */
+  content.innerHTML = `
+    <div class="article-category">
+      ${haber.kategori}
+    </div>
 
-    const encodedUrl =
-        encodeURIComponent(url);
+    <h1 class="article-title">
+      ${haber.baslik}
+    </h1>
 
-    const encodedTitle =
-        encodeURIComponent(haber.baslik);
+    <p class="article-spot">
+      ${haber.spot}
+    </p>
 
+    <div class="article-meta">
+      <span>${haber.tarih}</span>
+      <span>${haber.saat || ""}</span>
+      <span>${haber.kaynak || "NABIZ"}</span>
+    </div>
 
-    document.getElementById("whatsappShare").href =
-        `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
+    <img
+      class="article-image"
+      src="${haber.gorsel}"
+      alt="${haber.baslik}"
+      loading="eager"
+    >
 
-    document.getElementById("xShare").href =
-        `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+    <div class="article-text">
+      ${haber.icerik}
+    </div>
+  `;
 
+  /* PAYLAŞIM */
+  const url = window.location.href;
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(haber.baslik);
 
-    document.getElementById("copyShare")
-        .addEventListener("click", async () => {
+  /* WHATSAPP */
+  const whatsappShare = document.getElementById("whatsappShare");
 
-            await navigator.clipboard.writeText(url);
+  if (whatsappShare) {
+    whatsappShare.href =
+      `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
+  }
 
-            const button =
-                document.getElementById("copyShare");
+  /* X */
+  const xShare = document.getElementById("xShare");
 
-            button.textContent = "Kopyalandı ✓";
+  if (xShare) {
+    xShare.href =
+      `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+  }
 
-            setTimeout(() => {
-                button.textContent = "Linki Kopyala";
-            }, 2000);
+  /* LINK KOPYALA */
+  const copyShare = document.getElementById("copyShare");
 
-        });
+  if (copyShare) {
 
+    copyShare.addEventListener("click", async () => {
 
-    document.getElementById("nativeShare")
-        .addEventListener("click", async () => {
+      try {
 
-            if (navigator.share) {
+        await navigator.clipboard.writeText(url);
 
-                await navigator.share({
-                    title: haber.baslik,
-                    text: haber.spot,
-                    url: url
-                });
+        copyShare.textContent = "Kopyalandı ✓";
 
-            }
+        setTimeout(() => {
+          copyShare.textContent = "Linki Kopyala";
+        }, 2000);
 
-        });
+      } catch (error) {
+
+        alert("Link kopyalanamadı.");
+
+      }
+
+    });
+
+  }
+
+  /* TELEFON / TARAYICI PAYLAŞ */
+  const nativeShare = document.getElementById("nativeShare");
+
+  if (nativeShare) {
+
+    nativeShare.addEventListener("click", async () => {
+
+      if (navigator.share) {
+
+        try {
+
+          await navigator.share({
+            title: haber.baslik,
+            text: haber.spot,
+            url: url
+          });
+
+        } catch (error) {
+          // Kullanıcı paylaşımı iptal ettiyse hata gösterme
+        }
+
+      } else {
+
+        try {
+
+          await navigator.clipboard.writeText(url);
+
+          nativeShare.textContent = "Link Kopyalandı ✓";
+
+          setTimeout(() => {
+            nativeShare.textContent = "Paylaş";
+          }, 2000);
+
+        } catch (error) {
+
+          alert("Paylaşım desteklenmiyor.");
+
+        }
+
+      }
+
+    });
+
+  }
 
 });
