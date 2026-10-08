@@ -1,290 +1,139 @@
-const haberler = [
+window.haberler = [
 
     {
-
         id: 1,
-
         kategori: "Gündem",
-
-        baslik:
-            "Türkiye gündeminde günün öne çıkan gelişmeleri",
-
-        spot:
-            "Günün önemli gelişmeleri ve son dakika haberleri NABIZ'da.",
-
-        tarih:
-            "8 Ekim 2026",
-
-        saat:
-            "19:42",
-
-        gorsel:
-            "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1400&q=85",
-
-        kaynak:
-            "NABIZ",
-
-        yazar:
-            "NABIZ Haber Merkezi",
-
-        goruntulenme:
-            15420,
-
-        sonDakika:
-            true,
-
-        manset:
-            true,
-
+        baslik: "Türkiye gündeminde günün öne çıkan gelişmeleri",
+        spot: "Türkiye'de gündemin öne çıkan başlıkları ve son gelişmeler.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber1.jpg",
         icerik: `
-
-Türkiye gündeminde bugün önemli gelişmeler yaşandı.
-
-NABIZ olarak günün öne çıkan başlıklarını sizler için derledik.
-
-Yeni bilgiler geldikçe haberimiz güncellenecektir.
-
+            <p>Türkiye gündeminde gün boyunca yaşanan gelişmeler yakından takip ediliyor.</p>
+            <p>Günün öne çıkan başlıkları kamuoyunun gündeminde yer alırken gelişmelerle ilgili yeni açıklamalar geliyor.</p>
         `
-
     },
 
-
     {
-
         id: 2,
-
         kategori: "Dünya",
-
-        baslik:
-            "Dünyada günün öne çıkan gelişmeleri",
-
-        spot:
-            "Uluslararası gündemde dikkat çeken son gelişmeler.",
-
-        tarih:
-            "8 Ekim 2026",
-
-        saat:
-            "18:55",
-
-        gorsel:
-            "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=85",
-
-        kaynak:
-            "NABIZ",
-
-        yazar:
-            "NABIZ Dünya",
-
-        goruntulenme:
-            12680,
-
-        sonDakika:
-            true,
-
-        manset:
-            false,
-
+        baslik: "Dünyadan günün öne çıkan gelişmeleri",
+        spot: "Uluslararası gündemde bugün yaşanan önemli gelişmeler.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber2.jpg",
         icerik: `
-
-Dünya gündeminde bugün önemli gelişmeler yaşanıyor.
-
-Uluslararası gelişmeler yakından takip ediliyor.
-
-Ayrıntılar geldikçe haberimiz güncellenecektir.
-
+            <p>Dünya gündeminde önemli gelişmeler yaşanıyor.</p>
+            <p>Farklı ülkelerden gelen son dakika gelişmeleri yakından takip ediliyor.</p>
         `
-
     },
 
-
     {
-
         id: 3,
-
         kategori: "Ekonomi",
-
-        baslik:
-            "Piyasalarda günün gündemi: Ekonomide son durum",
-
-        spot:
-            "Piyasalarda yaşanan son gelişmeler ve ekonomik veriler.",
-
-        tarih:
-            "8 Ekim 2026",
-
-        saat:
-            "17:40",
-
-        gorsel:
-            "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=85",
-
-        kaynak:
-            "NABIZ",
-
-        yazar:
-            "NABIZ Ekonomi",
-
-        goruntulenme:
-            9830,
-
-        sonDakika:
-            false,
-
-        manset:
-            false,
-
+        baslik: "Piyasalarda günün gündemi",
+        spot: "Ekonomi ve piyasalarda günün öne çıkan gelişmeleri.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber3.jpg",
         icerik: `
-
-Ekonomi gündeminde bugün dikkat çeken gelişmeler yaşandı.
-
-Piyasalardaki hareketlilik yakından takip ediliyor.
-
-Ekonomiye ilişkin gelişmeler NABIZ'da.
-
+            <p>Piyasalarda yeni işlem gününün önemli gelişmeleri takip ediliyor.</p>
+            <p>Ekonomiye ilişkin açıklamalar ve piyasalardaki hareketlilik gündemde.</p>
         `
-
     },
 
-
     {
-
         id: 4,
-
         kategori: "Spor",
-
-        baslik:
-            "Spor dünyasında günün öne çıkan haberleri",
-
-        spot:
-            "Futbol ve spor dünyasından son dakika gelişmeleri.",
-
-        tarih:
-            "8 Ekim 2026",
-
-        saat:
-            "16:20",
-
-        gorsel:
-            "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=85",
-
-        kaynak:
-            "NABIZ",
-
-        yazar:
-            "NABIZ Spor",
-
-        goruntulenme:
-            8640,
-
-        sonDakika:
-            false,
-
-        manset:
-            false,
-
+        baslik: "Spor dünyasında günün önemli gelişmeleri",
+        spot: "Futbol ve spor dünyasından son haberler.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber4.jpg",
         icerik: `
-
-Spor dünyasında günün önemli gelişmeleri yaşanmaya devam ediyor.
-
-Takımlardan ve sporculardan gelen son haberler NABIZ'da.
-
+            <p>Spor dünyasında günün önemli gelişmeleri yaşanıyor.</p>
+            <p>Takımların son durumları ve müsabakalarla ilgili gelişmeler takip ediliyor.</p>
         `
-
     },
 
-
     {
-
         id: 5,
-
         kategori: "Teknoloji",
-
-        baslik:
-            "Teknoloji dünyasında yeni gelişme",
-
-        spot:
-            "Teknoloji sektöründen dikkat çeken yenilikler.",
-
-        tarih:
-            "8 Ekim 2026",
-
-        saat:
-            "15:45",
-
-        gorsel:
-            "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85",
-
-        kaynak:
-            "NABIZ",
-
-        yazar:
-            "NABIZ Teknoloji",
-
-        goruntulenme:
-            7350,
-
-        sonDakika:
-            false,
-
-        manset:
-            false,
-
+        baslik: "Teknoloji dünyasında yeni gelişmeler",
+        spot: "Teknoloji sektöründen dikkat çeken yeni gelişmeler.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber5.jpg",
         icerik: `
-
-Teknoloji dünyasında yeni ürünler ve gelişmeler kullanıcıların ilgisini çekiyor.
-
-Yeni teknolojilere ilişkin gelişmeleri NABIZ'dan takip edebilirsiniz.
-
+            <p>Teknoloji dünyasında yeni ürünler ve gelişmeler gündemde.</p>
+            <p>Yapay zeka, mobil teknolojiler ve dijital dünyadaki yenilikler yakından takip ediliyor.</p>
         `
-
     },
 
+    {
+        id: 6,
+        kategori: "Magazin",
+        baslik: "Magazin dünyasından günün dikkat çeken haberleri",
+        spot: "Ünlüler dünyasından son gelişmeler.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber6.jpg",
+        icerik: `
+            <p>Magazin dünyasında günün öne çıkan gelişmeleri belli oldu.</p>
+            <p>Yeni projeler ve sanat dünyasındaki gelişmeler takip ediliyor.</p>
+        `
+    },
 
     {
-
-        id: 6,
-
-        kategori: "Magazin",
-
-        baslik:
-            "Magazin dünyasından günün dikkat çeken gelişmesi",
-
-        spot:
-            "Magazin dünyasından günün öne çıkan haberleri.",
-
-        tarih:
-            "8 Ekim 2026",
-
-        saat:
-            "14:30",
-
-        gorsel:
-            "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85",
-
-        kaynak:
-            "NABIZ",
-
-        yazar:
-            "NABIZ Magazin",
-
-        goruntulenme:
-            5210,
-
-        sonDakika:
-            false,
-
-        manset:
-            false,
-
+        id: 7,
+        kategori: "Gündem",
+        baslik: "Gündemde yeni açıklamalar geldi",
+        spot: "Günün önemli gündem başlıklarında yeni gelişmeler.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber7.jpg",
         icerik: `
-
-Magazin dünyasında bugün dikkat çeken gelişmeler yaşandı.
-
-Günün öne çıkan magazin haberleri NABIZ'da.
-
+            <p>Gündeme ilişkin yeni açıklamalar kamuoyuyla paylaşıldı.</p>
         `
+    },
 
+    {
+        id: 8,
+        kategori: "Spor",
+        baslik: "Futbol dünyasında transfer gündemi",
+        spot: "Takımların transfer çalışmaları devam ediyor.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber8.jpg",
+        icerik: `
+            <p>Futbol dünyasında transfer çalışmaları sürüyor.</p>
+        `
+    },
+
+    {
+        id: 9,
+        kategori: "Teknoloji",
+        baslik: "Yeni teknoloji ürünü dikkat çekti",
+        spot: "Teknoloji dünyasında yeni ürün heyecanı.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber9.jpg",
+        icerik: `
+            <p>Yeni teknoloji ürünü özellikleriyle dikkat çekti.</p>
+        `
+    },
+
+    {
+        id: 10,
+        kategori: "Magazin",
+        baslik: "Ünlü isimden yeni proje açıklaması",
+        spot: "Magazin dünyasında dikkat çeken yeni açıklama.",
+        tarih: "8 Ekim 2026",
+        kaynak: "NABIZ",
+        gorsel: "/images/haber10.jpg",
+        icerik: `
+            <p>Ünlü isim yeni projesi hakkında açıklamalarda bulundu.</p>
+        `
     }
 
 ];
