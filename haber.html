@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
 
 <meta charset="UTF-8">
@@ -11,11 +12,15 @@
 
 <title>NABIZ Haber</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
 
 </head>
 
 <body>
+
 
 <header class="header">
 
@@ -23,18 +28,39 @@
 
         <div class="container header-inner">
 
-            <a href="index.html" class="logo">
+            <a
+                href="index.html"
+                class="logo"
+            >
                 NABIZ<span>.</span>
             </a>
 
+
             <nav class="desktop-nav">
 
-                <a href="index.html">Ana Sayfa</a>
-                <a href="kategori.html?kategori=Gündem">Gündem</a>
-                <a href="kategori.html?kategori=Dünya">Dünya</a>
-                <a href="kategori.html?kategori=Ekonomi">Ekonomi</a>
-                <a href="kategori.html?kategori=Spor">Spor</a>
-                <a href="kategori.html?kategori=Teknoloji">Teknoloji</a>
+                <a href="index.html">
+                    Ana Sayfa
+                </a>
+
+                <a href="kategori.html?k=Gündem">
+                    Gündem
+                </a>
+
+                <a href="kategori.html?k=Dünya">
+                    Dünya
+                </a>
+
+                <a href="kategori.html?k=Ekonomi">
+                    Ekonomi
+                </a>
+
+                <a href="kategori.html?k=Spor">
+                    Spor
+                </a>
+
+                <a href="kategori.html?k=Teknoloji">
+                    Teknoloji
+                </a>
 
             </nav>
 
@@ -45,11 +71,33 @@
 </header>
 
 
+<div class="breaking">
+
+    <div class="container breaking-inner">
+
+        <strong>
+            <span class="breaking-dot"></span>
+            SON DAKİKA
+        </strong>
+
+        <div
+            id="breakingList"
+            class="breaking-list"
+        ></div>
+
+    </div>
+
+</div>
+
+
 <main class="article-page">
 
     <div class="container">
 
-        <div id="article"></div>
+        <article
+            id="article"
+            class="article"
+        ></article>
 
     </div>
 
@@ -57,7 +105,9 @@
 
 
 <script src="js/haberler.js"></script>
+
 <script src="js/haber.js"></script>
 
 </body>
+
 </html>
