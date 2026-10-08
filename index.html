@@ -1,82 +1,121 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NABIZ | Son Dakika Haberleri</title>
+    <title>NABIZ - Son Dakika Haberleri</title>
 
     <meta
         name="description"
-        content="NABIZ - Türkiye ve dünyadan son dakika haberleri, gündem, ekonomi, spor, teknoloji ve magazin."
+        content="NABIZ - Son dakika haberleri, gündem, ekonomi, dünya, spor, teknoloji ve magazin."
     >
 
-    <meta
-        name="robots"
-        content="index, follow"
-    >
+    <meta name="robots" content="index, follow">
 
-    <link
-        rel="stylesheet"
-        href="/css/style.css"
-    >
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     ÜST BAR
+===================================================== -->
 
-<header class="top-header">
+<div class="top-info">
 
-    <div class="top-header-inner">
+    <div class="top-info-inner">
+
+        <div class="top-left">
+
+            <span>8 Ekim 2026</span>
+
+            <span class="top-separator">|</span>
+
+            <a href="/arama/">🔍 Arama</a>
+
+        </div>
+
+        <div class="top-right">
+
+            <a href="/hakkimizda/">Hakkımızda</a>
+
+            <a href="/iletisim/">İletişim</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ANA HEADER
+===================================================== -->
+
+<header class="main-header">
+
+    <div class="header-inner">
 
         <button
-            class="mobile-menu-button"
             id="mobileButton"
+            class="mobile-button"
             type="button"
-            aria-label="Menüyü aç"
         >
             ☰
         </button>
 
-        <a
-            href="/"
-            class="nabiz-logo"
-        >
-            <span>N</span>ABIZ
+
+        <a href="/" class="nabiz-logo">
+
+            <span class="logo-red">NA</span>BİZ
+
         </a>
 
-        <nav class="desktop-main-nav">
 
-            <a
-                href="/"
-                class="active"
-            >
+        <nav class="main-nav">
+
+            <a href="/" class="active">
                 Ana Sayfa
             </a>
 
-            <a href="/gundem/">Gündem</a>
-            <a href="/dunya/">Dünya</a>
-            <a href="/ekonomi/">Ekonomi</a>
-            <a href="/spor/">Spor</a>
-            <a href="/teknoloji/">Teknoloji</a>
-            <a href="/magazin/">Magazin</a>
-            <a href="/kultur-sanat/">Kültür</a>
+            <a href="/gundem/">
+                Gündem
+            </a>
+
+            <a href="/dunya/">
+                Dünya
+            </a>
+
+            <a href="/ekonomi/">
+                Ekonomi
+            </a>
+
+            <a href="/spor/">
+                Spor
+            </a>
+
+            <a href="/teknoloji/">
+                Teknoloji
+            </a>
+
+            <a href="/magazin/">
+                Magazin
+            </a>
+
+            <a href="/kultur-sanat/">
+                Kültür Sanat
+            </a>
 
         </nav>
 
+
         <a
             href="/arama/"
-            class="header-search"
-            aria-label="Arama"
+            class="search-icon"
         >
-            <span>⌕</span>
-            <b>ARA</b>
+            🔍
         </a>
 
     </div>
@@ -84,16 +123,43 @@
 </header>
 
 
-<!-- ================= MOBILE MENU ================= -->
+<!-- =====================================================
+     KATEGORİ MENÜSÜ
+===================================================== -->
+
+<div class="category-menu">
+
+    <div class="category-menu-inner">
+
+        <a href="/gundem/">Gündem</a>
+
+        <a href="/dunya/">Dünya</a>
+
+        <a href="/ekonomi/">Ekonomi</a>
+
+        <a href="/spor/">Spor</a>
+
+        <a href="/teknoloji/">Teknoloji</a>
+
+        <a href="/magazin/">Magazin</a>
+
+        <a href="/kultur-sanat/">Kültür Sanat</a>
+
+        <a href="/arama/">Tüm Haberler</a>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MOBİL MENÜ
+===================================================== -->
 
 <div
-    class="mobile-nav"
     id="mobileNav"
+    class="mobile-nav"
 >
-
-    <div class="mobile-nav-title">
-        NABIZ
-    </div>
 
     <a href="/">Ana Sayfa</a>
     <a href="/gundem/">Gündem</a>
@@ -102,253 +168,479 @@
     <a href="/spor/">Spor</a>
     <a href="/teknoloji/">Teknoloji</a>
     <a href="/magazin/">Magazin</a>
-    <a href="/kultur-sanat/">Kültür-Sanat</a>
+    <a href="/kultur-sanat/">Kültür Sanat</a>
     <a href="/arama/">Arama</a>
 
 </div>
 
 
-<!-- ================= CATEGORY BAR ================= -->
+<!-- =====================================================
+     ANA SAYFA
+===================================================== -->
 
-<div class="category-bar">
-
-    <div class="category-bar-inner">
-
-        <a href="/gundem/">Gündem</a>
-        <a href="/dunya/">Dünya</a>
-        <a href="/ekonomi/">Ekonomi</a>
-        <a href="/spor/">Spor</a>
-        <a href="/teknoloji/">Teknoloji</a>
-        <a href="/magazin/">Magazin</a>
-        <a href="/kultur-sanat/">Kültür Sanat</a>
-
-    </div>
-
-</div>
+<main class="site-container">
 
 
-<main class="homepage">
+    <!-- MANŞET -->
 
+    <section class="headline">
 
-    <!-- ================= MANŞET ================= -->
-
-    <section class="headline-area">
-
-        <div id="hero">
-
-            <!-- JS dolduracak -->
-
-        </div>
+        <div id="hero"></div>
 
     </section>
 
 
-    <!-- ================= PİYASA ================= -->
+    <!-- =================================================
+         PİYASA
+    ================================================== -->
 
-    <section class="market-strip">
+    <section class="markets">
 
-        <div class="market-title">
+        <div class="markets-title">
             PİYASA
         </div>
 
-        <div class="market-item">
-            <span>DOLAR</span>
+
+        <div class="market">
+
+            <small>DOLAR</small>
+
             <strong>49,21</strong>
+
+            <span class="up">
+                ▲ %0,03
+            </span>
+
         </div>
 
-        <div class="market-item">
-            <span>EURO</span>
+
+        <div class="market">
+
+            <small>EURO</small>
+
             <strong>55,34</strong>
+
+            <span class="up">
+                ▲ %0,39
+            </span>
+
         </div>
 
-        <div class="market-item">
-            <span>ALTIN</span>
+
+        <div class="market">
+
+            <small>ALTIN</small>
+
             <strong>6.544</strong>
+
+            <span class="up">
+                ▲ %0,63
+            </span>
+
         </div>
 
-        <div class="market-item">
-            <span>BIST</span>
+
+        <div class="market">
+
+            <small>GÜMÜŞ</small>
+
+            <strong>93,63</strong>
+
+            <span class="down">
+                ▼ %1,04
+            </span>
+
+        </div>
+
+
+        <div class="market">
+
+            <small>BIST</small>
+
             <strong>12.214</strong>
+
+            <span class="up">
+                ▲ %0,75
+            </span>
+
+        </div>
+
+
+        <div class="market">
+
+            <small>BITCOIN</small>
+
+            <strong>3.982.460</strong>
+
+            <span class="down">
+                ▼ %3,00
+            </span>
+
         </div>
 
     </section>
 
 
-    <!-- ================= SON HABERLER ================= -->
+    <!-- =================================================
+         ANA HABER ALANI
+    ================================================== -->
 
-    <section class="content-section">
+    <section class="main-columns">
 
-        <div class="section-heading">
 
-            <div>
-                <span class="section-kicker">
-                    NABIZ
-                </span>
+        <!-- SOL -->
+
+        <div class="main-news-column">
+
+            <div class="section-title">
 
                 <h2>
                     Son Haberler
                 </h2>
+
+                <a href="/arama/">
+                    Tümünü Gör
+                </a>
+
             </div>
+
+
+            <div
+                id="latestNews"
+                class="large-news-grid"
+            ></div>
 
         </div>
 
-        <div
-            id="latestNews"
-            class="latest-grid"
-        ></div>
+
+        <!-- SAĞ -->
+
+        <aside class="sidebar">
+
+
+            <!-- ÇOK OKUNANLAR -->
+
+            <div class="sidebar-box">
+
+                <div class="sidebar-title">
+                    Çok Okunanlar
+                </div>
+
+                <ol class="popular-list">
+
+                    <li>
+                        <span>01</span>
+                        Türkiye gündeminden öne çıkan gelişmeler
+                    </li>
+
+                    <li>
+                        <span>02</span>
+                        Günün en önemli haberleri
+                    </li>
+
+                    <li>
+                        <span>03</span>
+                        Ekonomide yeni gelişme
+                    </li>
+
+                    <li>
+                        <span>04</span>
+                        Spor dünyasında son dakika
+                    </li>
+
+                    <li>
+                        <span>05</span>
+                        Teknoloji dünyasından önemli haber
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- GÖZDEN KAÇMASIN -->
+
+            <div class="sidebar-box">
+
+                <div class="sidebar-title">
+                    Gözden Kaçmasın
+                </div>
+
+                <div class="side-news">
+
+                    <a href="/arama/">
+                        Günün dikkat çeken gelişmeleri
+                    </a>
+
+                    <a href="/arama/">
+                        Türkiye'den son haberler
+                    </a>
+
+                    <a href="/arama/">
+                        Dünyadan önemli gelişmeler
+                    </a>
+
+                    <a href="/arama/">
+                        Ekonomide son durum
+                    </a>
+
+                </div>
+
+            </div>
+
+        </aside>
 
     </section>
 
 
-    <!-- ================= GÜNDEM ================= -->
+    <!-- =================================================
+         GÜNDEM
+    ================================================== -->
 
-    <section class="content-section">
+    <section class="category-section">
 
-        <div class="section-heading">
+        <div class="section-title">
 
             <h2>Gündem</h2>
 
             <a href="/gundem/">
-                Tümünü Gör →
+                Tüm Gündem Haberleri →
             </a>
 
         </div>
 
+
         <div
             id="gundemNews"
-            class="news-grid"
+            class="category-grid"
         ></div>
 
     </section>
 
 
-    <!-- ================= DÜNYA ================= -->
+    <!-- =================================================
+         DÜNYA
+    ================================================== -->
 
-    <section class="content-section">
+    <section class="category-section">
 
-        <div class="section-heading">
+        <div class="section-title">
 
             <h2>Dünya</h2>
 
             <a href="/dunya/">
-                Tümünü Gör →
+                Tüm Dünya Haberleri →
             </a>
 
         </div>
 
+
         <div
             id="dunyaNews"
-            class="news-grid"
+            class="category-grid"
         ></div>
 
     </section>
 
 
-    <!-- ================= EKONOMİ ================= -->
+    <!-- =================================================
+         EKONOMİ
+    ================================================== -->
 
-    <section class="content-section">
+    <section class="category-section">
 
-        <div class="section-heading">
+        <div class="section-title">
 
             <h2>Ekonomi</h2>
 
             <a href="/ekonomi/">
-                Tümünü Gör →
+                Tüm Ekonomi Haberleri →
             </a>
 
         </div>
 
+
         <div
             id="ekonomiNews"
-            class="news-grid"
+            class="category-grid"
         ></div>
 
     </section>
 
 
-    <!-- ================= SPOR ================= -->
+    <!-- =================================================
+         SPOR
+    ================================================== -->
 
-    <section class="content-section">
+    <section class="category-section">
 
-        <div class="section-heading">
+        <div class="section-title">
 
             <h2>Spor</h2>
 
             <a href="/spor/">
-                Tümünü Gör →
+                Tüm Spor Haberleri →
             </a>
 
         </div>
 
+
         <div
             id="sporNews"
-            class="news-grid"
+            class="category-grid"
         ></div>
 
     </section>
 
 
-    <!-- ================= TEKNOLOJİ ================= -->
+    <!-- =================================================
+         TEKNOLOJİ
+    ================================================== -->
 
-    <section class="content-section">
+    <section class="category-section">
 
-        <div class="section-heading">
+        <div class="section-title">
 
             <h2>Teknoloji</h2>
 
             <a href="/teknoloji/">
-                Tümünü Gör →
+                Tüm Teknoloji Haberleri →
             </a>
 
         </div>
 
+
         <div
             id="teknolojiNews"
-            class="news-grid"
+            class="category-grid"
         ></div>
 
     </section>
 
 
-    <!-- ================= MAGAZİN ================= -->
+    <!-- =================================================
+         MAGAZİN
+    ================================================== -->
 
-    <section class="content-section">
+    <section class="category-section">
 
-        <div class="section-heading">
+        <div class="section-title">
 
             <h2>Magazin</h2>
 
             <a href="/magazin/">
-                Tümünü Gör →
+                Tüm Magazin Haberleri →
             </a>
 
         </div>
 
+
         <div
             id="magazinNews"
-            class="news-grid"
+            class="category-grid"
         ></div>
 
     </section>
 
 
+    <!-- =================================================
+         YAZARLAR
+    ================================================== -->
+
+    <section class="writers-section">
+
+        <div class="section-title">
+
+            <h2>
+                NABIZ Gündem
+            </h2>
+
+        </div>
+
+
+        <div class="writer-cards">
+
+            <div class="writer-card">
+
+                <div class="writer-avatar">
+                    N
+                </div>
+
+                <div>
+                    <strong>
+                        NABIZ Editör
+                    </strong>
+
+                    <p>
+                        Günün öne çıkan gelişmeleri
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="writer-card">
+
+                <div class="writer-avatar">
+                    N
+                </div>
+
+                <div>
+                    <strong>
+                        NABIZ Ekonomi
+                    </strong>
+
+                    <p>
+                        Ekonomiden son gelişmeler
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="writer-card">
+
+                <div class="writer-avatar">
+                    N
+                </div>
+
+                <div>
+                    <strong>
+                        NABIZ Spor
+                    </strong>
+
+                    <p>
+                        Spor dünyasından haberler
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-<footer class="site-footer">
+<footer class="footer">
 
     <div class="footer-inner">
+
 
         <div class="footer-brand">
 
             <div class="footer-logo">
-                NABIZ
+                <span>N</span>ABIZ
             </div>
 
             <p>
-                Türkiye ve dünyadan güncel haberler.
+                Türkiye ve dünyadan güncel,
+                hızlı ve güvenilir haberler.
             </p>
 
         </div>
@@ -372,14 +664,16 @@
 
             <a href="/teknoloji/">Teknoloji</a>
             <a href="/magazin/">Magazin</a>
-            <a href="/kultur-sanat/">Kültür Sanat</a>
+            <a href="/kultur-sanat/">
+                Kültür Sanat
+            </a>
 
         </div>
 
 
         <div class="footer-column">
 
-            <h3>NABIZ</h3>
+            <h3>Kurumsal</h3>
 
             <a href="/hakkimizda/">
                 Hakkımızda
@@ -404,7 +698,7 @@
 
     <div class="footer-bottom">
 
-        © 2026 NABIZ. Tüm hakları saklıdır.
+        © 2026 NABIZ — Tüm hakları saklıdır.
 
     </div>
 
