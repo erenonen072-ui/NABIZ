@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const haberler = window.haberler || [];
 
-    const map = {
+    const categories = {
         "Gündem": "gundemNews",
         "Dünya": "dunyaNews",
         "Ekonomi": "ekonomiNews",
@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function slugify(text) {
 
         return text
-            .toString()
             .toLowerCase()
             .trim()
             .replace(/ğ/g, "g")
@@ -30,33 +29,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    function getUrl(haber) {
-
-        if (haber.url) {
-            return haber.url;
-        }
+    function articleUrl(haber) {
 
         return `/haber/${haber.id}-${slugify(haber.baslik)}/`;
 
     }
 
 
-    function haberCard(haber) {
+    function card(haber) {
 
         return `
             <article class="news-card">
 
-                <a href="${getUrl(haber)}">
+                <a href="${articleUrl(haber)}">
 
-                    <div class="news-image">
-
-                        <img
-                            src="${haber.gorsel}"
-                            alt="${haber.baslik}"
-                            loading="lazy"
-                        >
-
-                    </div>
+                    <img
+                        src="${haber.gorsel}"
+                        alt="${haber.baslik}"
+                        loading="lazy"
+                    >
 
                     <div class="news-content">
 
@@ -64,13 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             ${haber.kategori}
                         </span>
 
-                        <h3>
-                            ${haber.baslik}
-                        </h3>
+                        <h3>${haber.baslik}</h3>
 
-                        <p>
-                            ${haber.spot || ""}
-                        </p>
+                        <p>${haber.spot}</p>
 
                     </div>
 
@@ -82,41 +69,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    function renderCategory(category) {
+    for (const category in categories) {
 
-        const containerId = map[category];
+        const element =
+            document.getElementById(categories[category]);
 
-        const container = document.getElementById(containerId);
+        if (!element) continue;
 
-        if (!container) return;
-
-        const news = haberler
+        const items = haberler
             .filter(h => h.kategori === category)
             .slice(0, 4);
 
-        container.innerHTML = news
-            .map(haberCard)
-            .join("");
+        element.innerHTML =
+            items.map(card).join("");
 
     }
 
 
-    Object.keys(map).forEach(renderCategory);
+    const hero =
+        document.getElementById("hero");
 
+    if (hero && haberler.length) {
 
-    // MANŞET
+        const main = haberler[0];
 
-    const heroMain = document.getElementById("heroMain");
-    const heroSide = document.getElementById("heroSide");
+        const side = haberler.slice(1, 4);
 
-    const featured = haberler.slice(0, 5);
+        hero.innerHTML = `
 
-    if (featured.length && heroMain) {
-
-        const main = featured[0];
-
-        heroMain.innerHTML = `
-            <a href="${getUrl(main)}" class="hero-card">
+            <a
+                class="hero-main"
+                href="${articleUrl(main)}"
+            >
 
                 <img
                     src="${main.gorsel}"
@@ -127,69 +111,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     <span>${main.kategori}</span>
 
-                    <h1>
-                        ${main.baslik}
-                    </h1>
-
-                    <p>
-                        ${main.spot || ""}
-                    </p>
+                    <h1>${main.baslik}</h1>
 
                 </div>
 
             </a>
+
+            <div class="hero-side">
+
+                ${side.map(item => `
+
+                    <a
+                        class="hero-small"
+                        href="${articleUrl(item)}"
+                    >
+
+                        <img
+                            src="${item.gorsel}"
+                            alt="${item.baslik}"
+                        >
+
+                        <div>
+
+                            <span>${item.kategori}</span>
+
+                            <h3>${item.baslik}</h3>
+
+                        </div>
+
+                    </a>
+
+                `).join("")}
+
+            </div>
         `;
 
     }
 
 
-    if (heroSide) {
-
-        heroSide.innerHTML = featured
-            .slice(1, 5)
-            .map(haber => `
-
-                <a href="${getUrl(haber)}" class="hero-small">
-
-                    <img
-                        src="${haber.gorsel}"
-                        alt="${haber.baslik}"
-                    >
-
-                    <div>
-
-                        <span>
-                            ${haber.kategori}
-                        </span>
-
-                        <h3>
-                            ${haber.baslik}
-                        </h3>
-
-                    </div>
-
-                </a>
-
-            `)
-            .join("");
-
-    }
-
-
-    // MOBİL MENÜ
-
     const mobileButton =
-        document.getElementById("mobileMenuButton");
+        document.getElementById("mobileButton");
 
-    const mobileMenu =
-        document.getElementById("mobileMenu");
+    const mobileNav =
+        document.getElementById("mobileNav");
 
-
-    if (mobileButton && mobileMenu) {
+    if (mobileButton && mobileNav) {
 
         mobileButton.addEventListener("click", () => {
 
-            mobileMenu.classList.toggle("active");
+            mobileNav.classList.toggle("active");
 
         });
 
