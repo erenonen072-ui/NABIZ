@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nabiz-sandy.vercel.app/sitemap.xml
