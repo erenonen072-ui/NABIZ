@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>NABIZ | Son Dakika Haberleri</title>
-    <meta name="description" content="Türkiye ve dünyadan son dakika haberleri, gündem, ekonomi, spor, teknoloji ve magazin haberleri.">
+    <meta name="description" content="Türkiye ve dünyadan gündem, ekonomi, spor, teknoloji ve magazin haberleri.">
 
     <link rel="canonical" href="https://nabiz-sandy.vercel.app/">
     <link rel="stylesheet" href="/css/style.css">
@@ -13,15 +13,13 @@
 
 <body>
 
-<header class="header">
+<header class="site-header">
 
-    <div class="header-main">
+    <div class="header-inner">
 
-        <a href="/" class="logo">
-            NABIZ
-        </a>
+        <a href="/" class="logo">NABIZ</a>
 
-        <nav class="desktop-nav">
+        <nav class="main-nav">
             <a href="/">Ana Sayfa</a>
             <a href="/gundem/">Gündem</a>
             <a href="/dunya/">Dünya</a>
@@ -32,22 +30,13 @@
             <a href="/kultur-sanat/">Kültür-Sanat</a>
         </nav>
 
-        <div class="header-actions">
+        <a href="/arama/" class="search-button">⌕</a>
 
-            <a href="/arama/" class="search-button">
-                🔍
-            </a>
-
-            <button class="mobile-menu-button" id="mobileMenuButton">
-                ☰
-            </button>
-
-        </div>
+        <button class="mobile-button" id="mobileButton">☰</button>
 
     </div>
 
-    <div class="mobile-menu" id="mobileMenu">
-
+    <nav class="mobile-nav" id="mobileNav">
         <a href="/">Ana Sayfa</a>
         <a href="/gundem/">Gündem</a>
         <a href="/dunya/">Dünya</a>
@@ -56,38 +45,21 @@
         <a href="/teknoloji/">Teknoloji</a>
         <a href="/magazin/">Magazin</a>
         <a href="/kultur-sanat/">Kültür-Sanat</a>
-
-    </div>
+    </nav>
 
 </header>
 
 
 <main>
 
-    <!-- MANŞET -->
-
-    <section class="hero-section">
-
-        <div class="hero-main" id="heroMain"></div>
-
-        <div class="hero-side" id="heroSide"></div>
-
-    </section>
+    <section class="hero" id="hero"></section>
 
 
-    <!-- GÜNDEM -->
+    <section class="section">
 
-    <section class="news-section">
-
-        <div class="section-heading">
-
-            <div>
-                <span class="section-line"></span>
-                <h2>Gündem</h2>
-            </div>
-
-            <a href="/gundem/">Tüm Gündem Haberleri →</a>
-
+        <div class="section-title">
+            <h2>Gündem</h2>
+            <a href="/gundem/">Tümünü Gör →</a>
         </div>
 
         <div class="news-grid" id="gundemNews"></div>
@@ -95,19 +67,11 @@
     </section>
 
 
-    <!-- DÜNYA -->
+    <section class="section">
 
-    <section class="news-section">
-
-        <div class="section-heading">
-
-            <div>
-                <span class="section-line"></span>
-                <h2>Dünya</h2>
-            </div>
-
-            <a href="/dunya/">Tüm Dünya Haberleri →</a>
-
+        <div class="section-title">
+            <h2>Dünya</h2>
+            <a href="/dunya/">Tümünü Gör →</a>
         </div>
 
         <div class="news-grid" id="dunyaNews"></div>
@@ -115,19 +79,11 @@
     </section>
 
 
-    <!-- EKONOMİ -->
+    <section class="section">
 
-    <section class="news-section">
-
-        <div class="section-heading">
-
-            <div>
-                <span class="section-line"></span>
-                <h2>Ekonomi</h2>
-            </div>
-
-            <a href="/ekonomi/">Tüm Ekonomi Haberleri →</a>
-
+        <div class="section-title">
+            <h2>Ekonomi</h2>
+            <a href="/ekonomi/">Tümünü Gör →</a>
         </div>
 
         <div class="news-grid" id="ekonomiNews"></div>
@@ -135,19 +91,11 @@
     </section>
 
 
-    <!-- SPOR -->
+    <section class="section">
 
-    <section class="news-section">
-
-        <div class="section-heading">
-
-            <div>
-                <span class="section-line"></span>
-                <h2>Spor</h2>
-            </div>
-
-            <a href="/spor/">Tüm Spor Haberleri →</a>
-
+        <div class="section-title">
+            <h2>Spor</h2>
+            <a href="/spor/">Tümünü Gör →</a>
         </div>
 
         <div class="news-grid" id="sporNews"></div>
@@ -155,19 +103,11 @@
     </section>
 
 
-    <!-- TEKNOLOJİ -->
+    <section class="section">
 
-    <section class="news-section">
-
-        <div class="section-heading">
-
-            <div>
-                <span class="section-line"></span>
-                <h2>Teknoloji</h2>
-            </div>
-
-            <a href="/teknoloji/">Tüm Teknoloji Haberleri →</a>
-
+        <div class="section-title">
+            <h2>Teknoloji</h2>
+            <a href="/teknoloji/">Tümünü Gör →</a>
         </div>
 
         <div class="news-grid" id="teknolojiNews"></div>
@@ -175,19 +115,11 @@
     </section>
 
 
-    <!-- MAGAZİN -->
+    <section class="section">
 
-    <section class="news-section">
-
-        <div class="section-heading">
-
-            <div>
-                <span class="section-line"></span>
-                <h2>Magazin</h2>
-            </div>
-
-            <a href="/magazin/">Tüm Magazin Haberleri →</a>
-
+        <div class="section-title">
+            <h2>Magazin</h2>
+            <a href="/magazin/">Tümünü Gör →</a>
         </div>
 
         <div class="news-grid" id="magazinNews"></div>
@@ -201,30 +133,25 @@
 
     <div class="footer-inner">
 
-        <div class="footer-brand">
-            <strong>NABIZ</strong>
-            <p>
-                Türkiye ve dünyadan gündemi takip edin.
-            </p>
+        <div>
+            <div class="footer-logo">NABIZ</div>
+            <p>Türkiye ve dünyadan gündemin nabzı.</p>
         </div>
 
         <div class="footer-links">
-
             <a href="/hakkimizda/">Hakkımızda</a>
             <a href="/iletisim/">İletişim</a>
             <a href="/gizlilik/">Gizlilik Politikası</a>
             <a href="/kullanim-sartlari/">Kullanım Şartları</a>
-
         </div>
 
     </div>
 
     <div class="copyright">
-        © 2026 NABIZ. Tüm hakları saklıdır.
+        © 2026 NABIZ
     </div>
 
 </footer>
-
 
 <script src="/js/haberler.js"></script>
 <script src="/js/app.js"></script>
