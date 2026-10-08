@@ -8,7 +8,7 @@ window.haberler = [
   tarih: "8 Ekim 2026",
   saat: "17:30",
   kaynak: "NABIZ",
-  gorsel: "/images/haber11.jpg",
+  gorsel: "/images/haber11.png",
   icerik: `
     <p><strong>BURDUR</strong> – Türkiye'nin bilim ve teknoloji alanındaki çalışmalarına yönelik yeni bir yatırım daha hayata geçirildi. Burdur'un Yeşilova ilçesinde bulunan Salda Gölü çevresinde kurulan Salda Bilim Merkezi ile Burdur Mehmet Akif Ersoy Üniversitesi bünyesindeki Milli Teknoloji Atölyesi bugün düzenlenen törenle açıldı.</p>
 
