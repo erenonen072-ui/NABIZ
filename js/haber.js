@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const id = Number(params.get("id"));
 
     const haber = haberler.find(
-        item => item.id === id
+        item => Number(item.id) === id
     );
 
     const content =
@@ -17,10 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!content) return;
 
+
+    // HABER BULUNAMADI
     if (!haber) {
 
         content.innerHTML = `
             <div class="article-not-found">
+
                 <h1>Haber bulunamadı</h1>
 
                 <p>
@@ -31,20 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 <a href="/">
                     Ana sayfaya dön
                 </a>
+
             </div>
         `;
 
         return;
     }
 
-    /* SAYFA BAŞLIĞI */
 
+    // SAYFA BAŞLIĞI
     document.title =
         `${haber.baslik} | NABIZ`;
 
 
-    /* HABER */
-
+    // HABERİ GÖSTER
     content.innerHTML = `
 
         <div class="article-category">
@@ -88,8 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
 
-    /* PAYLAŞIM */
-
+    // HABER URL'Sİ
     const url =
         window.location.href;
 
@@ -97,13 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
         encodeURIComponent(url);
 
     const encodedTitle =
-        encodeURIComponent(
-            haber.baslik
-        );
+        encodeURIComponent(haber.baslik);
 
 
-    /* WHATSAPP */
-
+    // WHATSAPP
     const whatsapp =
         document.getElementById(
             "whatsappShare"
@@ -117,8 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* X */
-
+    // X
     const x =
         document.getElementById(
             "xShare"
@@ -132,8 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* LİNK KOPYALA */
-
+    // LİNK KOPYALA
     const copy =
         document.getElementById(
             "copyShare"
@@ -175,8 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* PAYLAŞ */
-
+    // PAYLAŞ
     const share =
         document.getElementById(
             "nativeShare"
@@ -188,16 +184,22 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             async () => {
 
-                if (
-                    navigator.share
-                ) {
+                // Telefon / tarayıcı paylaşımı
+                if (navigator.share) {
 
                     try {
 
                         await navigator.share({
-                            title: haber.baslik,
-                            text: haber.spot,
-                            url: url
+
+                            title:
+                                haber.baslik,
+
+                            text:
+                                haber.spot,
+
+                            url:
+                                url
+
                         });
 
                     } catch {
@@ -206,7 +208,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     }
 
-                } else {
+                }
+
+                // Paylaşım desteklenmiyorsa linki kopyala
+                else {
 
                     try {
 
