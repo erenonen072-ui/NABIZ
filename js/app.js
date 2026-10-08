@@ -1,19 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const haberler = window.haberler || [];
+    const haberler = Array.isArray(window.haberler)
+        ? window.haberler
+        : [];
 
-    /*
-     * TÜM HABERLERİN URL SİSTEMİ
-     * Mevcut haber.html?id=1 yapısını kullanır.
-     */
+
+    /* =========================
+       HABER URL
+    ========================= */
+
     function articleUrl(haber) {
         return `/haber.html?id=${encodeURIComponent(haber.id)}`;
     }
 
 
-    /*
-     * HABER KARTI
-     */
+    /* =========================
+       HABER KARTI
+    ========================= */
+
     function createCard(haber) {
 
         return `
@@ -22,24 +26,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 <a href="${articleUrl(haber)}">
 
                     <img
-                        src="${haber.gorsel}"
-                        alt="${haber.baslik}"
+                        src="${haber.gorsel || ""}"
+                        alt="${haber.baslik || ""}"
                         loading="lazy"
                     >
 
                     <div class="news-content">
 
                         <span class="news-category">
-                            ${haber.kategori}
+                            ${haber.kategori || "HABER"}
                         </span>
 
                         <h3>
-                            ${haber.baslik}
+                            ${haber.baslik || ""}
                         </h3>
 
-                        <p>
-                            ${haber.spot || ""}
-                        </p>
+                        ${
+                            haber.spot
+                                ? `<p>${haber.spot}</p>`
+                                : ""
+                        }
 
                     </div>
 
@@ -50,100 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /*
-     * KATEGORİLER
-     */
-    const categories = {
+    /* =========================
+       HERO
+    ========================= */
 
-        "Gündem": "gundemNews",
-
-        "Dünya": "dunyaNews",
-
-        "Ekonomi": "ekonomiNews",
-
-        "Spor": "sporNews",
-
-        "Teknoloji": "teknolojiNews",
-
-        "Magazin": "magazinNews"
-
-    };
-
-
-    /*
-     * KATEGORİLERİ DOLDUR
-     */
-    Object.entries(categories).forEach(
-        ([category, elementId]) => {
-
-            const element =
-                document.getElementById(elementId);
-
-            if (!element) return;
-
-            const items =
-                haberler
-                    .filter(
-                        haber =>
-                            haber.kategori === category
-                    )
-                    .slice(0, 4);
-
-            if (!items.length) {
-
-                element.innerHTML = `
-                    <div
-                        style="
-                            grid-column:1/-1;
-                            background:#fff;
-                            border:1px solid #e7e7e7;
-                            padding:25px;
-                            color:#888;
-                            font-size:14px;
-                        "
-                    >
-                        Bu kategoride henüz haber bulunmuyor.
-                    </div>
-                `;
-
-                return;
-            }
-
-            element.innerHTML =
-                items
-                    .map(createCard)
-                    .join("");
-
-        }
-    );
-
-
-    /*
-     * SON HABERLER
-     */
-    const latest =
-        document.getElementById("latestNews");
-
-    if (latest) {
-
-        const latestItems =
-            haberler.slice(0, 8);
-
-        latest.innerHTML =
-            latestItems
-                .map(createCard)
-                .join("");
-
-    }
-
-
-    /*
-     * HERO
-     */
     const hero =
         document.getElementById("hero");
 
-    if (hero && haberler.length) {
+    if (hero && haberler.length > 0) {
 
         const main =
             haberler[0];
@@ -183,77 +103,155 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 ${
                     side.length
-                    ?
-                    side.map(item => `
+                        ? side.map(item => `
 
-                        <a
-                            href="${articleUrl(item)}"
-                            class="hero-small"
-                        >
-
-                            <img
-                                src="${item.gorsel}"
-                                alt="${item.baslik}"
+                            <a
+                                href="${articleUrl(item)}"
+                                class="hero-small"
                             >
 
-                            <div>
+                                <img
+                                    src="${item.gorsel}"
+                                    alt="${item.baslik}"
+                                    loading="lazy"
+                                >
 
-                                <span>
-                                    ${item.kategori}
-                                </span>
+                                <div>
 
-                                <h3>
-                                    ${item.baslik}
-                                </h3>
+                                    <span>
+                                        ${item.kategori}
+                                    </span>
 
+                                    <h3>
+                                        ${item.baslik}
+                                    </h3>
+
+                                </div>
+
+                            </a>
+
+                        `).join("")
+                        :
+                        `
+                            <div
+                                style="
+                                    background:#111;
+                                    color:#fff;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    font-weight:800;
+                                "
+                            >
+                                NABIZ
                             </div>
-
-                        </a>
-
-                    `).join("")
-                    :
-                    `
-                        <div
-                            style="
-                                background:#111;
-                                color:#fff;
-                                display:flex;
-                                align-items:center;
-                                justify-content:center;
-                                padding:20px;
-                                text-align:center;
-                            "
-                        >
-                            NABIZ
-                        </div>
-                    `
+                        `
                 }
 
             </div>
-
         `;
+    }
+
+
+    /* =========================
+       SON HABERLER
+    ========================= */
+
+    const latest =
+        document.getElementById("latestNews");
+
+    if (latest) {
+
+        latest.innerHTML =
+            haberler
+                .slice(0, 6)
+                .map(createCard)
+                .join("");
 
     }
 
 
-    /*
-     * MOBİL MENÜ
-     */
+    /* =========================
+       KATEGORİLER
+    ========================= */
+
+    const categories = {
+
+        Gündem: "gundemNews",
+
+        Dünya: "dunyaNews",
+
+        Ekonomi: "ekonomiNews",
+
+        Spor: "sporNews",
+
+        Teknoloji: "teknolojiNews",
+
+        Magazin: "magazinNews"
+
+    };
+
+
+    Object.entries(categories).forEach(
+        ([category, elementId]) => {
+
+            const element =
+                document.getElementById(elementId);
+
+            if (!element) return;
+
+
+            const items =
+                haberler
+                    .filter(
+                        haber =>
+                            haber.kategori === category
+                    )
+                    .slice(0, 4);
+
+
+            if (!items.length) {
+
+                element.innerHTML = `
+                    <div
+                        style="
+                            grid-column:1/-1;
+                            background:#fff;
+                            border:1px solid #ddd;
+                            padding:25px;
+                            color:#888;
+                            font-size:13px;
+                        "
+                    >
+                        Bu kategoride henüz haber bulunmuyor.
+                    </div>
+                `;
+
+            } else {
+
+                element.innerHTML =
+                    items
+                        .map(createCard)
+                        .join("");
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       MOBİL MENÜ
+    ========================= */
+
     const mobileButton =
-        document.getElementById(
-            "mobileButton"
-        );
+        document.getElementById("mobileButton");
 
     const mobileNav =
-        document.getElementById(
-            "mobileNav"
-        );
+        document.getElementById("mobileNav");
 
 
-    if (
-        mobileButton &&
-        mobileNav
-    ) {
+    if (mobileButton && mobileNav) {
 
         mobileButton.addEventListener(
             "click",
