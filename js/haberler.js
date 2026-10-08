@@ -1,76 +1,159 @@
 window.haberler = [
 
 {
-  id: 1,
-  kategori: "Teknoloji",
-  baslik: "Türkiye'nin uzay hedefinde yeni adım: Salda Bilim Merkezi açıldı",
-  spot: "77. Uluslararası Uzay Kongresi kapsamında Türkiye'ye gelen astronotların da katıldığı programda Salda Bilim Merkezi ve Milli Teknoloji Atölyesi hizmete açıldı. Merkezde uzay, Mars ve roket teknolojilerine yönelik çalışmalar yürütülecek.",
-  tarih: "8 Ekim 2026",
-  saat: "17:30",
-  kaynak: "NABIZ",
-  gorsel: "/images/haber11.png",
-  icerik: `
-    <p><strong>BURDUR</strong> – Türkiye'nin bilim ve teknoloji alanındaki çalışmalarına yönelik yeni bir yatırım daha hayata geçirildi. Burdur'un Yeşilova ilçesinde bulunan Salda Gölü çevresinde kurulan Salda Bilim Merkezi ile Burdur Mehmet Akif Ersoy Üniversitesi bünyesindeki Milli Teknoloji Atölyesi bugün düzenlenen törenle açıldı.</p>
+    id: 1,
+    kategori: "Teknoloji",
+    baslik: "Türkiye'nin uzay hedefinde yeni adım: Salda Bilim Merkezi açıldı",
+    spot: "Uzay ve havacılık alanında çalışmaların yürütüleceği yeni bilim merkezi ziyaretçilere kapılarını açtı.",
+    tarih: "8 Ekim 2026",
+    saat: "17:30",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Türkiye'nin bilim ve teknoloji alanındaki çalışmalarına yönelik yeni bir merkez hizmete açıldı.
+        Merkezde uzay, havacılık ve roket teknolojileri hakkında çeşitli eğitim ve araştırma
+        faaliyetlerinin yürütülmesi planlanıyor.
+    `
+},
 
-    <p>Açılış, Türkiye'nin ilk kez ev sahipliği yaptığı 77. Uluslararası Uzay Kongresi'nin düzenlendiği günlerde gerçekleştirilmesi nedeniyle dikkat çekti. Antalya'da devam eden kongre kapsamında Türkiye'ye gelen farklı ülkelerden astronotlar da Burdur'daki programa katıldı.</p>
+{
+    id: 2,
+    kategori: "Gündem",
+    baslik: "Türkiye'de gündemin öne çıkan başlıkları belli oldu",
+    spot: "Günün öne çıkan gelişmeleri siyaset, ekonomi ve toplum başlıklarında yoğunlaştı.",
+    tarih: "8 Ekim 2026",
+    saat: "16:45",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Türkiye'de gün boyunca yaşanan gelişmeler kamuoyunun gündeminde yer aldı.
+        Farklı başlıklarda yapılan açıklamalar ve yeni gelişmeler yakından takip edildi.
+    `
+},
 
-    <h2>Salda Bilim Merkezi kapılarını açtı</h2>
+{
+    id: 3,
+    kategori: "Dünya",
+    baslik: "Dünyada önemli gelişmeler: Gözler yeni açıklamalarda",
+    spot: "Uluslararası gündemde yaşanan gelişmeler nedeniyle gözler ülkelerden gelecek açıklamalara çevrildi.",
+    tarih: "8 Ekim 2026",
+    saat: "15:50",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Dünya gündeminde diplomasi ve ekonomi başlıkları öne çıkıyor.
+        Ülkeler arasında devam eden görüşmeler ve yapılan açıklamalar uluslararası kamuoyunda
+        yakından takip ediliyor.
+    `
+},
 
-    <p>Salda Bilim Merkezi'nin temel amacı, bilim ve teknoloji konularını özellikle gençler için daha anlaşılır ve erişilebilir hale getirmek. Merkezde uzay çalışmaları, Mars araştırmaları ve roket teknolojileri gibi farklı alanlara yönelik sergi ve uygulama bölümleri bulunuyor.</p>
+{
+    id: 4,
+    kategori: "Ekonomi",
+    baslik: "Piyasalarda hareketlilik: Yatırımcıların gözü yeni verilerde",
+    spot: "Piyasalarda gün içinde hareketlilik yaşanırken yatırımcılar açıklanacak yeni ekonomik verileri bekliyor.",
+    tarih: "8 Ekim 2026",
+    saat: "14:40",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Finans piyasalarında gün içerisinde hareketli bir görünüm dikkat çekti.
+        Yatırımcılar önümüzdeki döneme ilişkin ekonomik göstergeleri ve yeni açıklamaları
+        yakından takip ediyor.
+    `
+},
 
-    <p>Merkezde öğrencilerin yalnızca teorik bilgiler edinmesi değil, aynı zamanda çeşitli uygulamalar ve atölye çalışmalarıyla bilimsel süreçleri yakından tanıması hedefleniyor. Bu yönüyle merkezin, bölgedeki öğrenciler ve gençler için önemli bir bilim alanı oluşturması bekleniyor.</p>
+{
+    id: 5,
+    kategori: "Spor",
+    baslik: "Spor dünyasında günün öne çıkan gelişmeleri",
+    spot: "Futbol başta olmak üzere spor dünyasında yaşanan son gelişmeler gündemde.",
+    tarih: "8 Ekim 2026",
+    saat: "13:55",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Spor dünyasında günün önemli gelişmeleri taraftarların gündeminde.
+        Takımların hazırlıkları, oyuncuların performansları ve yaklaşan karşılaşmalar
+        spor kamuoyunun ilgisini çekiyor.
+    `
+},
 
-    <h2>Salda Gölü'nün bilimsel önemi</h2>
+{
+    id: 6,
+    kategori: "Teknoloji",
+    baslik: "Yapay zeka teknolojilerinde yeni dönem başlıyor",
+    spot: "Yapay zeka alanındaki yeni çalışmalar teknoloji sektöründe büyük ilgi görüyor.",
+    tarih: "8 Ekim 2026",
+    saat: "12:30",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Yapay zeka teknolojileri farklı sektörlerde kullanılmaya devam ediyor.
+        Yeni nesil sistemlerin eğitim, üretim ve günlük yaşamda daha fazla kullanılması
+        bekleniyor.
+    `
+},
 
-    <p>Salda Gölü, sahip olduğu jeolojik özellikler nedeniyle uzun süredir bilim insanlarının ilgisini çeken bölgeler arasında yer alıyor. Göl çevresindeki bazı oluşumların Mars yüzeyindeki Jezero Krateri'nde bulunan özelliklerle benzerlik göstermesi, bölgenin gezegen bilimleri açısından araştırılmasına katkı sağlıyor.</p>
+{
+    id: 7,
+    kategori: "Magazin",
+    baslik: "Magazin dünyasında günün en çok konuşulan gelişmeleri",
+    spot: "Ünlü isimlerin açıklamaları ve yeni projeleri magazin gündeminde öne çıktı.",
+    tarih: "8 Ekim 2026",
+    saat: "11:45",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Magazin dünyasında yeni projeler ve açıklamalar günün dikkat çeken başlıkları
+        arasında yer aldı. Sosyal medyada yapılan paylaşımlar da takipçiler tarafından
+        yoğun ilgi gördü.
+    `
+},
 
-    <p>Bilim insanları, Dünya'daki benzer jeolojik oluşumları inceleyerek Mars'ın geçmişindeki çevresel koşullar hakkında daha fazla bilgi elde etmeye çalışıyor. Bu nedenle Salda Gölü yalnızca doğal güzelliğiyle değil, bilimsel araştırmalar açısından taşıdığı potansiyelle de öne çıkıyor.</p>
+{
+    id: 8,
+    kategori: "Gündem",
+    baslik: "Yeni düzenlemeler için çalışmalar sürüyor",
+    spot: "Kamuoyunu ilgilendiren bazı başlıklarda çalışmaların devam ettiği bildirildi.",
+    tarih: "8 Ekim 2026",
+    saat: "10:50",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Kamuoyunun yakından takip ettiği çeşitli konularda çalışmalar devam ediyor.
+        Yetkililerin önümüzdeki günlerde yeni açıklamalar yapması bekleniyor.
+    `
+},
 
-    <h2>Milli Teknoloji Atölyesi de hizmete girdi</h2>
+{
+    id: 9,
+    kategori: "Dünya",
+    baslik: "Uluslararası piyasalarda haftanın hareketli günlerinden biri",
+    spot: "Küresel piyasalarda ekonomik gelişmeler ve ülkelerden gelen açıklamalar takip ediliyor.",
+    tarih: "8 Ekim 2026",
+    saat: "09:35",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Uluslararası piyasalarda yatırımcıların gündeminde ekonomik göstergeler bulunuyor.
+        Küresel ekonomiye ilişkin gelişmeler piyasaların yönü açısından önem taşıyor.
+    `
+},
 
-    <p>Aynı program kapsamında Burdur Mehmet Akif Ersoy Üniversitesi bünyesinde faaliyet gösterecek Milli Teknoloji Atölyesi'nin de açılışı gerçekleştirildi.</p>
-
-    <p>Atölyenin öğrencilerin teknoloji geliştirme, tasarım ve uygulama becerilerini artırmasına katkı sağlaması amaçlanıyor. Gençlerin farklı teknoloji projeleri üzerinde çalışabileceği merkezde ekip çalışması, üretim ve proje geliştirme kültürünün desteklenmesi hedefleniyor.</p>
-
-    <p>Türkiye'nin son yıllarda uzay ve havacılık alanında geliştirdiği projeler düşünüldüğünde, üniversitelerde ve bilim merkezlerinde gençlere yönelik teknik imkanların artırılması önemli görülüyor. Bu tür merkezlerin, öğrencilerin bilimsel projelere daha erken yaşlarda yönelmesine katkı sağlaması bekleniyor.</p>
-
-    <h2>Türkiye'nin uzay çalışmaları gündemde</h2>
-
-    <p>Salda'daki açılış programında Türkiye'nin uzay çalışmaları ve geleceğe yönelik hedefleri de gündeme geldi. Sanayi ve Teknoloji Bakanı Mehmet Fatih Kacır, törende Türkiye'nin uzay alanındaki çalışmalarına ilişkin değerlendirmelerde bulundu.</p>
-
-    <p>Kacır, milli imkanlarla geliştirilen bir uzay aracının 2027 yılının ilk aylarında Ay yörüngesine gönderilmesinin hedeflendiğini ve bu görev kapsamında bilimsel araştırmalar yapılmasının planlandığını açıkladı.</p>
-
-    <p>Bu hedef, Türkiye'nin uzay çalışmalarında yalnızca insanlı uzay görevleriyle değil, uydu, bilimsel araştırma ve derin uzay teknolojileri gibi farklı alanlarda da kapasitesini geliştirmeye çalıştığını gösteriyor.</p>
-
-    <h2>Astronotlar Salda'daki programa katıldı</h2>
-
-    <p>77. Uluslararası Uzay Kongresi için Türkiye'de bulunan astronotların da katıldığı programda bilim ve uzay çalışmalarının gençlere aktarılmasının önemi vurgulandı.</p>
-
-    <p>Antalya'da gerçekleştirilen IAC 2026, dünyanın farklı ülkelerinden bilim insanlarını, mühendisleri, uzay şirketlerini ve sektör temsilcilerini bir araya getiriyor. Kongrenin Türkiye'nin uzay alanındaki uluslararası bağlantılarını geliştirmesine ve yeni iş birliklerinin ortaya çıkmasına katkı sağlaması bekleniyor.</p>
-
-    <h2>Gençlere bilim ve teknoloji fırsatı</h2>
-
-    <p>Yeni açılan bilim merkezi ve teknoloji atölyesinin özellikle gençlerin bilimsel çalışmalara ilgisini artırması hedefleniyor. Öğrencilerin uzay, mühendislik ve teknoloji alanlarında projeler geliştirebilmesi, Türkiye'nin gelecekte ihtiyaç duyacağı teknik insan kaynağının yetişmesine katkı sağlayabilir.</p>
-
-    <p>Uzay teknolojilerinin gelişmesiyle birlikte elektronik, yazılım, yapay zeka, mekanik, haberleşme ve enerji gibi birçok farklı alan da önem kazanıyor. Bu nedenle uzay çalışmalarına yönelik yatırımlar, yalnızca uzay sektörünü değil, farklı teknoloji alanlarını da doğrudan etkileyebiliyor.</p>
-
-    <h2>IAC 2026 Türkiye için önemli bir buluşma noktası</h2>
-
-    <p>5-9 Ekim tarihleri arasında Antalya'da düzenlenen 77. Uluslararası Uzay Kongresi, Türkiye'nin ev sahipliği yaptığı en önemli uluslararası bilim ve teknoloji organizasyonlarından biri olarak öne çıkıyor.</p>
-
-    <p>Kongrede uzay araştırmalarından uydu teknolojilerine, roket sistemlerinden yeni nesil uzay araçlarına kadar çok sayıda konu ele alınıyor. Türkiye'nin organizasyona ev sahipliği yapması, ülkedeki uzay ekosisteminin uluslararası çevrelerle daha fazla temas kurmasına imkan sağlıyor.</p>
-
-    <p>Salda Bilim Merkezi ve Milli Teknoloji Atölyesi'nin açılması da bu dönemde Türkiye'de bilim ve teknoloji eğitimine yönelik yatırımların dikkat çeken örneklerinden biri oldu.</p>
-
-    <h2>Çalışmaların önümüzdeki dönemde genişlemesi bekleniyor</h2>
-
-    <p>Türkiye'nin uzay alanındaki hedefleri doğrultusunda önümüzdeki dönemde yeni projelerin gündeme gelmesi bekleniyor. Üniversiteler, araştırma merkezleri, özel sektör ve kamu kurumları arasındaki iş birliklerinin artırılması, uzay teknolojilerinin geliştirilmesinde önemli bir rol oynayabilir.</p>
-
-    <p>Salda Bilim Merkezi'nin ise bölgedeki öğrencilerin bilimle daha yakından tanışmasına katkı sağlaması ve uzay araştırmalarına yönelik farkındalığı artırması amaçlanıyor.</p>
-
-    <p>Türkiye'nin uzay çalışmalarındaki gelişmeler ve yeni projeler önümüzdeki dönemde de yakından takip edilecek. NABIZ, bilim ve teknoloji alanındaki gelişmeleri okuyucularına aktarmaya devam edecek.</p>
-
-    <p><strong>Haber Kaynağı:</strong> Resmî kurum açıklamaları ve 8 Ekim 2026 tarihli güncel gelişmeler.</p>
-  `
+{
+    id: 10,
+    kategori: "Ekonomi",
+    baslik: "Ekonomide yeni haftanın gündemi yoğun",
+    spot: "Ekonomi yönetiminden gelecek açıklamalar ve yeni veriler yakından takip ediliyor.",
+    tarih: "8 Ekim 2026",
+    saat: "08:50",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber11.png",
+    icerik: `
+        Ekonomi gündeminde yeni haftada açıklanacak veriler ve yapılacak değerlendirmeler
+        öne çıkıyor. Piyasalardaki gelişmeler yatırımcılar tarafından yakından izleniyor.
+    `
 }
+
 ];
