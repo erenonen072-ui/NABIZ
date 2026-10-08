@@ -1,122 +1,88 @@
-const haberler = [
+document.addEventListener("DOMContentLoaded", () => {
 
-    {
-        id: 1,
-        kategori: "Gündem",
-        baslik: "Türkiye gündeminde günün öne çıkan gelişmeleri",
-        spot: "Günün önemli gelişmeleri ve son dakika haberleri NABIZ'da.",
-        tarih: "8 Ekim 2026",
-        saat: "19:42",
-        gorsel: "images/haber1.jpg",
-        kaynak: "NABIZ",
-        yazar: "NABIZ Haber Merkezi",
-        goruntulenme: 15420,
-        icerik: `
-            Türkiye gündeminde bugün önemli gelişmeler yaşandı.
+    const params = new URLSearchParams(location.search);
 
-            Gün boyunca yaşanan gelişmeleri ve açıklamaları
-            NABIZ olarak sizler için derledik.
+    const id = Number(params.get("id"));
 
-            Ayrıntılar geldikçe haberimiz güncellenecektir.
-        `
-    },
+    const haber = haberler.find(h => h.id === id);
 
-    {
-        id: 2,
-        kategori: "Dünya",
-        baslik: "Dünyada günün öne çıkan gelişmeleri",
-        spot: "Uluslararası gündemde dikkat çeken son gelişmeler.",
-        tarih: "8 Ekim 2026",
-        saat: "18:55",
-        gorsel: "images/haber2.jpg",
-        kaynak: "NABIZ",
-        yazar: "NABIZ Dünya",
-        goruntulenme: 12680,
-        icerik: `
-            Dünyadan günün önemli gelişmeleri takip ediliyor.
+    const container = document.getElementById("article");
 
-            Uluslararası gelişmelerle ilgili yeni bilgiler
-            geldikçe haberimiz güncellenecektir.
-        `
-    },
+    if (!haber) {
 
-    {
-        id: 3,
-        kategori: "Ekonomi",
-        baslik: "Ekonomide piyasaların bugünkü gündemi",
-        spot: "Piyasalarda yaşanan son gelişmeler ve ekonomik veriler.",
-        tarih: "8 Ekim 2026",
-        saat: "17:40",
-        gorsel: "images/haber3.jpg",
-        kaynak: "NABIZ",
-        yazar: "NABIZ Ekonomi",
-        goruntulenme: 9830,
-        icerik: `
-            Ekonomi gündeminde bugün dikkat çeken gelişmeler
-            yaşandı.
+        container.innerHTML = `
 
-            Piyasalardaki hareketlilik ve güncel ekonomik
-            gelişmeler haberimizde.
-        `
-    },
+            <div class="not-found">
 
-    {
-        id: 4,
-        kategori: "Spor",
-        baslik: "Spor dünyasında günün gelişmeleri",
-        spot: "Futbol ve spor dünyasından son dakika gelişmeleri.",
-        tarih: "8 Ekim 2026",
-        saat: "16:20",
-        gorsel: "images/haber1.jpg",
-        kaynak: "NABIZ",
-        yazar: "NABIZ Spor",
-        goruntulenme: 8640,
-        icerik: `
-            Spor dünyasında günün öne çıkan gelişmeleri
-            yaşanmaya devam ediyor.
+                <h1>Haber bulunamadı</h1>
 
-            Takımlardan ve sporculardan gelen son haberler
-            NABIZ'da.
-        `
-    },
+                <a href="index.html">
+                    Ana sayfaya dön
+                </a>
 
-    {
-        id: 5,
-        kategori: "Teknoloji",
-        baslik: "Teknoloji dünyasında yeni gelişme",
-        spot: "Teknoloji sektöründen dikkat çeken yenilikler.",
-        tarih: "8 Ekim 2026",
-        saat: "15:45",
-        gorsel: "images/haber2.jpg",
-        kaynak: "NABIZ",
-        yazar: "NABIZ Teknoloji",
-        goruntulenme: 7350,
-        icerik: `
-            Teknoloji dünyasında yeni ürünler ve gelişmeler
-            kullanıcıların ilgisini çekiyor.
+            </div>
 
-            Yeni gelişmelerin detayları haberimizde.
-        `
-    },
+        `;
 
-    {
-        id: 6,
-        kategori: "Kültür Sanat",
-        baslik: "Kültür sanat dünyasından önemli haberler",
-        spot: "Sanat ve kültür dünyasında günün öne çıkan gelişmeleri.",
-        tarih: "8 Ekim 2026",
-        saat: "14:30",
-        gorsel: "images/haber3.jpg",
-        kaynak: "NABIZ",
-        yazar: "NABIZ Kültür Sanat",
-        goruntulenme: 5210,
-        icerik: `
-            Kültür sanat dünyasında bugün birçok önemli gelişme
-            yaşandı.
+        return;
 
-            Etkinlikler, sanatçılar ve kültür dünyasından haberler
-            NABIZ'da.
-        `
     }
 
-];
+
+    document.title = `${haber.baslik} | NABIZ`;
+
+
+    container.innerHTML = `
+
+        <article class="article">
+
+            <div class="article-category">
+                ${haber.kategori}
+            </div>
+
+            <h1>
+                ${haber.baslik}
+            </h1>
+
+            <p class="article-spot">
+                ${haber.spot}
+            </p>
+
+            <div class="article-meta">
+
+                <span>
+                    ${haber.tarih} ${haber.saat}
+                </span>
+
+                <span>
+                    ${haber.yazar}
+                </span>
+
+                <span>
+                    Kaynak: ${haber.kaynak}
+                </span>
+
+            </div>
+
+            <img
+                class="article-image"
+                src="${haber.gorsel}"
+                alt="${haber.baslik}"
+            >
+
+            <div class="article-body">
+
+                ${haber.icerik
+                    .trim()
+                    .split(/\n+/)
+                    .map(p => `<p>${p}</p>`)
+                    .join("")
+                }
+
+            </div>
+
+        </article>
+
+    `;
+
+});
