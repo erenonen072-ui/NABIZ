@@ -2,24 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const haberler = window.haberler || [];
 
-    const categories = {
-        "Gündem": "gundemNews",
-        "Dünya": "dunyaNews",
-        "Ekonomi": "ekonomiNews",
-        "Spor": "sporNews",
-        "Teknoloji": "teknolojiNews",
-        "Magazin": "magazinNews"
-    };
-
-    // Haber detay sayfası
+    /*
+     * TÜM HABERLERİN URL SİSTEMİ
+     * Mevcut haber.html?id=1 yapısını kullanır.
+     */
     function articleUrl(haber) {
-        return `/haber.html?id=${haber.id}`;
+        return `/haber.html?id=${encodeURIComponent(haber.id)}`;
     }
 
-    // Haber kartı
-    function card(haber) {
+
+    /*
+     * HABER KARTI
+     */
+    function createCard(haber) {
+
         return `
             <article class="news-card">
+
                 <a href="${articleUrl(haber)}">
 
                     <img
@@ -39,52 +38,125 @@ document.addEventListener("DOMContentLoaded", () => {
                         </h3>
 
                         <p>
-                            ${haber.spot}
+                            ${haber.spot || ""}
                         </p>
 
                     </div>
 
                 </a>
+
             </article>
         `;
     }
 
-    // Kategori haberlerini oluştur
-    for (const category in categories) {
 
-        const element =
-            document.getElementById(
-                categories[category]
-            );
+    /*
+     * KATEGORİLER
+     */
+    const categories = {
 
-        if (!element) continue;
+        "Gündem": "gundemNews",
 
-        const items = haberler
-            .filter(
-                haber => haber.kategori === category
-            )
-            .slice(0, 4);
+        "Dünya": "dunyaNews",
 
-        element.innerHTML =
-            items.map(card).join("");
+        "Ekonomi": "ekonomiNews",
+
+        "Spor": "sporNews",
+
+        "Teknoloji": "teknolojiNews",
+
+        "Magazin": "magazinNews"
+
+    };
+
+
+    /*
+     * KATEGORİLERİ DOLDUR
+     */
+    Object.entries(categories).forEach(
+        ([category, elementId]) => {
+
+            const element =
+                document.getElementById(elementId);
+
+            if (!element) return;
+
+            const items =
+                haberler
+                    .filter(
+                        haber =>
+                            haber.kategori === category
+                    )
+                    .slice(0, 4);
+
+            if (!items.length) {
+
+                element.innerHTML = `
+                    <div
+                        style="
+                            grid-column:1/-1;
+                            background:#fff;
+                            border:1px solid #e7e7e7;
+                            padding:25px;
+                            color:#888;
+                            font-size:14px;
+                        "
+                    >
+                        Bu kategoride henüz haber bulunmuyor.
+                    </div>
+                `;
+
+                return;
+            }
+
+            element.innerHTML =
+                items
+                    .map(createCard)
+                    .join("");
+
+        }
+    );
+
+
+    /*
+     * SON HABERLER
+     */
+    const latest =
+        document.getElementById("latestNews");
+
+    if (latest) {
+
+        const latestItems =
+            haberler.slice(0, 8);
+
+        latest.innerHTML =
+            latestItems
+                .map(createCard)
+                .join("");
+
     }
 
-    // HERO
+
+    /*
+     * HERO
+     */
     const hero =
         document.getElementById("hero");
 
     if (hero && haberler.length) {
 
-        const main = haberler[0];
+        const main =
+            haberler[0];
 
         const side =
             haberler.slice(1, 4);
 
+
         hero.innerHTML = `
 
             <a
-                class="hero-main"
                 href="${articleUrl(main)}"
+                class="hero-main"
             >
 
                 <img
@@ -106,41 +178,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
             </a>
 
+
             <div class="hero-side">
 
-                ${side.map(item => `
+                ${
+                    side.length
+                    ?
+                    side.map(item => `
 
-                    <a
-                        class="hero-small"
-                        href="${articleUrl(item)}"
-                    >
-
-                        <img
-                            src="${item.gorsel}"
-                            alt="${item.baslik}"
+                        <a
+                            href="${articleUrl(item)}"
+                            class="hero-small"
                         >
 
-                        <div>
+                            <img
+                                src="${item.gorsel}"
+                                alt="${item.baslik}"
+                            >
 
-                            <span>
-                                ${item.kategori}
-                            </span>
+                            <div>
 
-                            <h3>
-                                ${item.baslik}
-                            </h3>
+                                <span>
+                                    ${item.kategori}
+                                </span>
 
+                                <h3>
+                                    ${item.baslik}
+                                </h3>
+
+                            </div>
+
+                        </a>
+
+                    `).join("")
+                    :
+                    `
+                        <div
+                            style="
+                                background:#111;
+                                color:#fff;
+                                display:flex;
+                                align-items:center;
+                                justify-content:center;
+                                padding:20px;
+                                text-align:center;
+                            "
+                        >
+                            NABIZ
                         </div>
-
-                    </a>
-
-                `).join("")}
+                    `
+                }
 
             </div>
+
         `;
+
     }
 
-    // Mobil menü
+
+    /*
+     * MOBİL MENÜ
+     */
     const mobileButton =
         document.getElementById(
             "mobileButton"
@@ -150,6 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById(
             "mobileNav"
         );
+
 
     if (
         mobileButton &&
