@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spor Haberleri | NABIZ</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+<div class="header-inner">
+<a href="/" class="logo">NABIZ</a>
+
+<nav class="main-nav">
+<a href="/">Ana Sayfa</a>
+<a href="/gundem/">Gündem</a>
+<a href="/dunya/">Dünya</a>
+<a href="/ekonomi/">Ekonomi</a>
+<a href="/spor/">Spor</a>
+<a href="/teknoloji/">Teknoloji</a>
+<a href="/magazin/">Magazin</a>
+<a href="/kultur-sanat/">Kültür-Sanat</a>
+</nav>
+
+<a href="/arama/" class="search-button">⌕</a>
+</div>
+</header>
+
+<main class="category-page">
+<h1 class="category-title">Spor Haberleri</h1>
+<div class="news-grid" id="categoryNews"></div>
+</main>
+
+<footer>
+<div class="footer-inner">
+<div>
+<div class="footer-logo">NABIZ</div>
+<p>Türkiye ve dünyadan gündemin nabzı.</p>
+</div>
+<div class="footer-links">
+<a href="/hakkimizda/">Hakkımızda</a>
+<a href="/iletisim/">İletişim</a>
+<a href="/gizlilik/">Gizlilik Politikası</a>
+<a href="/kullanim-sartlari/">Kullanım Şartları</a>
+</div>
+</div>
+</footer>
+
+<script src="/js/haberler.js"></script>
+<script>
+const category = "Spor";
+const container = document.getElementById("categoryNews");
+
+function slugify(text) {
+return text.toLowerCase()
+.replace(/ğ/g,"g").replace(/ü/g,"u")
+.replace(/ş/g,"s").replace(/ı/g,"i")
+.replace(/ö/g,"o").replace(/ç/g,"c")
+.replace(/[^a-z0-9]+/g,"-")
+.replace(/^-+|-+$/g,"");
+}
+
+container.innerHTML = window.haberler
+.filter(h => h.kategori === category)
+.map(h => `
+<article class="news-card">
+<a href="/haber/${h.id}-${slugify(h.baslik)}/">
+<img src="${h.gorsel}" alt="${h.baslik}">
+<div class="news-content">
+<span class="news-category">${h.kategori}</span>
+<h3>${h.baslik}</h3>
+<p>${h.spot}</p>
+</div>
+</a>
+</article>
+`).join("");
+</script>
+
+</body>
+</html>
