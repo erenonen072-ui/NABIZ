@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>NABIZ | Kategori</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="main-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo">
+                NABIZ<span>.</span>
+            </a>
+
+            <nav class="desktop-nav">
+
+                <a href="index.html">Ana Sayfa</a>
+                <a href="?kategori=Gündem">Gündem</a>
+                <a href="?kategori=Dünya">Dünya</a>
+                <a href="?kategori=Ekonomi">Ekonomi</a>
+                <a href="?kategori=Spor">Spor</a>
+                <a href="?kategori=Teknoloji">Teknoloji</a>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="content-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <div>
+
+                <small>KATEGORİ</small>
+
+                <h1 id="categoryTitle">
+                    Tüm Haberler
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="news-grid" id="categoryNews"></div>
+
+    </div>
+
+</main>
+
+
+<script src="js/haberler.js"></script>
+
+<script>
+
+const params = new URLSearchParams(location.search);
+
+const kategori = params.get("kategori");
+
+const title = document.getElementById("categoryTitle");
+
+const container = document.getElementById("categoryNews");
+
+
+const filtered = kategori
+
+    ? haberler.filter(h =>
+        h.kategori.toLocaleLowerCase("tr-TR") ===
+        kategori.toLocaleLowerCase("tr-TR")
+    )
+
+    : haberler;
+
+
+title.textContent = kategori || "Tüm Haberler";
+
+
+container.innerHTML = filtered.map(haber => `
+
+    <a class="news-card" href="haber.html?id=${haber.id}">
+
+        <div class="news-image">
+
+            <img
+                src="${haber.gorsel}"
+                alt="${haber.baslik}"
+                loading="lazy"
+            >
+
+            <span>${haber.kategori}</span>
+
+        </div>
+
+        <div class="news-card-content">
+
+            <div class="news-time">
+                ${haber.tarih} · ${haber.saat}
+            </div>
+
+            <h3>
+                ${haber.baslik}
+            </h3>
+
+            <p>
+                ${haber.spot}
+            </p>
+
+        </div>
+
+    </a>
+
+`).join("");
+
+</script>
+
+</body>
+</html>
