@@ -11,36 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "Magazin": "magazinNews"
     };
 
-
-    function slugify(text) {
-
-        return text
-            .toLowerCase()
-            .trim()
-            .replace(/ğ/g, "g")
-            .replace(/ü/g, "u")
-            .replace(/ş/g, "s")
-            .replace(/ı/g, "i")
-            .replace(/ö/g, "o")
-            .replace(/ç/g, "c")
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-+|-+$/g, "");
-
-    }
-
-
+    // Haber detay sayfası
     function articleUrl(haber) {
-
-        return `/haber/${haber.id}-${slugify(haber.baslik)}/`;
-
+        return `/haber.html?id=${haber.id}`;
     }
 
-
+    // Haber kartı
     function card(haber) {
-
         return `
             <article class="news-card">
-
                 <a href="${articleUrl(haber)}">
 
                     <img
@@ -55,37 +34,42 @@ document.addEventListener("DOMContentLoaded", () => {
                             ${haber.kategori}
                         </span>
 
-                        <h3>${haber.baslik}</h3>
+                        <h3>
+                            ${haber.baslik}
+                        </h3>
 
-                        <p>${haber.spot}</p>
+                        <p>
+                            ${haber.spot}
+                        </p>
 
                     </div>
 
                 </a>
-
             </article>
         `;
-
     }
 
-
+    // Kategori haberlerini oluştur
     for (const category in categories) {
 
         const element =
-            document.getElementById(categories[category]);
+            document.getElementById(
+                categories[category]
+            );
 
         if (!element) continue;
 
         const items = haberler
-            .filter(h => h.kategori === category)
+            .filter(
+                haber => haber.kategori === category
+            )
             .slice(0, 4);
 
         element.innerHTML =
             items.map(card).join("");
-
     }
 
-
+    // HERO
     const hero =
         document.getElementById("hero");
 
@@ -93,7 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const main = haberler[0];
 
-        const side = haberler.slice(1, 4);
+        const side =
+            haberler.slice(1, 4);
 
         hero.innerHTML = `
 
@@ -109,9 +94,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <div class="hero-overlay">
 
-                    <span>${main.kategori}</span>
+                    <span>
+                        ${main.kategori}
+                    </span>
 
-                    <h1>${main.baslik}</h1>
+                    <h1>
+                        ${main.baslik}
+                    </h1>
 
                 </div>
 
@@ -133,9 +122,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         <div>
 
-                            <span>${item.kategori}</span>
+                            <span>
+                                ${item.kategori}
+                            </span>
 
-                            <h3>${item.baslik}</h3>
+                            <h3>
+                                ${item.baslik}
+                            </h3>
 
                         </div>
 
@@ -145,23 +138,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
             </div>
         `;
-
     }
 
-
+    // Mobil menü
     const mobileButton =
-        document.getElementById("mobileButton");
+        document.getElementById(
+            "mobileButton"
+        );
 
     const mobileNav =
-        document.getElementById("mobileNav");
+        document.getElementById(
+            "mobileNav"
+        );
 
-    if (mobileButton && mobileNav) {
+    if (
+        mobileButton &&
+        mobileNav
+    ) {
 
-        mobileButton.addEventListener("click", () => {
+        mobileButton.addEventListener(
+            "click",
+            () => {
 
-            mobileNav.classList.toggle("active");
+                mobileNav.classList.toggle(
+                    "active"
+                );
 
-        });
+            }
+        );
 
     }
 
