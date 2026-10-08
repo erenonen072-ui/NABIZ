@@ -1,176 +1,242 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const haberler = window.haberler || [];
+    const haberler = window.haberler || [];
 
-  const path = window.location.pathname
-    .split("/")
-    .filter(Boolean);
+    const params = new URLSearchParams(
+        window.location.search
+    );
 
-  const current = path[path.length - 1];
+    const id = Number(params.get("id"));
 
-  function slugify(text) {
-    return text
-      .toLowerCase()
-      .trim()
-      .replace(/ğ/g, "g")
-      .replace(/ü/g, "u")
-      .replace(/ş/g, "s")
-      .replace(/ı/g, "i")
-      .replace(/ö/g, "o")
-      .replace(/ç/g, "c")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  }
+    const haber = haberler.find(
+        item => item.id === id
+    );
 
-  const haber = haberler.find(item => {
-    const slug = slugify(item.baslik);
-    return `${item.id}-${slug}` === current;
-  });
+    const content =
+        document.getElementById("articleContent");
 
-  const content = document.getElementById("articleContent");
+    if (!content) return;
 
-  if (!content) {
-    console.error("articleContent bulunamadı.");
-    return;
-  }
+    if (!haber) {
 
-  if (!haber) {
+        content.innerHTML = `
+            <div class="article-not-found">
+                <h1>Haber bulunamadı</h1>
+
+                <p>
+                    Aradığınız haber mevcut değil
+                    veya bağlantı hatalı.
+                </p>
+
+                <a href="/">
+                    Ana sayfaya dön
+                </a>
+            </div>
+        `;
+
+        return;
+    }
+
+    /* SAYFA BAŞLIĞI */
+
+    document.title =
+        `${haber.baslik} | NABIZ`;
+
+
+    /* HABER */
+
     content.innerHTML = `
-      <div class="article-not-found">
-        <h1>Haber bulunamadı</h1>
-        <p>Aradığınız haber mevcut değil veya bağlantı hatalı.</p>
-        <a href="/">Ana sayfaya dön</a>
-      </div>
+
+        <div class="article-category">
+            ${haber.kategori}
+        </div>
+
+        <h1 class="article-title">
+            ${haber.baslik}
+        </h1>
+
+        <p class="article-spot">
+            ${haber.spot}
+        </p>
+
+        <div class="article-meta">
+
+            <span>
+                ${haber.tarih}
+            </span>
+
+            <span>
+                ${haber.saat || ""}
+            </span>
+
+            <span>
+                ${haber.kaynak || "NABIZ"}
+            </span>
+
+        </div>
+
+        <img
+            class="article-image"
+            src="${haber.gorsel}"
+            alt="${haber.baslik}"
+        >
+
+        <div class="article-text">
+            ${haber.icerik}
+        </div>
+
     `;
-    return;
-  }
 
-  /* SAYFA BAŞLIĞI */
-  document.title = `${haber.baslik} | NABIZ`;
 
-  /* HABERİ GÖSTER */
-  content.innerHTML = `
-    <div class="article-category">
-      ${haber.kategori}
-    </div>
+    /* PAYLAŞIM */
 
-    <h1 class="article-title">
-      ${haber.baslik}
-    </h1>
+    const url =
+        window.location.href;
 
-    <p class="article-spot">
-      ${haber.spot}
-    </p>
+    const encodedUrl =
+        encodeURIComponent(url);
 
-    <div class="article-meta">
-      <span>${haber.tarih}</span>
-      <span>${haber.saat || ""}</span>
-      <span>${haber.kaynak || "NABIZ"}</span>
-    </div>
+    const encodedTitle =
+        encodeURIComponent(
+            haber.baslik
+        );
 
-    <img
-      class="article-image"
-      src="${haber.gorsel}"
-      alt="${haber.baslik}"
-      loading="eager"
-    >
 
-    <div class="article-text">
-      ${haber.icerik}
-    </div>
-  `;
+    /* WHATSAPP */
 
-  /* PAYLAŞIM */
-  const url = window.location.href;
-  const encodedUrl = encodeURIComponent(url);
-  const encodedTitle = encodeURIComponent(haber.baslik);
+    const whatsapp =
+        document.getElementById(
+            "whatsappShare"
+        );
 
-  /* WHATSAPP */
-  const whatsappShare = document.getElementById("whatsappShare");
+    if (whatsapp) {
 
-  if (whatsappShare) {
-    whatsappShare.href =
-      `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
-  }
+        whatsapp.href =
+            `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
 
-  /* X */
-  const xShare = document.getElementById("xShare");
+    }
 
-  if (xShare) {
-    xShare.href =
-      `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
-  }
 
-  /* LINK KOPYALA */
-  const copyShare = document.getElementById("copyShare");
+    /* X */
 
-  if (copyShare) {
+    const x =
+        document.getElementById(
+            "xShare"
+        );
 
-    copyShare.addEventListener("click", async () => {
+    if (x) {
 
-      try {
+        x.href =
+            `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
 
-        await navigator.clipboard.writeText(url);
+    }
 
-        copyShare.textContent = "Kopyalandı ✓";
 
-        setTimeout(() => {
-          copyShare.textContent = "Linki Kopyala";
-        }, 2000);
+    /* LİNK KOPYALA */
 
-      } catch (error) {
+    const copy =
+        document.getElementById(
+            "copyShare"
+        );
 
-        alert("Link kopyalanamadı.");
+    if (copy) {
 
-      }
+        copy.addEventListener(
+            "click",
+            async () => {
 
-    });
+                try {
 
-  }
+                    await navigator.clipboard.writeText(
+                        url
+                    );
 
-  /* TELEFON / TARAYICI PAYLAŞ */
-  const nativeShare = document.getElementById("nativeShare");
+                    copy.textContent =
+                        "Kopyalandı ✓";
 
-  if (nativeShare) {
+                    setTimeout(() => {
 
-    nativeShare.addEventListener("click", async () => {
+                        copy.textContent =
+                            "Linki Kopyala";
 
-      if (navigator.share) {
+                    }, 2000);
 
-        try {
+                } catch {
 
-          await navigator.share({
-            title: haber.baslik,
-            text: haber.spot,
-            url: url
-          });
+                    alert(
+                        "Link kopyalanamadı."
+                    );
 
-        } catch (error) {
-          // Kullanıcı paylaşımı iptal ettiyse hata gösterme
-        }
+                }
 
-      } else {
+            }
+        );
 
-        try {
+    }
 
-          await navigator.clipboard.writeText(url);
 
-          nativeShare.textContent = "Link Kopyalandı ✓";
+    /* PAYLAŞ */
 
-          setTimeout(() => {
-            nativeShare.textContent = "Paylaş";
-          }, 2000);
+    const share =
+        document.getElementById(
+            "nativeShare"
+        );
 
-        } catch (error) {
+    if (share) {
 
-          alert("Paylaşım desteklenmiyor.");
+        share.addEventListener(
+            "click",
+            async () => {
 
-        }
+                if (
+                    navigator.share
+                ) {
 
-      }
+                    try {
 
-    });
+                        await navigator.share({
+                            title: haber.baslik,
+                            text: haber.spot,
+                            url: url
+                        });
 
-  }
+                    } catch {
+
+                        // Kullanıcı paylaşımı iptal etti.
+
+                    }
+
+                } else {
+
+                    try {
+
+                        await navigator.clipboard.writeText(
+                            url
+                        );
+
+                        share.textContent =
+                            "Link Kopyalandı ✓";
+
+                        setTimeout(() => {
+
+                            share.textContent =
+                                "Paylaş";
+
+                        }, 2000);
+
+                    } catch {
+
+                        alert(
+                            "Paylaşım desteklenmiyor."
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
 
 });
