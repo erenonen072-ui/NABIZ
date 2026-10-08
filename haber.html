@@ -3,110 +3,110 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>NABIZ Haber</title>
+    <title>NABIZ Haber</title>
 
-<link
-    rel="stylesheet"
-    href="css/style.css"
->
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
 
 </head>
 
 <body>
 
-
 <header class="header">
 
-    <div class="main-header">
+    <div class="header-main">
 
-        <div class="container header-inner">
+        <a href="/" class="logo">
+            NABIZ
+        </a>
 
-            <a
-                href="index.html"
-                class="logo"
-            >
-                NABIZ<span>.</span>
-            </a>
+        <nav class="desktop-nav">
 
+            <a href="/">Ana Sayfa</a>
+            <a href="/gundem/">Gündem</a>
+            <a href="/dunya/">Dünya</a>
+            <a href="/ekonomi/">Ekonomi</a>
+            <a href="/spor/">Spor</a>
+            <a href="/teknoloji/">Teknoloji</a>
+            <a href="/magazin/">Magazin</a>
+            <a href="/kultur-sanat/">Kültür-Sanat</a>
 
-            <nav class="desktop-nav">
+        </nav>
 
-                <a href="index.html">
-                    Ana Sayfa
-                </a>
-
-                <a href="kategori.html?k=Gündem">
-                    Gündem
-                </a>
-
-                <a href="kategori.html?k=Dünya">
-                    Dünya
-                </a>
-
-                <a href="kategori.html?k=Ekonomi">
-                    Ekonomi
-                </a>
-
-                <a href="kategori.html?k=Spor">
-                    Spor
-                </a>
-
-                <a href="kategori.html?k=Teknoloji">
-                    Teknoloji
-                </a>
-
-            </nav>
-
-        </div>
+        <a
+            href="/arama/"
+            class="search-button"
+        >
+            🔍
+        </a>
 
     </div>
 
 </header>
 
 
-<div class="breaking">
-
-    <div class="container breaking-inner">
-
-        <strong>
-            <span class="breaking-dot"></span>
-            SON DAKİKA
-        </strong>
-
-        <div
-            id="breakingList"
-            class="breaking-list"
-        ></div>
-
-    </div>
-
-</div>
-
-
 <main class="article-page">
 
-    <div class="container">
+    <article>
 
-        <article
-            id="article"
-            class="article"
-        ></article>
+        <div id="articleContent"></div>
 
-    </div>
+        <div class="share-box">
+
+            <strong>Haberi Paylaş</strong>
+
+            <div class="share-buttons">
+
+                <button id="nativeShare">
+                    Paylaş
+                </button>
+
+                <a id="whatsappShare" target="_blank">
+                    WhatsApp
+                </a>
+
+                <a id="xShare" target="_blank">
+                    X
+                </a>
+
+                <button id="copyShare">
+                    Linki Kopyala
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
 
 </main>
 
 
-<script src="js/haberler.js"></script>
+<footer>
 
-<script src="js/haber.js"></script>
+    <div class="footer-links">
+
+        <a href="/hakkimizda/">Hakkımızda</a>
+        <a href="/iletisim/">İletişim</a>
+        <a href="/gizlilik/">Gizlilik</a>
+        <a href="/kullanim-sartlari/">Kullanım Şartları</a>
+
+    </div>
+
+</footer>
+
+
+<script src="/js/haberler.js"></script>
+<script src="/js/haber.js"></script>
 
 </body>
 
