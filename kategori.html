@@ -5,15 +5,23 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>NABIZ | Kategori</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
 
 </head>
 
+
 <body>
+
 
 <header class="header">
 
@@ -21,18 +29,43 @@
 
         <div class="container header-inner">
 
-            <a href="index.html" class="logo">
+            <a
+                href="index.html"
+                class="logo"
+            >
                 NABIZ<span>.</span>
             </a>
 
+
             <nav class="desktop-nav">
 
-                <a href="index.html">Ana Sayfa</a>
-                <a href="?kategori=Gündem">Gündem</a>
-                <a href="?kategori=Dünya">Dünya</a>
-                <a href="?kategori=Ekonomi">Ekonomi</a>
-                <a href="?kategori=Spor">Spor</a>
-                <a href="?kategori=Teknoloji">Teknoloji</a>
+                <a href="index.html">
+                    Ana Sayfa
+                </a>
+
+                <a href="kategori.html?k=Gündem">
+                    Gündem
+                </a>
+
+                <a href="kategori.html?k=Dünya">
+                    Dünya
+                </a>
+
+                <a href="kategori.html?k=Ekonomi">
+                    Ekonomi
+                </a>
+
+                <a href="kategori.html?k=Spor">
+                    Spor
+                </a>
+
+                <a href="kategori.html?k=Teknoloji">
+                    Teknoloji
+                </a>
+
+                <a href="kategori.html?k=Magazin">
+                    Magazin
+                </a>
 
             </nav>
 
@@ -43,15 +76,17 @@
 </header>
 
 
-<main class="content-section">
+<main class="category-page">
 
     <div class="container">
 
-        <div class="section-header">
+        <div class="section-heading">
 
             <div>
 
-                <small>KATEGORİ</small>
+                <small>
+                    KATEGORİ
+                </small>
 
                 <h1 id="categoryTitle">
                     Tüm Haberler
@@ -61,7 +96,11 @@
 
         </div>
 
-        <div class="news-grid" id="categoryNews"></div>
+
+        <div
+            class="news-grid"
+            id="categoryNews"
+        ></div>
 
     </div>
 
@@ -70,67 +109,105 @@
 
 <script src="js/haberler.js"></script>
 
+
 <script>
 
-const params = new URLSearchParams(location.search);
-
-const kategori = params.get("kategori");
-
-const title = document.getElementById("categoryTitle");
-
-const container = document.getElementById("categoryNews");
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
 
 
-const filtered = kategori
-
-    ? haberler.filter(h =>
-        h.kategori.toLocaleLowerCase("tr-TR") ===
-        kategori.toLocaleLowerCase("tr-TR")
-    )
-
-    : haberler;
+const category =
+    params.get("k");
 
 
-title.textContent = kategori || "Tüm Haberler";
+const title =
+    document.getElementById(
+        "categoryTitle"
+    );
 
 
-container.innerHTML = filtered.map(haber => `
+const container =
+    document.getElementById(
+        "categoryNews"
+    );
 
-    <a class="news-card" href="haber.html?id=${haber.id}">
 
-        <div class="news-image">
+title.textContent =
+    category ||
+    "Tüm Haberler";
 
-            <img
-                src="${haber.gorsel}"
-                alt="${haber.baslik}"
-                loading="lazy"
-            >
 
-            <span>${haber.kategori}</span>
+const news =
+    category
 
-        </div>
+        ? haberler.filter(
+            h =>
+                h.kategori
+                .toLocaleLowerCase(
+                    "tr-TR"
+                ) ===
+                category
+                .toLocaleLowerCase(
+                    "tr-TR"
+                )
+        )
 
-        <div class="news-card-content">
+        : haberler;
 
-            <div class="news-time">
-                ${haber.tarih} · ${haber.saat}
+
+container.innerHTML =
+    news.map(
+        h => `
+
+        <a
+            class="news-card"
+            href="haber.html?id=${h.id}"
+        >
+
+            <div class="news-image">
+
+                <img
+                    src="${h.gorsel}"
+                    alt="${h.baslik}"
+                    loading="lazy"
+                >
+
+                <span>
+                    ${h.kategori}
+                </span>
+
             </div>
 
-            <h3>
-                ${haber.baslik}
-            </h3>
 
-            <p>
-                ${haber.spot}
-            </p>
+            <div class="news-content">
 
-        </div>
+                <small>
+                    ${h.tarih}
+                    ·
+                    ${h.saat}
+                </small>
 
-    </a>
+                <h3>
+                    ${h.baslik}
+                </h3>
 
-`).join("");
+                <p>
+                    ${h.spot}
+                </p>
+
+            </div>
+
+        </a>
+
+    `
+    )
+    .join("");
 
 </script>
 
+
 </body>
+
 </html>
