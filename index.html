@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NABIZ | Gündemin Nabzı</title>
-    <meta name="description" content="NABIZ - Türkiye ve dünyadan son dakika haberleri, gündem, spor, ekonomi, teknoloji ve daha fazlası.">
-    <meta name="theme-color" content="#e30613">
+    <title>NABIZ | Son Dakika Haberleri</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description" content="NABIZ - Türkiye ve dünyadan son dakika haberleri, gündem, ekonomi, spor ve teknoloji.">
+
+    <meta name="theme-color" content="#e50914">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -20,494 +18,142 @@
 <header class="header">
 
     <div class="topbar">
+
         <div class="container topbar-inner">
-            <div class="top-date">
-                <span id="todayDate">8 Ekim 2026</span>
-            </div>
+
+            <div class="date" id="currentDate"></div>
 
             <div class="top-links">
-                <a href="#">Hakkımızda</a>
-                <a href="#">İletişim</a>
-                <a href="#">Künye</a>
+                <a href="#">Son Dakika</a>
+                <a href="#">Çok Okunanlar</a>
             </div>
+
         </div>
+
     </div>
 
     <div class="main-header">
+
         <div class="container header-inner">
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="menu-btn" id="menuBtn">
+                ☰
             </button>
 
             <a href="index.html" class="logo">
-                <span class="logo-mark">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="logo-text">NABIZ</span>
+                NABIZ<span>.</span>
             </a>
 
-            <div class="header-slogan">
-                Gündemin <strong>nabzı</strong> burada.
-            </div>
+            <nav class="desktop-nav">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="kategori.html?kategori=Gündem">Gündem</a>
+                <a href="kategori.html?kategori=Dünya">Dünya</a>
+                <a href="kategori.html?kategori=Ekonomi">Ekonomi</a>
+                <a href="kategori.html?kategori=Spor">Spor</a>
+                <a href="kategori.html?kategori=Teknoloji">Teknoloji</a>
+                <a href="kategori.html?kategori=Kültür Sanat">Kültür-Sanat</a>
+            </nav>
 
-            <div class="header-actions">
+            <button class="search-btn" id="searchBtn">
+                <span>⌕</span>
+            </button>
 
-                <button class="icon-btn" id="searchBtn" aria-label="Ara">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="7"></circle>
-                        <path d="M16.5 16.5L21 21"></path>
-                    </svg>
-                </button>
-
-                <button class="icon-btn" id="themeBtn" aria-label="Tema">
-                    <svg class="sun-icon" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-                    </svg>
-                </button>
-
-                <button class="subscribe-btn">
-                    <span>●</span> NABIZ'ı Takip Et
-                </button>
-
-            </div>
         </div>
+
     </div>
 
-    <nav class="nav">
-        <div class="container nav-inner">
+    <div class="mobile-menu" id="mobileMenu">
 
-            <a href="#" class="nav-home active">
-                <svg viewBox="0 0 24 24">
-                    <path d="M3 11L12 3l9 8"></path>
-                    <path d="M5 10v10h14V10"></path>
-                </svg>
-            </a>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="kategori.html?kategori=Gündem">Gündem</a>
+        <a href="kategori.html?kategori=Dünya">Dünya</a>
+        <a href="kategori.html?kategori=Ekonomi">Ekonomi</a>
+        <a href="kategori.html?kategori=Spor">Spor</a>
+        <a href="kategori.html?kategori=Teknoloji">Teknoloji</a>
+        <a href="kategori.html?kategori=Kültür Sanat">Kültür-Sanat</a>
 
-            <a href="#">Son Dakika</a>
-            <a href="#">Gündem</a>
-            <a href="#">Türkiye</a>
-            <a href="#">Dünya</a>
-            <a href="#">Ekonomi</a>
-            <a href="#">Spor</a>
-            <a href="#">Teknoloji</a>
-            <a href="#">Magazin</a>
-            <a href="#">Batman</a>
-
-            <button class="more-btn">Daha Fazla ▾</button>
-
-        </div>
-    </nav>
+    </div>
 
 </header>
 
 
-<div class="breaking">
+<section class="breaking">
+
     <div class="container breaking-inner">
 
-        <div class="breaking-label">
+        <strong>
             <span class="pulse"></span>
             SON DAKİKA
-        </div>
+        </strong>
 
-        <div class="breaking-content">
-            <div id="breakingText">
-                Gündemdeki son gelişmeler NABIZ'da...
-            </div>
-        </div>
-
-        <div class="breaking-time" id="liveTime">19:35</div>
+        <div class="breaking-content" id="breakingNews"></div>
 
     </div>
-</div>
+
+</section>
 
 
 <main>
 
     <section class="hero-section">
+
         <div class="container">
 
-            <div class="section-heading">
-                <div>
-                    <span class="eyebrow">GÜNDEM</span>
-                    <h1>Günün Öne Çıkan Haberleri</h1>
-                </div>
-
-                <a href="#" class="all-link">
-                    Tüm haberler
-                    <span>→</span>
-                </a>
+            <div class="section-title">
+                <span></span>
+                GÜNDEMİN NABZI
             </div>
 
-
-            <div class="hero-grid">
-
-                <article class="main-news">
-
-                    <div class="news-image main-image">
-                        <div class="image-placeholder">
-                            <span>GÜNDEM</span>
-                        </div>
-
-                        <div class="image-overlay"></div>
-
-                        <div class="main-news-content">
-                            <div class="category-tag">SON DAKİKA</div>
-
-                            <h2>
-                                Türkiye gündemindeki son gelişmeler ve günün öne çıkan başlıkları
-                            </h2>
-
-                            <p>
-                                Günün önemli gelişmelerini, sıcak haberleri ve gündemin nabzını NABIZ farkıyla takip edin.
-                            </p>
-
-                            <div class="news-meta">
-                                <span>●</span>
-                                <span>12 dakika önce</span>
-                                <span>•</span>
-                                <span>18.452 okunma</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-                <div class="side-news">
-
-                    <article class="small-news">
-                        <div class="small-image gradient-one">
-                            <span>EKONOMİ</span>
-                        </div>
-
-                        <div class="small-content">
-                            <span class="category">Ekonomi</span>
-                            <h3>Ekonomide günün dikkat çeken gelişmeleri</h3>
-                            <div class="meta">32 dakika önce</div>
-                        </div>
-                    </article>
-
-
-                    <article class="small-news">
-                        <div class="small-image gradient-two">
-                            <span>SPOR</span>
-                        </div>
-
-                        <div class="small-content">
-                            <span class="category">Spor</span>
-                            <h3>Futbol dünyasından son gelişmeler</h3>
-                            <div class="meta">48 dakika önce</div>
-                        </div>
-                    </article>
-
-
-                    <article class="small-news">
-                        <div class="small-image gradient-three">
-                            <span>TEKNOLOJİ</span>
-                        </div>
-
-                        <div class="small-content">
-                            <span class="category">Teknoloji</span>
-                            <h3>Teknoloji dünyasında gündem değişiyor</h3>
-                            <div class="meta">1 saat önce</div>
-                        </div>
-                    </article>
-
-                </div>
-
-            </div>
+            <div class="hero-grid" id="heroNews"></div>
 
         </div>
+
     </section>
 
 
     <section class="content-section">
-        <div class="container content-layout">
+
+        <div class="container main-layout">
 
             <div class="news-column">
 
-                <div class="section-title-row">
+                <div class="section-header">
+
                     <div>
-                        <span class="eyebrow">TAZE HABERLER</span>
+                        <small>GÜNCEL</small>
                         <h2>Son Haberler</h2>
                     </div>
 
-                    <div class="news-filter">
-                        <button class="filter active">Tümü</button>
-                        <button class="filter">Gündem</button>
-                        <button class="filter">Spor</button>
-                        <button class="filter">Ekonomi</button>
-                    </div>
-                </div>
-
-
-                <div class="news-list">
-
-                    <article class="news-card">
-
-                        <div class="card-image gradient-four">
-                            <span>GÜNDEM</span>
-                        </div>
-
-                        <div class="card-body">
-                            <span class="category">Gündem</span>
-
-                            <h3>
-                                Gündemin öne çıkan başlıkları ve son gelişmeler
-                            </h3>
-
-                            <p>
-                                Türkiye'de ve dünyada yaşanan gelişmelerden en önemli haberler...
-                            </p>
-
-                            <div class="card-footer">
-                                <span>🕐 18 dakika önce</span>
-                                <span>👁 8.241</span>
-                            </div>
-                        </div>
-
-                    </article>
-
-
-                    <article class="news-card">
-
-                        <div class="card-image gradient-five">
-                            <span>BATMAN</span>
-                        </div>
-
-                        <div class="card-body">
-                            <span class="category">Batman</span>
-
-                            <h3>
-                                Batman'da günün önemli gelişmeleri
-                            </h3>
-
-                            <p>
-                                Kentte yaşanan son gelişmeler ve yerel gündemden öne çıkanlar...
-                            </p>
-
-                            <div class="card-footer">
-                                <span>🕐 26 dakika önce</span>
-                                <span>👁 6.102</span>
-                            </div>
-                        </div>
-
-                    </article>
-
-
-                    <article class="news-card">
-
-                        <div class="card-image gradient-six">
-                            <span>DÜNYA</span>
-                        </div>
-
-                        <div class="card-body">
-                            <span class="category">Dünya</span>
-
-                            <h3>
-                                Dünyadan son dakika gelişmeleri
-                            </h3>
-
-                            <p>
-                                Uluslararası gündemden son gelişmeler ve dikkat çeken haberler...
-                            </p>
-
-                            <div class="card-footer">
-                                <span>🕐 41 dakika önce</span>
-                                <span>👁 5.873</span>
-                            </div>
-                        </div>
-
-                    </article>
-
-
-                    <article class="news-card">
-
-                        <div class="card-image gradient-seven">
-                            <span>TEKNOLOJİ</span>
-                        </div>
-
-                        <div class="card-body">
-                            <span class="category">Teknoloji</span>
-
-                            <h3>
-                                Teknoloji dünyasında dikkat çeken yenilikler
-                            </h3>
-
-                            <p>
-                                Yeni teknolojiler, yapay zekâ ve dijital dünyadan gelişmeler...
-                            </p>
-
-                            <div class="card-footer">
-                                <span>🕐 1 saat önce</span>
-                                <span>👁 4.981</span>
-                            </div>
-                        </div>
-
-                    </article>
+                    <a href="kategori.html">
+                        Tümünü Gör →
+                    </a>
 
                 </div>
 
-                <button class="load-more">
-                    Daha fazla haber göster
-                    <span>↓</span>
-                </button>
+                <div class="news-grid" id="latestNews"></div>
 
             </div>
 
 
             <aside class="sidebar">
 
+                <div class="sidebar-box">
+
+                    <div class="sidebar-title">
+                        <span></span>
+                        ÇOK OKUNANLAR
+                    </div>
+
+                    <div id="popularNews"></div>
+
+                </div>
+
+
                 <div class="ad-box">
                     <span>REKLAM</span>
                 </div>
 
-
-                <div class="popular-box">
-
-                    <div class="popular-heading">
-                        <div>
-                            <span class="eyebrow">NABIZ ÖZEL</span>
-                            <h2>Çok Okunanlar</h2>
-                        </div>
-
-                        <span class="popular-icon">↗</span>
-                    </div>
-
-
-                    <div class="popular-item">
-                        <span class="number">01</span>
-
-                        <div>
-                            <span class="category">Gündem</span>
-                            <h3>Günün en çok konuşulan gelişmesi</h3>
-                            <small>24.891 okunma</small>
-                        </div>
-                    </div>
-
-
-                    <div class="popular-item">
-                        <span class="number">02</span>
-
-                        <div>
-                            <span class="category">Spor</span>
-                            <h3>Spor dünyasından sıcak gelişme</h3>
-                            <small>18.734 okunma</small>
-                        </div>
-                    </div>
-
-
-                    <div class="popular-item">
-                        <span class="number">03</span>
-
-                        <div>
-                            <span class="category">Ekonomi</span>
-                            <h3>Piyasalarda günün hareketliliği</h3>
-                            <small>16.428 okunma</small>
-                        </div>
-                    </div>
-
-
-                    <div class="popular-item">
-                        <span class="number">04</span>
-
-                        <div>
-                            <span class="category">Teknoloji</span>
-                            <h3>Teknoloji sektöründen önemli haber</h3>
-                            <small>14.201 okunma</small>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="newsletter">
-
-                    <div class="newsletter-icon">✉</div>
-
-                    <h2>NABIZ'ı takip et</h2>
-
-                    <p>
-                        Gündemin önemli haberlerini e-posta kutunda görmek için abone ol.
-                    </p>
-
-                    <form id="newsletterForm">
-                        <input type="email" placeholder="E-posta adresin" required>
-                        <button type="submit">Abone Ol</button>
-                    </form>
-
-                </div>
-
             </aside>
-
-        </div>
-    </section>
-
-
-    <section class="topics-section">
-
-        <div class="container">
-
-            <div class="section-heading">
-                <div>
-                    <span class="eyebrow">KATEGORİLER</span>
-                    <h2>Gündemin Her Yeri</h2>
-                </div>
-            </div>
-
-
-            <div class="topic-grid">
-
-                <a href="#" class="topic-card">
-                    <span>01</span>
-                    <strong>Gündem</strong>
-                    <small>Türkiye gündemi</small>
-                    <b>→</b>
-                </a>
-
-                <a href="#" class="topic-card">
-                    <span>02</span>
-                    <strong>Spor</strong>
-                    <small>Son dakika spor</small>
-                    <b>→</b>
-                </a>
-
-                <a href="#" class="topic-card">
-                    <span>03</span>
-                    <strong>Ekonomi</strong>
-                    <small>Para ve piyasalar</small>
-                    <b>→</b>
-                </a>
-
-                <a href="#" class="topic-card">
-                    <span>04</span>
-                    <strong>Teknoloji</strong>
-                    <small>Dijital dünya</small>
-                    <b>→</b>
-                </a>
-
-                <a href="#" class="topic-card">
-                    <span>05</span>
-                    <strong>Dünya</strong>
-                    <small>Global gelişmeler</small>
-                    <b>→</b>
-                </a>
-
-                <a href="#" class="topic-card">
-                    <span>06</span>
-                    <strong>Batman</strong>
-                    <small>Yerel haberler</small>
-                    <b>→</b>
-                </a>
-
-            </div>
 
         </div>
 
@@ -516,105 +162,54 @@
 </main>
 
 
-<footer class="footer">
+<footer>
 
-    <div class="container">
+    <div class="container footer-grid">
 
-        <div class="footer-top">
+        <div>
 
-            <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+                NABIZ<span>.</span>
+            </a>
 
-                <a href="#" class="logo footer-logo">
-                    <span class="logo-mark">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                    <span class="logo-text">NABIZ</span>
-                </a>
-
-                <p>
-                    Gündemin nabzını tutan yeni nesil haber platformu.
-                </p>
-
-                <div class="socials">
-                    <a href="#">X</a>
-                    <a href="#">f</a>
-                    <a href="#">◎</a>
-                    <a href="#">▶</a>
-                </div>
-
-            </div>
-
-
-            <div class="footer-column">
-                <h3>Kategoriler</h3>
-                <a href="#">Gündem</a>
-                <a href="#">Türkiye</a>
-                <a href="#">Dünya</a>
-                <a href="#">Spor</a>
-                <a href="#">Ekonomi</a>
-            </div>
-
-
-            <div class="footer-column">
-                <h3>NABIZ</h3>
-                <a href="#">Hakkımızda</a>
-                <a href="#">Künye</a>
-                <a href="#">İletişim</a>
-                <a href="#">Gizlilik</a>
-                <a href="#">Çerez Politikası</a>
-            </div>
-
-
-            <div class="footer-column">
-                <h3>İletişim</h3>
-                <a href="mailto:info@nabiz.com">info@nabiz.com</a>
-                <span>7/24 Haber Merkezi</span>
-                <span>Türkiye</span>
-            </div>
+            <p>
+                Türkiye ve dünyadan en güncel gelişmeleri
+                hızlı ve güvenilir şekilde takip edin.
+            </p>
 
         </div>
 
+        <div>
 
-        <div class="footer-bottom">
-            <span>© 2026 NABIZ. Tüm hakları saklıdır.</span>
-            <span>Gündemin Nabzı.</span>
+            <h4>NABIZ</h4>
+
+            <a href="#">Hakkımızda</a>
+            <a href="#">İletişim</a>
+            <a href="#">Gizlilik</a>
+            <a href="#">Kullanım Şartları</a>
+
+        </div>
+
+        <div>
+
+            <h4>Kategoriler</h4>
+
+            <a href="kategori.html?kategori=Gündem">Gündem</a>
+            <a href="kategori.html?kategori=Dünya">Dünya</a>
+            <a href="kategori.html?kategori=Ekonomi">Ekonomi</a>
+            <a href="kategori.html?kategori=Spor">Spor</a>
+
         </div>
 
     </div>
 
+    <div class="copyright">
+
+        © 2026 NABIZ. Tüm hakları saklıdır.
+
+    </div>
+
 </footer>
-
-
-<nav class="mobile-bottom-nav">
-
-    <a href="#" class="active">
-        <span>⌂</span>
-        <small>Ana Sayfa</small>
-    </a>
-
-    <a href="#">
-        <span>▤</span>
-        <small>Haberler</small>
-    </a>
-
-    <button id="mobileSearch">
-        <span>⌕</span>
-        <small>Ara</small>
-    </button>
-
-    <a href="#">
-        <span>♧</span>
-        <small>Kaydedilen</small>
-    </a>
-
-    <a href="#">
-        <span>☰</span>
-        <small>Menü</small>
-    </a>
-
-</nav>
 
 
 <div class="search-overlay" id="searchOverlay">
@@ -623,69 +218,23 @@
 
         <button class="close-search" id="closeSearch">×</button>
 
-        <span class="eyebrow">NABIZ'DA ARA</span>
+        <h2>Haberlerde Ara</h2>
 
-        <h2>Ne arıyorsun?</h2>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Haber ara..."
+            autocomplete="off"
+        >
 
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Haber, konu veya kategori ara...">
-            <button id="doSearch">Ara</button>
-        </div>
-
-        <div class="search-suggestions">
-            <span>Popüler:</span>
-            <button>Gündem</button>
-            <button>Spor</button>
-            <button>Ekonomi</button>
-            <button>Teknoloji</button>
-        </div>
+        <div id="searchResults"></div>
 
     </div>
 
 </div>
 
 
-<div class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-menu-header">
-
-        <a href="#" class="logo">
-            <span class="logo-mark">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-            <span class="logo-text">NABIZ</span>
-        </a>
-
-        <button id="closeMenu">×</button>
-
-    </div>
-
-    <div class="mobile-menu-links">
-
-        <a href="#">Ana Sayfa <span>→</span></a>
-        <a href="#">Son Dakika <span>→</span></a>
-        <a href="#">Gündem <span>→</span></a>
-        <a href="#">Türkiye <span>→</span></a>
-        <a href="#">Dünya <span>→</span></a>
-        <a href="#">Ekonomi <span>→</span></a>
-        <a href="#">Spor <span>→</span></a>
-        <a href="#">Teknoloji <span>→</span></a>
-        <a href="#">Magazin <span>→</span></a>
-        <a href="#">Batman <span>→</span></a>
-
-    </div>
-
-</div>
-
-
-<div class="toast" id="toast">
-    <span>✓</span>
-    <p>İşlem başarılı</p>
-</div>
-
-
+<script src="js/haberler.js"></script>
 <script src="js/app.js"></script>
 
 </body>
