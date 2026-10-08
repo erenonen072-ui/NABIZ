@@ -2,59 +2,197 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>NABIZ Haber</title>
-  <meta name="description" content="Türkiye'nin uzay hedefinde yeni adım: Salda Bilim Merkezi açıldı.">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <meta property="og:title" content="Türkiye'nin uzay hedefinde yeni adım: Salda Bilim Merkezi açıldı">
-  <meta property="og:description" content="Salda Bilim Merkezi ve Milli Teknoloji Atölyesi açıldı.">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="/images/haber11.jpg">
+  <title>Haber Yükleniyor... | NABIZ</title>
+
+  <meta
+    name="description"
+    content="NABIZ - Türkiye'nin güncel haber portalı."
+  >
+
+  <meta name="robots" content="index, follow">
 
   <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .article-share {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 25px 0;
+    }
+
+    .article-share a,
+    .article-share button {
+      border: 0;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 11px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      background: #111;
+      color: #fff;
+    }
+
+    .article-share a:hover,
+    .article-share button:hover {
+      opacity: .85;
+    }
+
+    .article-not-found {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .article-not-found a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #e30613;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 
 <body>
 
 <header class="site-header">
+
   <div class="container header-inner">
-    <a href="/" class="logo">NABIZ</a>
+
+    <a href="/" class="logo">
+      NABIZ
+    </a>
 
     <nav class="main-nav">
+
       <a href="/gundem/">Gündem</a>
+
       <a href="/dunya/">Dünya</a>
+
       <a href="/ekonomi/">Ekonomi</a>
+
       <a href="/spor/">Spor</a>
+
       <a href="/teknoloji/">Teknoloji</a>
+
       <a href="/magazin/">Magazin</a>
+
       <a href="/kultur-sanat/">Kültür-Sanat</a>
+
       <a href="/arama/">Arama</a>
+
     </nav>
+
   </div>
+
 </header>
 
-<main class="container article-page">
 
-  <div id="article"></div>
+<main class="container">
+
+  <article class="article-page">
+
+    <!-- HABER BURAYA GELECEK -->
+
+    <div id="articleContent"></div>
+
+
+    <!-- PAYLAŞIM BUTONLARI -->
+
+    <div class="article-share">
+
+      <a
+        id="whatsappShare"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp'ta Paylaş
+      </a>
+
+
+      <a
+        id="xShare"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        X'te Paylaş
+      </a>
+
+
+      <button
+        id="copyShare"
+        type="button"
+      >
+        Linki Kopyala
+      </button>
+
+
+      <button
+        id="nativeShare"
+        type="button"
+      >
+        Paylaş
+      </button>
+
+    </div>
+
+  </article>
 
 </main>
 
+
 <footer class="site-footer">
+
   <div class="container">
+
     <strong>NABIZ</strong>
-    <p>Türkiye'nin haber portalı</p>
+
+    <p>
+      Türkiye'nin haber portalı
+    </p>
 
     <div>
-      <a href="/hakkimizda/">Hakkımızda</a>
-      <a href="/iletisim/">İletişim</a>
-      <a href="/gizlilik/">Gizlilik</a>
-      <a href="/kullanim-sartlari/">Kullanım Şartları</a>
+
+      <a href="/hakkimizda/">
+        Hakkımızda
+      </a>
+
+      <a href="/iletisim/">
+        İletişim
+      </a>
+
+      <a href="/gizlilik/">
+        Gizlilik
+      </a>
+
+      <a href="/kullanim-sartlari/">
+        Kullanım Şartları
+      </a>
+
     </div>
+
   </div>
+
 </footer>
 
+
+<!-- HABER VERİLERİ -->
+
 <script src="/js/haberler.js"></script>
+
+<!-- HABER SİSTEMİ -->
+
 <script src="/js/haber.js"></script>
 
 </body>
