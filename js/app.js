@@ -5,20 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
         : [];
 
 
-    /* =========================
-       HABER URL
-    ========================= */
-
     function articleUrl(haber) {
         return `/haber.html?id=${encodeURIComponent(haber.id)}`;
     }
 
 
-    /* =========================
-       HABER KARTI
-    ========================= */
-
-    function createCard(haber) {
+    function card(haber) {
 
         return `
             <article class="news-card">
@@ -43,8 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         ${
                             haber.spot
-                                ? `<p>${haber.spot}</p>`
-                                : ""
+                            ? `<p>${haber.spot}</p>`
+                            : ""
                         }
 
                     </div>
@@ -56,27 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       HERO
-    ========================= */
+    /* HERO */
 
-    const hero =
-        document.getElementById("hero");
+    const hero = document.getElementById("hero");
 
-    if (hero && haberler.length > 0) {
+    if (hero && haberler.length) {
 
-        const main =
-            haberler[0];
+        const main = haberler[0];
 
-        const side =
-            haberler.slice(1, 4);
-
+        const side = haberler.slice(1, 4);
 
         hero.innerHTML = `
 
             <a
-                href="${articleUrl(main)}"
                 class="hero-main"
+                href="${articleUrl(main)}"
             >
 
                 <img
@@ -103,49 +89,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 ${
                     side.length
-                        ? side.map(item => `
+                    ? side.map(haber => `
 
-                            <a
-                                href="${articleUrl(item)}"
-                                class="hero-small"
+                        <a
+                            class="hero-small"
+                            href="${articleUrl(haber)}"
+                        >
+
+                            <img
+                                src="${haber.gorsel}"
+                                alt="${haber.baslik}"
+                                loading="lazy"
                             >
 
-                                <img
-                                    src="${item.gorsel}"
-                                    alt="${item.baslik}"
-                                    loading="lazy"
-                                >
+                            <div>
 
-                                <div>
+                                <span>
+                                    ${haber.kategori}
+                                </span>
 
-                                    <span>
-                                        ${item.kategori}
-                                    </span>
+                                <h3>
+                                    ${haber.baslik}
+                                </h3>
 
-                                    <h3>
-                                        ${item.baslik}
-                                    </h3>
-
-                                </div>
-
-                            </a>
-
-                        `).join("")
-                        :
-                        `
-                            <div
-                                style="
-                                    background:#111;
-                                    color:#fff;
-                                    display:flex;
-                                    align-items:center;
-                                    justify-content:center;
-                                    font-weight:800;
-                                "
-                            >
-                                NABIZ
                             </div>
-                        `
+
+                        </a>
+
+                    `).join("")
+                    :
+                    `
+                        <div class="hero-small">
+                            <div>
+                                <h3>
+                                    NABIZ
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="hero-small">
+                            <div>
+                                <h3>
+                                    Güncel haberler
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="hero-small">
+                            <div>
+                                <h3>
+                                    NABIZ'ı takip edin
+                                </h3>
+                            </div>
+                        </div>
+                    `
                 }
 
             </div>
@@ -153,116 +150,99 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       SON HABERLER
-    ========================= */
+    /* SON HABERLER */
 
     const latest =
         document.getElementById("latestNews");
 
     if (latest) {
 
-        latest.innerHTML =
-            haberler
-                .slice(0, 6)
-                .map(createCard)
-                .join("");
+        latest.innerHTML = haberler
+            .slice(0, 6)
+            .map(card)
+            .join("");
 
     }
 
 
-    /* =========================
-       KATEGORİLER
-    ========================= */
+    /* KATEGORİLER */
 
     const categories = {
 
-        Gündem: "gundemNews",
+        "Gündem": "gundemNews",
 
-        Dünya: "dunyaNews",
+        "Dünya": "dunyaNews",
 
-        Ekonomi: "ekonomiNews",
+        "Ekonomi": "ekonomiNews",
 
-        Spor: "sporNews",
+        "Spor": "sporNews",
 
-        Teknoloji: "teknolojiNews",
+        "Teknoloji": "teknolojiNews",
 
-        Magazin: "magazinNews"
+        "Magazin": "magazinNews"
 
     };
 
 
     Object.entries(categories).forEach(
-        ([category, elementId]) => {
+        ([category, id]) => {
 
             const element =
-                document.getElementById(elementId);
+                document.getElementById(id);
 
             if (!element) return;
 
 
-            const items =
-                haberler
-                    .filter(
-                        haber =>
-                            haber.kategori === category
-                    )
-                    .slice(0, 4);
+            const items = haberler
+                .filter(
+                    haber =>
+                        haber.kategori === category
+                )
+                .slice(0, 4);
 
 
             if (!items.length) {
 
                 element.innerHTML = `
-                    <div
-                        style="
-                            grid-column:1/-1;
-                            background:#fff;
-                            border:1px solid #ddd;
-                            padding:25px;
-                            color:#888;
-                            font-size:13px;
-                        "
-                    >
+                    <div style="
+                        grid-column:1/-1;
+                        background:white;
+                        border:1px solid #ddd;
+                        padding:25px;
+                        color:#888;
+                        font-size:12px;
+                    ">
                         Bu kategoride henüz haber bulunmuyor.
                     </div>
                 `;
 
-            } else {
-
-                element.innerHTML =
-                    items
-                        .map(createCard)
-                        .join("");
-
+                return;
             }
+
+
+            element.innerHTML =
+                items.map(card).join("");
 
         }
     );
 
 
-    /* =========================
-       MOBİL MENÜ
-    ========================= */
+    /* MOBİL MENÜ */
 
-    const mobileButton =
+    const button =
         document.getElementById("mobileButton");
 
-    const mobileNav =
+    const mobile =
         document.getElementById("mobileNav");
 
 
-    if (mobileButton && mobileNav) {
+    if (button && mobile) {
 
-        mobileButton.addEventListener(
-            "click",
-            () => {
+        button.addEventListener("click", () => {
 
-                mobileNav.classList.toggle(
-                    "active"
-                );
+            mobile.classList.toggle("active");
 
-            }
-        );
+        });
 
     }
 
