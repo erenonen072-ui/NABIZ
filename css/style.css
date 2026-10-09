@@ -1244,3 +1244,363 @@ body.dark-mode .hero-pagination button.active {
         color: #111;
     }
 }
+/* =========================================
+   YENİ İKİLİ MANŞET TASARIMI
+========================================= */
+
+.hero {
+    width: 100%;
+}
+
+/* SOL + SAĞ MANŞET */
+.hero-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 18px;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* SOL ANA MANŞET */
+.hero-main {
+    min-width: 0;
+}
+
+.hero-main-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #111;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* ANA FOTOĞRAF */
+.hero-main-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+
+    transition: transform .35s ease;
+}
+
+.hero-main-link:hover .hero-main-image {
+    transform: scale(1.02);
+}
+
+/* ANA MANŞET YAZISI */
+.hero-main-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 90px 35px 35px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.92) 0%,
+            rgba(0,0,0,.65) 35%,
+            rgba(0,0,0,.12) 75%,
+            transparent 100%
+        );
+}
+
+.hero-main-overlay h1 {
+    margin: 0;
+
+    max-width: 850px;
+
+    color: #fff;
+
+    font-size: clamp(28px, 3.2vw, 46px);
+    line-height: 1.08;
+
+    font-weight: 900;
+
+    letter-spacing: -.5px;
+
+    text-shadow: 0 2px 8px rgba(0,0,0,.6);
+}
+
+
+/* =========================================
+   SAĞ MANŞET
+========================================= */
+
+.hero-side {
+    min-width: 0;
+}
+
+.hero-side-link {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+
+    overflow: hidden;
+
+    background: #111;
+
+    border-radius: 4px;
+
+    text-decoration: none;
+}
+
+/* SAĞ FOTOĞRAF */
+.hero-side-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+
+    transition: transform .35s ease;
+}
+
+.hero-side-link:hover .hero-side-image {
+    transform: scale(1.02);
+}
+
+/* SAĞ MANŞET YAZISI */
+.hero-side-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 70px 22px 24px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.94) 0%,
+            rgba(0,0,0,.70) 38%,
+            rgba(0,0,0,.10) 78%,
+            transparent 100%
+        );
+}
+
+.hero-side-overlay h1 {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: clamp(21px, 2vw, 30px);
+    line-height: 1.12;
+
+    font-weight: 900;
+
+    text-shadow: 0 2px 8px rgba(0,0,0,.6);
+}
+
+
+/* =========================================
+   1-20 NUMARALARI
+   SADECE SOL MANŞET GENİŞLİĞİNDE
+========================================= */
+
+.hero-pagination {
+    position: relative;
+
+    width: calc((100% - 18px) * 0.6666667);
+
+    height: 48px;
+
+    margin-top: -48px;
+
+    z-index: 20;
+
+    display: flex;
+
+    background: rgba(10,10,10,.97);
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+}
+
+.hero-pagination::-webkit-scrollbar {
+    display: none;
+}
+
+.hero-pagination button {
+    flex: 1 0 45px;
+
+    min-width: 45px;
+    height: 48px;
+
+    padding: 0;
+
+    border: 0;
+    border-right: 1px solid #333;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        color .15s ease;
+}
+
+.hero-pagination button:hover {
+    background: #292929;
+}
+
+.hero-pagination button.active {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+}
+
+
+/* =========================================
+   TÜM HABER KARTLARINDA FOTOĞRAFLAR
+   KARTA TAM OTURSUN
+========================================= */
+
+.news-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+
+    overflow: hidden;
+
+    background: #ddd;
+}
+
+.news-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.popular-card {
+    overflow: hidden;
+}
+
+.popular-card img {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    height: auto;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero-layout {
+        grid-template-columns: 1.7fr 1fr;
+        gap: 12px;
+    }
+
+    .hero-main-overlay {
+        padding: 70px 24px 28px;
+    }
+
+    .hero-main-overlay h1 {
+        font-size: 30px;
+    }
+
+    .hero-side-overlay {
+        padding: 60px 16px 20px;
+    }
+
+    .hero-side-overlay h1 {
+        font-size: 21px;
+    }
+
+    .hero-pagination {
+        width: calc((100% - 12px) * 0.6296);
+    }
+}
+
+
+/* =========================================
+   MOBİL
+========================================= */
+
+@media (max-width: 650px) {
+
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .hero-main-link {
+        aspect-ratio: 16 / 9;
+    }
+
+    .hero-side {
+        display: none;
+    }
+
+    .hero-main-overlay {
+        padding: 65px 17px 48px;
+    }
+
+    .hero-main-overlay h1 {
+        font-size: 23px;
+        line-height: 1.08;
+    }
+
+    .hero-pagination {
+        width: 100%;
+        height: 42px;
+        margin-top: -42px;
+    }
+
+    .hero-pagination button {
+        flex: 0 0 38px;
+        min-width: 38px;
+        height: 42px;
+        font-size: 12px;
+    }
+
+    .news-image,
+    .popular-card img {
+        aspect-ratio: 16 / 9;
+    }
+}
