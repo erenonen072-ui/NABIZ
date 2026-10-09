@@ -1,81 +1,226 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
 <title>Magazin Haberleri | NABIZ</title>
-<link rel="stylesheet" href="/css/style.css">
+
+<meta name="description"
+content="Magazin dünyasından güncel gelişmeler, sanatçılar, televizyon ve popüler kültür haberleri.">
+
+<link rel="canonical"
+href="https://nabiz-sandy.vercel.app/magazin/">
+
+<link rel="stylesheet"
+href="/css/kategori.css">
+
 </head>
-<body>
 
-<header class="site-header">
-<div class="header-inner">
-<a href="/" class="logo">NABIZ</a>
+<body data-category="Magazin">
 
-<nav class="main-nav">
-<a href="/">Ana Sayfa</a>
-<a href="/gundem/">Gündem</a>
-<a href="/dunya/">Dünya</a>
-<a href="/ekonomi/">Ekonomi</a>
-<a href="/spor/">Spor</a>
-<a href="/teknoloji/">Teknoloji</a>
-<a href="/magazin/">Magazin</a>
-<a href="/kultur-sanat/">Kültür-Sanat</a>
+<header class="kn-header">
+
+<div class="kn-top">
+<div class="kn-wrap kn-top-inner">
+
+<a class="kn-logo" href="/">
+<img src="/images/haber.jpg" alt="NABIZ">
+</a>
+
+<div class="kn-actions">
+
+<a class="kn-search-btn" href="/arama/">
+⌕ <span>Haber Ara</span>
+</a>
+
+<button id="knTheme"
+class="kn-theme">
+◐ Tema
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<nav class="kn-nav">
+
+<div class="kn-wrap">
+
+<button
+id="knMenuButton"
+class="kn-menu-button">
+☰ MENÜ
+</button>
+
+<div
+id="knNavLinks"
+class="kn-nav-links">
+
+<a href="/">SON HABERLER</a>
+<a href="/gundem/">GÜNDEM</a>
+<a href="/ekonomi/">EKONOMİ</a>
+<a href="/spor/">SPOR</a>
+<a href="/dunya/">DÜNYA</a>
+
+<a href="/magazin/"
+class="is-active">
+MAGAZİN
+</a>
+
+<a href="/teknoloji/">TEKNOLOJİ</a>
+<a href="/kultur-sanat/">KÜLTÜR SANAT</a>
+<a href="/arama/">HABER ARA</a>
+
+</div>
+
+</div>
+
 </nav>
 
-<a href="/arama/" class="search-button">⌕</a>
-</div>
 </header>
 
-<main class="category-page">
-<h1 class="category-title">Magazin Haberleri</h1>
-<div class="news-grid" id="categoryNews"></div>
+
+<main class="kn-wrap kn-main">
+
+<div class="kn-breadcrumb">
+<a href="/">Ana Sayfa</a>
+<span>›</span>
+<span>Magazin</span>
+</div>
+
+
+<section class="kn-category-intro">
+
+<div>
+
+<span class="kn-eyebrow">
+NABIZ • MAGAZİN
+</span>
+
+<h1>Magazin</h1>
+
+<p>
+Magazin dünyasından güncel gelişmeler,
+televizyon, sanat ve popüler kültür haberleri.
+</p>
+
+</div>
+
+<div class="kn-intro-mark">N</div>
+
+</section>
+
+
+<section
+id="knFeaturedSection"
+class="kn-featured-section">
+
+<div class="kn-section-title">
+
+<div>
+<span>ÖNE ÇIKAN</span>
+<h2>Öne Çıkan Haberler</h2>
+</div>
+
+</div>
+
+<div
+id="knFeatured"
+class="kn-featured">
+</div>
+
+</section>
+
+
+<section class="kn-list-section">
+
+<div class="kn-section-title">
+
+<div>
+<span>NABIZ GÜNCEL</span>
+<h2>Son Magazin Haberleri</h2>
+</div>
+
+<span id="knCount"
+class="kn-count"></span>
+
+</div>
+
+
+<div
+id="knNewsGrid"
+class="kn-news-grid">
+</div>
+
+
+<div
+id="knEmpty"
+class="kn-empty"
+hidden>
+
+<strong>
+Magazin kategorisinde henüz haber bulunmuyor.
+</strong>
+
+<p>
+Bu kategoriye haber eklendiğinde burada görünecek.
+</p>
+
+<a href="/">
+Ana sayfaya dön →
+</a>
+
+</div>
+
+</section>
+
 </main>
 
-<footer>
-<div class="footer-inner">
+
+<footer class="kn-footer">
+
+<div class="kn-wrap kn-footer-inner">
+
 <div>
-<div class="footer-logo">NABIZ</div>
-<p>Türkiye ve dünyadan gündemin nabzı.</p>
+
+<img
+src="/images/haber.jpg"
+alt="NABIZ"
+class="kn-footer-logo">
+
+<p>
+Güncel haberleri hızlı ve sade şekilde takip edin.
+</p>
+
 </div>
-<div class="footer-links">
+
+<div class="kn-footer-links">
+
 <a href="/hakkimizda/">Hakkımızda</a>
 <a href="/iletisim/">İletişim</a>
-<a href="/gizlilik/">Gizlilik Politikası</a>
+<a href="/gizlilik/">Gizlilik</a>
 <a href="/kullanim-sartlari/">Kullanım Şartları</a>
+
 </div>
+
+<div class="kn-copyright">
+© 2026 NABIZ
 </div>
+
+</div>
+
 </footer>
 
+
 <script src="/js/haberler.js"></script>
-<script>
-const category = "Magazin";
-const container = document.getElementById("categoryNews");
-
-function slugify(text) {
-return text.toLowerCase()
-.replace(/ğ/g,"g").replace(/ü/g,"u")
-.replace(/ş/g,"s").replace(/ı/g,"i")
-.replace(/ö/g,"o").replace(/ç/g,"c")
-.replace(/[^a-z0-9]+/g,"-")
-.replace(/^-+|-+$/g,"");
-}
-
-container.innerHTML = window.haberler
-.filter(h => h.kategori === category)
-.map(h => `
-<article class="news-card">
-<a href="/haber/${h.id}-${slugify(h.baslik)}/">
-<img src="${h.gorsel}" alt="${h.baslik}">
-<div class="news-content">
-<span class="news-category">${h.kategori}</span>
-<h3>${h.baslik}</h3>
-<p>${h.spot}</p>
-</div>
-</a>
-</article>
-`).join("");
-</script>
+<script src="/js/kategori.js"></script>
 
 </body>
 </html>
