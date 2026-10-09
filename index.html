@@ -67,7 +67,35 @@ button{
     margin:auto;
 }
 
+/* =========================================================
+   ÜST BAR
+========================================================= */
 
+.topbar{
+    background:#111;
+    color:#aaa;
+    font-size:11px;
+}
+
+.topbar-inner{
+    min-height:34px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.topbar-links{
+    display:flex;
+    gap:22px;
+}
+
+.topbar a{
+    transition:.2s;
+}
+
+.topbar a:hover{
+    color:#fff;
+}
 
 /* =========================================================
    HEADER
@@ -171,6 +199,54 @@ button{
     display:none;
 }
 
+/* =========================================================
+   SON DAKİKA BANDI
+========================================================= */
+
+.breaking{
+    background:var(--red);
+    color:#fff;
+}
+
+.breaking-inner{
+    min-height:43px;
+    display:flex;
+    align-items:center;
+}
+
+.breaking-title{
+    background:#111;
+    height:43px;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    font-size:11px;
+    font-weight:1000;
+    white-space:nowrap;
+    position:relative;
+}
+
+.breaking-title::after{
+    content:"";
+    position:absolute;
+    right:-12px;
+    border-top:22px solid transparent;
+    border-bottom:21px solid transparent;
+    border-left:12px solid #111;
+}
+
+.breaking-track{
+    padding-left:30px;
+    overflow:hidden;
+    white-space:nowrap;
+    flex:1;
+}
+
+.breaking-track span{
+    font-size:12px;
+    font-weight:700;
+    margin-right:35px;
+}
 
 /* =========================================================
    ANA
@@ -1066,6 +1142,27 @@ body.dark .news-card p{
 
 </div>
 
+<!-- =====================================================
+     SON DAKİKA
+===================================================== -->
+
+<div class="breaking">
+
+    <div class="container breaking-inner">
+
+        <div class="breaking-title">
+            🔴 SON DAKİKA
+        </div>
+
+        <div class="breaking-track" id="breakingTrack">
+            <span>NABIZ haber akışı</span>
+        </div>
+
+    </div>
+
+</div>
+
+<main class="container">
 
 <!-- =====================================================
      MANŞET
@@ -1090,6 +1187,16 @@ body.dark .news-card p{
         class="hero-numbers"
         id="heroNumbers">
     </div>
+
+</section>
+
+<!-- =====================================================
+     HIZLI HABERLER
+===================================================== -->
+
+<section>
+
+    <div class="quick" id="quickNews"></div>
 
 </section>
 
