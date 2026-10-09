@@ -3,87 +3,42 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="theme-color"
-        content="#ffffff"
-    >
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="description" content="NABIZ Haber - Güncel haberler">
 
     <title>NABIZ Haber</title>
 
-    <link
-        rel="stylesheet"
-        href="/css/style.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/css/haber.css"
-    >
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/haber.css">
 </head>
 
 <body>
-
-<!-- ================================
-     HEADER
-================================ -->
 
 <header class="header">
 
     <div class="header-main">
 
         <a href="/" class="logo">
-            <img
-                src="/images/haber.jpg"
-                alt="NABIZ"
-            >
+            <img src="/images/haber.jpg" alt="NABIZ">
         </a>
 
         <nav class="desktop-nav">
 
-            <a href="/">
-                Ana Sayfa
-            </a>
-
-            <a href="/gundem/">
-                Gündem
-            </a>
-
-            <a href="/dunya/">
-                Dünya
-            </a>
-
-            <a href="/ekonomi/">
-                Ekonomi
-            </a>
-
-            <a href="/spor/">
-                Spor
-            </a>
-
-            <a href="/teknoloji/">
-                Teknoloji
-            </a>
-
-            <a href="/magazin/">
-                Magazin
-            </a>
-
-            <a href="/kultur-sanat/">
-                Kültür-Sanat
-            </a>
+            <a href="/">Ana Sayfa</a>
+            <a href="/gundem/">Gündem</a>
+            <a href="/dunya/">Dünya</a>
+            <a href="/ekonomi/">Ekonomi</a>
+            <a href="/spor/">Spor</a>
+            <a href="/teknoloji/">Teknoloji</a>
+            <a href="/magazin/">Magazin</a>
+            <a href="/kultur-sanat/">Kültür-Sanat</a>
 
         </nav>
 
-        <a
-            href="/arama/"
-            class="search-button"
-            aria-label="Haberlerde ara"
-        >
+        <a href="/arama/" class="search-button" aria-label="Ara">
             🔍
         </a>
 
@@ -92,76 +47,48 @@
 </header>
 
 
-<!-- ================================
-     HABER SAYFASI
-================================ -->
-
 <main class="article-page">
 
-    <div class="article-layout">
+    <div class="article-grid">
 
-        <!-- =========================
-             ANA HABER
-        ========================== -->
+        <article class="article">
 
-        <article class="article-main">
+            <div id="articleContent"></div>
 
-            <div
-                id="articleContent"
-                class="article-content-box"
-            ></div>
-
-
-            <!-- =====================
-                 PAYLAŞ
-            ====================== -->
 
             <section class="share-box">
 
-                <div class="share-heading">
-
-                    <span class="share-line"></span>
-
-                    <strong>
-                        Bu Haberi Paylaş
-                    </strong>
-
+                <div class="share-title">
+                    <span></span>
+                    <strong>Haberi Paylaş</strong>
                 </div>
 
                 <div class="share-buttons">
 
-                    <button
-                        id="nativeShare"
-                        type="button"
-                    >
-                        <span>↗</span>
-                        Paylaş
+                    <button id="nativeShare" type="button">
+                        ↗ Paylaş
                     </button>
 
                     <a
                         id="whatsappShare"
+                        href="#"
                         target="_blank"
                         rel="noopener"
                     >
-                        <span>●</span>
                         WhatsApp
                     </a>
 
                     <a
                         id="xShare"
+                        href="#"
                         target="_blank"
                         rel="noopener"
                     >
-                        <span>𝕏</span>
-                        X
+                        𝕏
                     </a>
 
-                    <button
-                        id="copyShare"
-                        type="button"
-                    >
-                        <span>🔗</span>
-                        Linki Kopyala
+                    <button id="copyShare" type="button">
+                        🔗 Linki Kopyala
                     </button>
 
                 </div>
@@ -171,28 +98,19 @@
         </article>
 
 
-        <!-- =========================
-             SAĞ SÜTUN
-        ========================== -->
+        <aside class="sidebar">
 
-        <aside class="article-sidebar">
+            <div class="sidebar-card">
 
-            <div class="sidebar-box">
-
-                <div class="sidebar-title">
+                <div class="sidebar-heading">
 
                     <span></span>
 
-                    <h2>
-                        Çok Okunanlar
-                    </h2>
+                    <h2>Çok Okunanlar</h2>
 
                 </div>
 
-                <div
-                    id="articlePopular"
-                    class="article-popular"
-                ></div>
+                <div id="articlePopular"></div>
 
             </div>
 
@@ -203,50 +121,31 @@
 </main>
 
 
-<!-- ================================
-     FOOTER
-================================ -->
-
 <footer>
 
     <div class="footer-inner">
 
-        <div class="footer-brand">
+        <div class="footer-logo">
 
-            <img
-                src="/images/haber.jpg"
-                alt="NABIZ"
-            >
+            <img src="/images/haber.jpg" alt="NABIZ">
 
             <p>
-                Türkiye ve dünyadan güncel gelişmeler,
-                son haberler ve gündemin öne çıkanları.
+                Türkiye ve dünyadan güncel gelişmeler.
             </p>
 
         </div>
 
         <div class="footer-links">
 
-            <a href="/hakkimizda/">
-                Hakkımızda
-            </a>
-
-            <a href="/iletisim/">
-                İletişim
-            </a>
-
-            <a href="/gizlilik/">
-                Gizlilik
-            </a>
-
-            <a href="/kullanim-sartlari/">
-                Kullanım Şartları
-            </a>
+            <a href="/hakkimizda/">Hakkımızda</a>
+            <a href="/iletisim/">İletişim</a>
+            <a href="/gizlilik/">Gizlilik</a>
+            <a href="/kullanim-sartlari/">Kullanım Şartları</a>
 
         </div>
 
-        <div class="footer-bottom">
-            © 2026 NABIZ • Tüm hakları saklıdır.
+        <div class="footer-copy">
+            © 2026 NABIZ
         </div>
 
     </div>
