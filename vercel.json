@@ -1,4 +1,14 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "rewrites": [
+    {
+      "source": "/haber/:slug/",
+      "destination": "/haber.html?slug=:slug"
+    },
+    {
+      "source": "/haber/:slug",
+      "destination": "/haber.html?slug=:slug"
+    }
+  ]
 }
