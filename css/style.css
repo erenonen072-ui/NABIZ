@@ -1132,3 +1132,112 @@ body.dark-mode .hero-pagination button.active {
     }
 
 }
+/* =========================================
+   TELEFON - MANŞET ÖZEL AYAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hero-section {
+        padding: 10px 0 0;
+    }
+
+    .hero {
+        width: 100%;
+    }
+
+    .hero-link {
+        height: auto;
+        aspect-ratio: 16 / 10;
+        min-height: 0;
+        border-radius: 3px;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .hero-overlay {
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        padding:
+            70px
+            18px
+            52px;
+
+        background:
+            linear-gradient(
+                to top,
+                rgba(0,0,0,.88) 0%,
+                rgba(0,0,0,.55) 35%,
+                rgba(0,0,0,.10) 75%,
+                transparent 100%
+            );
+    }
+
+    .hero-overlay h1 {
+        max-width: 100%;
+
+        font-size: 24px;
+        line-height: 1.08;
+
+        letter-spacing: -.3px;
+    }
+
+    .hero-pagination {
+        height: 42px;
+        margin-top: -42px;
+    }
+
+    .hero-pagination button {
+        flex: 0 0 38px;
+        min-width: 38px;
+
+        height: 42px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================
+   ÇOK KÜÇÜK TELEFONLAR
+========================================= */
+
+@media (max-width: 420px) {
+
+    .hero-link {
+        aspect-ratio: 16 / 10;
+    }
+
+    .hero-overlay {
+        padding:
+            60px
+            15px
+            48px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 21px;
+        line-height: 1.1;
+    }
+
+    .hero-pagination {
+        height: 40px;
+        margin-top: -40px;
+    }
+
+    .hero-pagination button {
+        flex: 0 0 36px;
+        min-width: 36px;
+
+        height: 40px;
+
+        font-size: 11px;
+    }
+}
