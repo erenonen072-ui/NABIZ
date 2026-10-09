@@ -1,30 +1,125 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const haberler = window.haberler || [];
+    const haberler =
+        Array.isArray(window.haberler)
+            ? window.haberler
+            : [];
 
-    const params = new URLSearchParams(
-        window.location.search
-    );
 
-    const id = Number(params.get("id"));
+    /* =====================================================
+       SLUG OLUŞTUR
+    ===================================================== */
 
-    const haber = haberler.find(
-        item => Number(item.id) === id
-    );
+    function slugify(text) {
+
+        return String(text || "")
+            .toLocaleLowerCase("tr-TR")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/ı/g, "i")
+            .replace(/ğ/g, "g")
+            .replace(/ü/g, "u")
+            .replace(/ş/g, "s")
+            .replace(/ö/g, "o")
+            .replace(/ç/g, "c")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "");
+
+    }
+
+
+    /* =====================================================
+       URL'DEN SLUG AL
+    ===================================================== */
+
+    const path =
+        window.location.pathname;
+
+
+    const parts =
+        path.split("/").filter(Boolean);
+
+
+    let slug =
+        "";
+
+
+    if (parts[0] === "haber") {
+
+        slug =
+            parts.slice(1).join("-");
+
+    }
+
+
+    /* =====================================================
+       ESKİ ?id= SİSTEMİ DE ÇALIŞSIN
+    ===================================================== */
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const oldId =
+        Number(params.get("id"));
+
+
+    /* =====================================================
+       HABERİ BUL
+    ===================================================== */
+
+    let haber = null;
+
+
+    if (slug) {
+
+        haber =
+            haberler.find(
+                item =>
+                    slugify(item.baslik) ===
+                    slug
+            );
+
+    }
+
+
+    if (!haber && oldId) {
+
+        haber =
+            haberler.find(
+                item =>
+                    Number(item.id) ===
+                    oldId
+            );
+
+    }
+
 
     const content =
-        document.getElementById("articleContent");
+        document.getElementById(
+            "articleContent"
+        );
 
-    if (!content) return;
+
+    if (!content)
+        return;
 
 
-    // HABER BULUNAMADI
+    /* =====================================================
+       HABER BULUNAMADI
+    ===================================================== */
+
     if (!haber) {
 
         content.innerHTML = `
+
             <div class="article-not-found">
 
-                <h1>Haber bulunamadı</h1>
+                <h1>
+                    Haber bulunamadı
+                </h1>
 
                 <p>
                     Aradığınız haber mevcut değil
@@ -36,36 +131,86 @@ document.addEventListener("DOMContentLoaded", () => {
                 </a>
 
             </div>
+
         `;
 
         return;
+
     }
 
 
-    // SAYFA BAŞLIĞI
+    /* =====================================================
+       DOĞRU URL
+    ===================================================== */
+
+    const correctUrl =
+        `/haber/${slugify(
+            haber.baslik
+        )}/`;
+
+
+    /* =====================================================
+       SAYFA BAŞLIĞI
+    ===================================================== */
+
     document.title =
         `${haber.baslik} | NABIZ`;
 
 
-    // HABERİ GÖSTER
+    /* =====================================================
+       CANONICAL
+    ===================================================== */
+
+    let canonical =
+        document.querySelector(
+            'link[rel="canonical"]'
+        );
+
+
+    if (!canonical) {
+
+        canonical =
+            document.createElement("link");
+
+        canonical.rel =
+            "canonical";
+
+        document.head.appendChild(
+            canonical
+        );
+
+    }
+
+
+    canonical.href =
+        `${window.location.origin}${correctUrl}`;
+
+
+    /* =====================================================
+       HABER
+    ===================================================== */
+
     content.innerHTML = `
 
         <div class="article-category">
-            ${haber.kategori}
+            ${haber.kategori || "HABER"}
         </div>
+
 
         <h1 class="article-title">
             ${haber.baslik}
         </h1>
 
+
         <p class="article-spot">
-            ${haber.spot}
+            ${haber.spot || ""}
         </p>
+
 
         <div class="article-meta">
 
             <span>
-                ${haber.tarih}
+                ${haber.tarih || ""}
             </span>
 
             <span>
@@ -78,35 +223,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
         </div>
 
+
         <img
             class="article-image"
-            src="${haber.gorsel}"
+            src="${haber.gorsel || "/images/haber11.png"}"
             alt="${haber.baslik}"
         >
 
+
         <div class="article-text">
-            ${haber.icerik}
+            ${haber.icerik || ""}
         </div>
 
     `;
 
 
-    // HABER URL'Sİ
+    /* =====================================================
+       PAYLAŞIM URL
+    ===================================================== */
+
     const url =
-        window.location.href;
+        window.location.origin +
+        correctUrl;
+
 
     const encodedUrl =
         encodeURIComponent(url);
 
+
     const encodedTitle =
-        encodeURIComponent(haber.baslik);
+        encodeURIComponent(
+            haber.baslik
+        );
 
 
-    // WHATSAPP
+    /* =====================================================
+       WHATSAPP
+    ===================================================== */
+
     const whatsapp =
         document.getElementById(
             "whatsappShare"
         );
+
 
     if (whatsapp) {
 
@@ -116,11 +275,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // X
+    /* =====================================================
+       X
+    ===================================================== */
+
     const x =
         document.getElementById(
             "xShare"
         );
+
 
     if (x) {
 
@@ -130,11 +293,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // LİNK KOPYALA
+    /* =====================================================
+       LİNK KOPYALA
+    ===================================================== */
+
     const copy =
         document.getElementById(
             "copyShare"
         );
+
 
     if (copy) {
 
@@ -144,12 +311,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 try {
 
-                    await navigator.clipboard.writeText(
-                        url
-                    );
+                    await navigator.clipboard
+                        .writeText(url);
 
                     copy.textContent =
                         "Kopyalandı ✓";
+
 
                     setTimeout(() => {
 
@@ -172,11 +339,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // PAYLAŞ
+    /* =====================================================
+       TELEFON PAYLAŞ
+    ===================================================== */
+
     const share =
         document.getElementById(
             "nativeShare"
         );
+
 
     if (share) {
 
@@ -184,7 +355,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             async () => {
 
-                // Telefon / tarayıcı paylaşımı
                 if (navigator.share) {
 
                     try {
@@ -195,32 +365,25 @@ document.addEventListener("DOMContentLoaded", () => {
                                 haber.baslik,
 
                             text:
-                                haber.spot,
+                                haber.spot || "",
 
                             url:
                                 url
 
                         });
 
-                    } catch {
+                    } catch {}
 
-                        // Kullanıcı paylaşımı iptal etti.
-
-                    }
-
-                }
-
-                // Paylaşım desteklenmiyorsa linki kopyala
-                else {
+                } else {
 
                     try {
 
-                        await navigator.clipboard.writeText(
-                            url
-                        );
+                        await navigator.clipboard
+                            .writeText(url);
 
                         share.textContent =
                             "Link Kopyalandı ✓";
+
 
                         setTimeout(() => {
 
