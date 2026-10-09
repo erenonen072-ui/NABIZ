@@ -1,159 +1,177 @@
-window.haberler = [
+window.NABIZ_HABERLER = [
 
-{
-    id: 1,
-    kategori: "Teknoloji",
-    baslik: "Türkiye'nin uzay hedefinde yeni adım: Salda Bilim Merkezi açıldı",
-    spot: "Uzay ve havacılık alanında çalışmaların yürütüleceği yeni bilim merkezi ziyaretçilere kapılarını açtı.",
-    tarih: "8 Ekim 2026",
-    saat: "17:30",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Türkiye'nin bilim ve teknoloji alanındaki çalışmalarına yönelik yeni bir merkez hizmete açıldı.
-        Merkezde uzay, havacılık ve roket teknolojileri hakkında çeşitli eğitim ve araştırma
-        faaliyetlerinin yürütülmesi planlanıyor.
-    `
-},
+    {
+        id: 1,
 
-{
-    id: 2,
-    kategori: "Gündem",
-    baslik: "Türkiye'de gündemin öne çıkan başlıkları belli oldu",
-    spot: "Günün öne çıkan gelişmeleri siyaset, ekonomi ve toplum başlıklarında yoğunlaştı.",
-    tarih: "8 Ekim 2026",
-    saat: "16:45",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Türkiye'de gün boyunca yaşanan gelişmeler kamuoyunun gündeminde yer aldı.
-        Farklı başlıklarda yapılan açıklamalar ve yeni gelişmeler yakından takip edildi.
-    `
-},
+        slug: "gundemden-yeni-gelismeler",
 
-{
-    id: 3,
-    kategori: "Dünya",
-    baslik: "Dünyada önemli gelişmeler: Gözler yeni açıklamalarda",
-    spot: "Uluslararası gündemde yaşanan gelişmeler nedeniyle gözler ülkelerden gelecek açıklamalara çevrildi.",
-    tarih: "8 Ekim 2026",
-    saat: "15:50",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Dünya gündeminde diplomasi ve ekonomi başlıkları öne çıkıyor.
-        Ülkeler arasında devam eden görüşmeler ve yapılan açıklamalar uluslararası kamuoyunda
-        yakından takip ediliyor.
-    `
-},
+        baslik: "Gündemden yeni gelişmeler",
 
-{
-    id: 4,
-    kategori: "Ekonomi",
-    baslik: "Piyasalarda hareketlilik: Yatırımcıların gözü yeni verilerde",
-    spot: "Piyasalarda gün içinde hareketlilik yaşanırken yatırımcılar açıklanacak yeni ekonomik verileri bekliyor.",
-    tarih: "8 Ekim 2026",
-    saat: "14:40",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Finans piyasalarında gün içerisinde hareketli bir görünüm dikkat çekti.
-        Yatırımcılar önümüzdeki döneme ilişkin ekonomik göstergeleri ve yeni açıklamaları
-        yakından takip ediyor.
-    `
-},
+        spot: "Günün öne çıkan gelişmeleri ve gündem başlıkları NABIZ'da.",
 
-{
-    id: 5,
-    kategori: "Spor",
-    baslik: "Spor dünyasında günün öne çıkan gelişmeleri",
-    spot: "Futbol başta olmak üzere spor dünyasında yaşanan son gelişmeler gündemde.",
-    tarih: "8 Ekim 2026",
-    saat: "13:55",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Spor dünyasında günün önemli gelişmeleri taraftarların gündeminde.
-        Takımların hazırlıkları, oyuncuların performansları ve yaklaşan karşılaşmalar
-        spor kamuoyunun ilgisini çekiyor.
-    `
-},
+        kategori: "Gündem",
 
-{
-    id: 6,
-    kategori: "Teknoloji",
-    baslik: "Yapay zeka teknolojilerinde yeni dönem başlıyor",
-    spot: "Yapay zeka alanındaki yeni çalışmalar teknoloji sektöründe büyük ilgi görüyor.",
-    tarih: "8 Ekim 2026",
-    saat: "12:30",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Yapay zeka teknolojileri farklı sektörlerde kullanılmaya devam ediyor.
-        Yeni nesil sistemlerin eğitim, üretim ve günlük yaşamda daha fazla kullanılması
-        bekleniyor.
-    `
-},
+        tarih: "9 Ekim 2026",
 
-{
-    id: 7,
-    kategori: "Magazin",
-    baslik: "Magazin dünyasında günün en çok konuşulan gelişmeleri",
-    spot: "Ünlü isimlerin açıklamaları ve yeni projeleri magazin gündeminde öne çıktı.",
-    tarih: "8 Ekim 2026",
-    saat: "11:45",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Magazin dünyasında yeni projeler ve açıklamalar günün dikkat çeken başlıkları
-        arasında yer aldı. Sosyal medyada yapılan paylaşımlar da takipçiler tarafından
-        yoğun ilgi gördü.
-    `
-},
+        saat: "17:00",
 
-{
-    id: 8,
-    kategori: "Gündem",
-    baslik: "Yeni düzenlemeler için çalışmalar sürüyor",
-    spot: "Kamuoyunu ilgilendiren bazı başlıklarda çalışmaların devam ettiği bildirildi.",
-    tarih: "8 Ekim 2026",
-    saat: "10:50",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Kamuoyunun yakından takip ettiği çeşitli konularda çalışmalar devam ediyor.
-        Yetkililerin önümüzdeki günlerde yeni açıklamalar yapması bekleniyor.
-    `
-},
+        tarihISO: "2026-10-09T17:00:00+03:00",
 
-{
-    id: 9,
-    kategori: "Dünya",
-    baslik: "Uluslararası piyasalarda haftanın hareketli günlerinden biri",
-    spot: "Küresel piyasalarda ekonomik gelişmeler ve ülkelerden gelen açıklamalar takip ediliyor.",
-    tarih: "8 Ekim 2026",
-    saat: "09:35",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Uluslararası piyasalarda yatırımcıların gündeminde ekonomik göstergeler bulunuyor.
-        Küresel ekonomiye ilişkin gelişmeler piyasaların yönü açısından önem taşıyor.
-    `
-},
+        yazar: "NABIZ Haber Merkezi",
 
-{
-    id: 10,
-    kategori: "Ekonomi",
-    baslik: "Ekonomide yeni haftanın gündemi yoğun",
-    spot: "Ekonomi yönetiminden gelecek açıklamalar ve yeni veriler yakından takip ediliyor.",
-    tarih: "8 Ekim 2026",
-    saat: "08:50",
-    kaynak: "NABIZ",
-    gorsel: "/images/haber11.png",
-    icerik: `
-        Ekonomi gündeminde yeni haftada açıklanacak veriler ve yapılacak değerlendirmeler
-        öne çıkıyor. Piyasalardaki gelişmeler yatırımcılar tarafından yakından izleniyor.
-    `
-}
+        kaynak: "NABIZ",
+
+        gorsel: "/images/haber-1.jpg",
+
+        goruntulenme: 12500,
+
+        icerik: [
+            "Günün öne çıkan gelişmeleri gündemdeki yerini koruyor.",
+
+            "Türkiye ve dünyadan önemli gelişmeler haber merkezimiz tarafından takip ediliyor.",
+
+            "Gelişmeler yaşandıkça haberimiz güncellenecektir."
+        ]
+    },
+
+
+    {
+        id: 2,
+
+        slug: "ekonomide-gunun-one-cikan-gelismeleri",
+
+        baslik: "Ekonomide günün öne çıkan gelişmeleri",
+
+        spot: "Ekonomi gündeminde günün öne çıkan gelişmeleri.",
+
+        kategori: "Ekonomi",
+
+        tarih: "9 Ekim 2026",
+
+        saat: "16:40",
+
+        tarihISO: "2026-10-09T16:40:00+03:00",
+
+        yazar: "NABIZ Ekonomi",
+
+        kaynak: "NABIZ",
+
+        gorsel: "/images/haber-2.jpg",
+
+        goruntulenme: 11200,
+
+        icerik: [
+            "Ekonomi gündemindeki gelişmeler yakından takip ediliyor.",
+
+            "Piyasalardaki hareketlilik ve gün içerisinde yapılan açıklamalar ekonomi gündeminin başlıkları arasında yer alıyor.",
+
+            "NABIZ gelişmeleri okuyucularına aktarmaya devam ediyor."
+        ]
+    },
+
+
+    {
+        id: 3,
+
+        slug: "dunyadan-son-gelismeler",
+
+        baslik: "Dünyadan son gelişmeler",
+
+        spot: "Uluslararası gündemde öne çıkan gelişmeler.",
+
+        kategori: "Dünya",
+
+        tarih: "9 Ekim 2026",
+
+        saat: "16:20",
+
+        tarihISO: "2026-10-09T16:20:00+03:00",
+
+        yazar: "NABIZ Dünya",
+
+        kaynak: "NABIZ",
+
+        gorsel: "/images/haber-3.jpg",
+
+        goruntulenme: 9800,
+
+        icerik: [
+            "Dünya gündeminde gün içerisinde birçok gelişme yaşanıyor.",
+
+            "Uluslararası gelişmeler yakından takip edilirken yeni açıklamalar gündeme geliyor.",
+
+            "NABIZ haber merkezi gelişmeleri takip ediyor."
+        ]
+    },
+
+
+    {
+        id: 4,
+
+        slug: "spor-dunyasinda-gunun-gelismeleri",
+
+        baslik: "Spor dünyasında günün gelişmeleri",
+
+        spot: "Spor gündeminden öne çıkan son gelişmeler.",
+
+        kategori: "Spor",
+
+        tarih: "9 Ekim 2026",
+
+        saat: "15:55",
+
+        tarihISO: "2026-10-09T15:55:00+03:00",
+
+        yazar: "NABIZ Spor",
+
+        kaynak: "NABIZ",
+
+        gorsel: "/images/haber-4.jpg",
+
+        goruntulenme: 9100,
+
+        icerik: [
+            "Spor dünyasında günün öne çıkan gelişmeleri takip ediliyor.",
+
+            "Takımlar ve sporcularla ilgili gelişmeler sporseverlerin gündeminde.",
+
+            "NABIZ spor servisinden son gelişmeler."
+        ]
+    },
+
+
+    {
+        id: 5,
+
+        slug: "teknoloji-dunyasinda-dikkat-ceken-gelisme",
+
+        baslik: "Teknoloji dünyasında dikkat çeken gelişme",
+
+        spot: "Teknoloji sektöründeki yeni gelişmeler.",
+
+        kategori: "Teknoloji",
+
+        tarih: "9 Ekim 2026",
+
+        saat: "15:30",
+
+        tarihISO: "2026-10-09T15:30:00+03:00",
+
+        yazar: "NABIZ Teknoloji",
+
+        kaynak: "NABIZ",
+
+        gorsel: "/images/haber-5.jpg",
+
+        goruntulenme: 8700,
+
+        icerik: [
+            "Teknoloji dünyasında yeni gelişmeler yaşanmaya devam ediyor.",
+
+            "Yeni ürünler, yazılımlar ve teknoloji şirketlerinin açıklamaları gündemde.",
+
+            "NABIZ teknoloji gelişmelerini takip ediyor."
+        ]
+    }
 
 ];
