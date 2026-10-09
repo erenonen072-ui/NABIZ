@@ -8,7 +8,6 @@ const haberler = window.NABIZ_HABERLER || [];
 function haberKart(haber) {
     return `
         <article class="news-card">
-
             <a href="/haberler/${haber.slug}.html">
 
                 <div class="news-image">
@@ -17,7 +16,7 @@ function haberKart(haber) {
                         alt="${haber.baslik || 'NABIZ Haber'}"
                         loading="lazy"
                         decoding="async"
-                        onerror="this.onerror=null; this.src='/images/haber.jpg';"
+                        onerror="this.onerror=null;this.src='/images/haber.jpg';"
                     >
                 </div>
 
@@ -26,9 +25,20 @@ function haberKart(haber) {
                 </div>
 
             </a>
-
         </article>
     `;
+}
+
+
+/* =========================================
+   TARİHE GÖRE SIRALA
+========================================= */
+
+function tariheGoreSirala(liste) {
+    return [...liste].sort((a, b) => {
+        return new Date(b.tarihISO || 0) -
+               new Date(a.tarihISO || 0);
+    });
 }
 
 
@@ -38,19 +48,11 @@ function haberKart(haber) {
 
 function sonHaberleriYukle() {
 
-    const alan = document.querySelector("#son-haberler");
+    const alan = document.querySelector("#latestNews");
 
     if (!alan) return;
 
-    const liste = [...haberler]
-        .sort((a, b) => {
-
-            const tarihA = new Date(a.tarihISO || 0).getTime();
-            const tarihB = new Date(b.tarihISO || 0).getTime();
-
-            return tarihB - tarihA;
-
-        })
+    const liste = tariheGoreSirala(haberler)
         .slice(0, 8);
 
     alan.innerHTML = liste
@@ -65,16 +67,14 @@ function sonHaberleriYukle() {
 
 function cokOkunanlariYukle() {
 
-    const alan = document.querySelector("#cok-okunanlar");
+    const alan = document.querySelector("#popularNews");
 
     if (!alan) return;
 
     const liste = [...haberler]
         .sort((a, b) => {
-
             return (b.goruntulenme || 0) -
                    (a.goruntulenme || 0);
-
         })
         .slice(0, 5);
 
@@ -88,95 +88,160 @@ function cokOkunanlariYukle() {
    KATEGORİ HABERLERİ
 ========================================= */
 
-function kategoriHaberleriniYukle() {
+function kategoriYukle(id, kategori) {
 
-    const alanlar = document.querySelectorAll("[data-kategori]");
+    const alan = document.querySelector(`#${id}`);
 
-    if (!alanlar.length) return;
+    if (!alan) return;
 
-    alanlar.forEach(alan => {
+    const liste = tariheGoreSirala(
+        haberler.filter(haber =>
+            haber.kategori === kategori
+        )
+    ).slice(0, 4);
 
-        const kategori = alan.dataset.kategori;
+    if (!liste.length) {
+        alan.innerHTML = `
+            <div class="empty-news">
+                Bu kategoride henüz haber bulunmuyor.
+            </div>
+        `;
+        return;
+    }
 
-        const liste = haberler
-            .filter(haber => haber.kategori === kategori)
-            .sort((a, b) => {
-
-                const tarihA = new Date(a.tarihISO || 0).getTime();
-                const tarihB = new Date(b.tarihISO || 0).getTime();
-
-                return tarihB - tarihA;
-
-            })
-            .slice(0, 4);
-
-        alan.innerHTML = liste
-            .map(haberKart)
-            .join("");
-
-    });
+    alan.innerHTML = liste
+        .map(haberKart)
+        .join("");
 }
 
 
 /* =========================================
-   HERO HABER
+   HERO
 ========================================= */
 
-function heroHaberYukle() {
+function heroYukle() {
 
-    const alan = document.querySelector("#hero-haber");
+    const alan = document.querySelector("#hero");
 
-    if (!alan || !haberler.length) return;
+    if (!alan) return;
 
-    const hero = [...haberler]
-        .sort((a, b) => {
+    const liste = tariheGoreSirala(haberler)
+        .slice(0, 20);
 
-            const tarihA = new Date(a.tarihISO || 0).getTime();
-            const tarihB = new Date(b.tarihISO || 0).getTime();
+    if (!liste.length) return;
 
-            return tarihB - tarihA;
+    let aktif = 0;
 
-        })[0];
+    function goster(index) {
 
-    if (!hero) return;
+        const haber = liste[index];
 
-    alan.innerHTML = `
-        <a
-            href="/haberler/${hero.slug}.html"
-            class="hero-link"
-        >
-
-            <img
-                src="${hero.gorsel || '/images/haber.jpg'}"
-                alt="${hero.baslik || 'NABIZ Haber'}"
-                class="hero-image"
-                onerror="this.onerror=null; this.src='/images/haber.jpg';"
+        alan.innerHTML = `
+            <a
+                href="/haberler/${haber.slug}.html"
+                class="hero-link"
             >
 
-            <div class="hero-overlay">
+                <img
+                    src="${haber.gorsel || '/images/haber.jpg'}"
+                    alt="${haber.baslik}"
+                    class="hero-image"
+                    onerror="this.onerror=null;this.src='/images/haber.jpg';"
+                >
 
-                <h1>
-                    ${hero.baslik || ''}
-                </h1>
+                <div class="hero-overlay">
+                    <h1>${haber.baslik}</h1>
+                </div>
 
-            </div>
+            </a>
+        `;
 
-        </a>
-    `;
+        paginationGuncelle(index);
+    }
+
+
+    function paginationGuncelle(index) {
+
+        const pagination =
+            document.querySelector("#heroPagination");
+
+        if (!pagination) return;
+
+        pagination.innerHTML = liste
+            .map((haber, i) => `
+                <button
+                    type="button"
+                    class="${i === index ? "active" : ""}"
+                    data-hero="${i}"
+                    aria-label="${haber.baslik}"
+                >
+                    ${i + 1}
+                </button>
+            `)
+            .join("");
+
+        pagination
+            .querySelectorAll("[data-hero]")
+            .forEach(button => {
+
+                button.addEventListener("click", () => {
+
+                    aktif = Number(
+                        button.dataset.hero
+                    );
+
+                    goster(aktif);
+
+                });
+
+            });
+    }
+
+
+    goster(aktif);
+
+
+    if (liste.length > 1) {
+
+        setInterval(() => {
+
+            aktif++;
+
+            if (aktif >= liste.length) {
+                aktif = 0;
+            }
+
+            goster(aktif);
+
+        }, 6500);
+
+    }
 }
 
 
 /* =========================================
-   HABER ARAMA
+   ARAMA
 ========================================= */
 
-function haberArama() {
+function aramaSistemi() {
 
-    const input = document.querySelector("#haber-arama");
+    const input =
+        document.querySelector("#searchInput");
 
-    const sonuc = document.querySelector("#arama-sonuclari");
+    const results =
+        document.querySelector("#searchResults");
 
-    if (!input || !sonuc) return;
+    const clear =
+        document.querySelector("#searchClear");
+
+    const panel =
+        document.querySelector("#searchPanel");
+
+    const open =
+        document.querySelector("#searchOpen");
+
+    if (!input || !results) return;
+
 
     function ara() {
 
@@ -184,29 +249,27 @@ function haberArama() {
             .trim()
             .toLocaleLowerCase("tr-TR");
 
+
         if (!kelime) {
 
-            sonuc.innerHTML = `
-                <div class="search-empty">
-                    <h3>Haber arayın</h3>
-                    <p>
-                        Aramak istediğiniz haber başlığını yazın.
-                    </p>
-                </div>
-            `;
+            results.innerHTML = "";
 
             return;
         }
 
+
         const bulunanlar = haberler.filter(haber => {
 
-            const baslik = (haber.baslik || "")
+            const baslik =
+                (haber.baslik || "")
                 .toLocaleLowerCase("tr-TR");
 
-            const spot = (haber.spot || "")
+            const spot =
+                (haber.spot || "")
                 .toLocaleLowerCase("tr-TR");
 
-            const kategori = (haber.kategori || "")
+            const kategori =
+                (haber.kategori || "")
                 .toLocaleLowerCase("tr-TR");
 
             return (
@@ -217,11 +280,12 @@ function haberArama() {
 
         });
 
+
         if (!bulunanlar.length) {
 
-            sonuc.innerHTML = `
+            results.innerHTML = `
                 <div class="search-empty">
-                    <h3>Haber bulunamadı</h3>
+                    <strong>Haber bulunamadı</strong>
                     <p>
                         "${input.value}" için sonuç bulunamadı.
                     </p>
@@ -231,117 +295,65 @@ function haberArama() {
             return;
         }
 
-        sonuc.innerHTML = bulunanlar
+
+        results.innerHTML = bulunanlar
             .map(haberKart)
             .join("");
     }
 
+
     input.addEventListener("input", ara);
 
-    const form = input.closest("form");
 
-    if (form) {
+    if (clear) {
 
-        form.addEventListener("submit", event => {
+        clear.addEventListener("click", () => {
 
-            event.preventDefault();
+            input.value = "";
 
-            ara();
+            results.innerHTML = "";
+
+            input.focus();
 
         });
 
     }
-}
 
 
-/* =========================================
-   KATEGORİ FİLTRESİ
-========================================= */
+    if (open && panel) {
 
-function kategoriFiltresi() {
+        open.addEventListener("click", () => {
 
-    const butonlar =
-        document.querySelectorAll("[data-filtre-kategori]");
+            panel.classList.toggle("active");
 
-    const alan =
-        document.querySelector("#filtre-sonuclari");
-
-    if (!butonlar.length || !alan) return;
-
-    butonlar.forEach(buton => {
-
-        buton.addEventListener("click", () => {
-
-            const kategori =
-                buton.dataset.filtreKategori;
-
-            butonlar.forEach(b => {
-                b.classList.remove("active");
-            });
-
-            buton.classList.add("active");
-
-            let liste = haberler;
-
-            if (kategori !== "Tümü") {
-
-                liste = haberler.filter(
-                    haber => haber.kategori === kategori
-                );
-
+            if (panel.classList.contains("active")) {
+                input.focus();
             }
 
-            alan.innerHTML = liste
-                .map(haberKart)
-                .join("");
-
         });
 
-    });
+    }
+
 }
 
 
 /* =========================================
-   HABER SAYFASI İLGİLİ HABERLER
+   TEMA
 ========================================= */
 
-function ilgiliHaberleriYukle() {
+function temaSistemi() {
 
-    const alan =
-        document.querySelector("#related-news-grid");
+    const button =
+        document.querySelector("#themeButton");
 
-    if (!alan) return;
+    if (!button) return;
 
-    const mevcutSlug =
-        document.body.dataset.haberSlug || "";
+    button.addEventListener("click", () => {
 
-    const mevcutHaber =
-        haberler.find(haber => haber.slug === mevcutSlug);
+        document.body.classList.toggle("dark-mode");
 
-    let liste = [];
+    });
 
-    if (mevcutHaber) {
-
-        liste = haberler
-            .filter(haber =>
-                haber.slug !== mevcutSlug &&
-                haber.kategori === mevcutHaber.kategori
-            )
-            .slice(0, 4);
-
-    }
-
-    if (!liste.length) {
-
-        liste = haberler
-            .filter(haber => haber.slug !== mevcutSlug)
-            .slice(0, 4);
-
-    }
-
-    alan.innerHTML = liste
-        .map(haberKart)
-        .join("");
 }
 
 
@@ -351,18 +363,55 @@ function ilgiliHaberleriYukle() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    heroHaberYukle();
+    if (!haberler.length) {
+
+        console.error(
+            "NABIZ: haberler.js yüklenemedi veya haber bulunamadı."
+        );
+
+        return;
+    }
+
+
+    heroYukle();
 
     sonHaberleriYukle();
 
     cokOkunanlariYukle();
 
-    kategoriHaberleriniYukle();
 
-    haberArama();
+    kategoriYukle(
+        "gundemNews",
+        "Gündem"
+    );
 
-    kategoriFiltresi();
 
-    ilgiliHaberleriYukle();
+    kategoriYukle(
+        "ekonomiNews",
+        "Ekonomi"
+    );
+
+
+    kategoriYukle(
+        "sporNews",
+        "Spor"
+    );
+
+
+    kategoriYukle(
+        "dunyaNews",
+        "Dünya"
+    );
+
+
+    kategoriYukle(
+        "teknolojiNews",
+        "Teknoloji"
+    );
+
+
+    aramaSistemi();
+
+    temaSistemi();
 
 });
