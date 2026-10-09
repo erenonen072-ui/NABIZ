@@ -129,7 +129,9 @@ img {
 }
 
 
-/* LOGO FOTOĞRAF */
+/* =========================================
+   LOGO
+========================================= */
 
 .site-logo {
 
@@ -153,7 +155,9 @@ img {
 }
 
 
-/* HEADER BUTTONS */
+/* =========================================
+   HEADER BUTTONS
+========================================= */
 
 .header-tools {
 
@@ -180,12 +184,23 @@ img {
 
     font-weight: 700;
 
+    cursor: pointer;
+
+    transition:
+        background .2s,
+        color .2s,
+        border-color .2s;
+
 }
 
 
 .tool-button:hover {
 
     border-color: black;
+
+    background: #111;
+
+    color: white;
 
 }
 
@@ -215,6 +230,15 @@ img {
 
     overflow-x: auto;
 
+    scrollbar-width: none;
+
+}
+
+
+.nav-inner::-webkit-scrollbar {
+
+    display: none;
+
 }
 
 
@@ -231,6 +255,10 @@ img {
     font-weight: 800;
 
     border-bottom: 3px solid transparent;
+
+    transition:
+        color .2s,
+        border-color .2s;
 
 }
 
@@ -268,7 +296,8 @@ img {
 }
 
 
-.search-panel.open {
+.search-panel.open,
+.search-panel.active {
 
     display: block;
 
@@ -370,6 +399,8 @@ img {
 
     font-weight: 800;
 
+    cursor: pointer;
+
 }
 
 
@@ -412,12 +443,12 @@ img {
 
 
 /* =========================================
-   HERO
+   MANŞET
 ========================================= */
 
 .hero-section {
 
-    padding: 25px 0 10px;
+    padding: 25px 0 15px;
 
 }
 
@@ -429,87 +460,162 @@ img {
 }
 
 
+/* ANA MANŞET KARTI */
+
 .hero-card {
 
     position: relative;
 
     width: 100%;
 
-    height: 580px;
+    height: 600px;
 
     overflow: hidden;
 
     background: #111;
 
-    border-radius: 8px;
+    border-radius: 12px;
+
+    isolation: isolate;
 
 }
 
+
+/* MANŞET FOTOĞRAFI */
 
 .hero-card img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-}
-
-
-.hero-content {
 
     position: absolute;
 
     inset: 0;
 
-    display: flex;
+    width: 100%;
 
-    flex-direction: column;
+    height: 100%;
 
-    justify-content: flex-end;
+    max-width: none;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    z-index: -2;
+
+    transition:
+        transform .5s ease;
+
+}
+
+
+.hero-card:hover img {
+
+    transform: scale(1.025);
+
+}
+
+
+/* FOTOĞRAF KARARTMASI */
+
+.hero-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.94) 0%,
+            rgba(0,0,0,.72) 30%,
+            rgba(0,0,0,.25) 65%,
+            rgba(0,0,0,.04) 100%
+        );
+
+}
+
+
+/* MANŞET İÇERİĞİ */
+
+.hero-content {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
 
     padding: 55px;
 
     color: white;
 
-    background:
-        linear-gradient(
-            transparent 25%,
-            rgba(0,0,0,.9)
-        );
-
 }
 
 
-.hero-content h1 {
-
-    max-width: 950px;
-
-    font-size:
-        clamp(
-            35px,
-            5vw,
-            65px
-        );
-
-    line-height: 1.02;
-
-}
-
+/* MANŞET KATEGORİ */
 
 .hero-category {
 
-    color: #ff3542;
+    display: inline-block;
 
-    font-size: 13px;
+    color: white;
+
+    background: var(--red);
+
+    padding: 6px 11px;
+
+    margin-bottom: 14px;
+
+    font-size: 11px;
 
     font-weight: 900;
 
-    margin-bottom: 10px;
+    letter-spacing: 1px;
+
+    border-radius: 3px;
 
 }
 
+
+/* MANŞET BAŞLIK */
+
+.hero-content h1 {
+
+    max-width: 1000px;
+
+    margin: 0;
+
+    color: white;
+
+    font-size:
+        clamp(
+            34px,
+            4.5vw,
+            64px
+        );
+
+    line-height: 1.04;
+
+    font-weight: 900;
+
+    letter-spacing: -1.5px;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.35);
+
+}
+
+
+/* =========================================
+   MANŞET 1-20 BUTONLARI
+========================================= */
 
 .hero-pagination {
 
@@ -517,38 +623,66 @@ img {
 
     justify-content: center;
 
-    gap: 6px;
+    align-items: center;
+
+    gap: 7px;
 
     flex-wrap: wrap;
 
-    padding: 14px 0;
+    padding: 16px 0 5px;
 
 }
 
 
 .hero-page {
 
-    width: 35px;
+    width: 36px;
 
-    height: 35px;
+    height: 36px;
 
     border-radius: 50%;
 
-    border: 1px solid #ccc;
+    border: 1px solid #d5d5d5;
 
     background: white;
 
+    color: #111;
+
+    font-size: 13px;
+
     font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background .2s,
+        color .2s,
+        transform .2s,
+        border-color .2s;
 
 }
 
 
-.hero-page.active,
 .hero-page:hover {
 
     background: #111;
 
     color: white;
+
+    border-color: #111;
+
+    transform: translateY(-2px);
+
+}
+
+
+.hero-page.active {
+
+    background: var(--red);
+
+    color: white;
+
+    border-color: var(--red);
 
 }
 
@@ -570,6 +704,10 @@ img {
 
 }
 
+
+/* =========================================
+   SECTION BAŞLIĞI
+========================================= */
 
 .section-heading {
 
@@ -629,7 +767,7 @@ img {
 
 
 /* =========================================
-   HABER KARTI
+   HABER KARTLARI
    SADECE FOTOĞRAF + BAŞLIK
 ========================================= */
 
@@ -638,27 +776,33 @@ img {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4, minmax(0, 1fr));
 
-    gap: 18px;
+    gap: 20px;
 
 }
 
 
+/* KART */
+
 .news-card {
+
+    width: 100%;
+
+    min-width: 0;
 
     background: white;
 
     overflow: hidden;
 
-    border-radius: 7px;
+    border-radius: 8px;
 
     border:
         1px solid #e4e4e4;
 
     transition:
-        transform .2s,
-        box-shadow .2s;
+        transform .2s ease,
+        box-shadow .2s ease;
 
 }
 
@@ -669,37 +813,48 @@ img {
         translateY(-4px);
 
     box-shadow:
-        0 10px 25px
+        0 12px 28px
         rgba(0,0,0,.12);
 
 }
 
 
-/* FOTOĞRAF */
+/* =========================================
+   HABER FOTOĞRAFI
+   TÜM FOTOĞRAFLAR AYNI ÖLÇÜ
+========================================= */
 
 .news-image {
 
     width: 100%;
 
-    aspect-ratio: 16 / 9;
+    height: 235px;
 
     overflow: hidden;
+
+    background: #ddd;
 
 }
 
 
+/* FOTOĞRAF KARTI TAM DOLDURUR */
+
 .news-image img {
+
+    display: block;
 
     width: 100%;
 
     height: 100%;
+
+    max-width: none;
 
     object-fit: cover;
 
     object-position: center;
 
     transition:
-        transform .3s;
+        transform .35s ease;
 
 }
 
@@ -708,31 +863,66 @@ img {
 .news-image img {
 
     transform:
-        scale(1.05);
+        scale(1.04);
 
 }
 
 
-/* SADECE BAŞLIK */
+/* =========================================
+   HABER BAŞLIĞI
+========================================= */
 
 .news-card-title {
 
-    padding: 14px 15px 16px;
+    min-height: 76px;
+
+    padding:
+        14px 15px 16px;
+
+    background: white;
 
 }
 
 
 .news-card-title h3 {
 
+    margin: 0;
+
+    color: #111;
+
     font-size: 18px;
 
-    line-height: 1.25;
+    line-height: 1.3;
+
+    font-weight: 800;
 
 }
 
 
 /* =========================================
-   POPÜLER
+   BOŞ HABER
+========================================= */
+
+.empty-news {
+
+    grid-column: 1 / -1;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    color: #777;
+
+}
+
+
+/* =========================================
+   ÇOK OKUNANLAR
 ========================================= */
 
 .popular-grid {
@@ -740,9 +930,9 @@ img {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4, minmax(0, 1fr));
 
-    gap: 18px;
+    gap: 20px;
 
 }
 
@@ -751,20 +941,31 @@ img {
 
     position: relative;
 
+    width: 100%;
+
+    min-width: 0;
+
     background: white;
 
-    border-radius: 7px;
+    border-radius: 8px;
 
     overflow: hidden;
+
+    border:
+        1px solid #e4e4e4;
 
 }
 
 
 .popular-card img {
 
+    display: block;
+
     width: 100%;
 
-    aspect-ratio: 16 / 9;
+    height: 235px;
+
+    max-width: none;
 
     object-fit: cover;
 
@@ -800,9 +1001,48 @@ img {
 
 .popular-card h3 {
 
-    padding: 13px 14px 16px;
+    padding:
+        13px 14px 16px;
 
     font-size: 17px;
+
+    line-height: 1.3;
+
+}
+
+
+/* =========================================
+   ARAMA SONUÇLARI
+========================================= */
+
+.search-empty {
+
+    padding: 35px;
+
+    text-align: center;
+
+    background: #fafafa;
+
+    border:
+        1px solid #ddd;
+
+}
+
+
+.search-empty strong {
+
+    display: block;
+
+    font-size: 20px;
+
+}
+
+
+.search-empty p {
+
+    margin-top: 7px;
+
+    color: #777;
 
 }
 
@@ -817,7 +1057,8 @@ img {
 
     color: white;
 
-    padding: 50px 0 20px;
+    padding:
+        50px 0 20px;
 
 }
 
@@ -866,7 +1107,8 @@ img {
 
 .footer-bottom {
 
-    border-top: 1px solid #333;
+    border-top:
+        1px solid #333;
 
     margin-top: 30px;
 
@@ -880,8 +1122,147 @@ img {
 
 
 /* =========================================
+   DARK MODE
+========================================= */
+
+body.dark-mode {
+
+    background: #101010;
+
+    color: white;
+
+}
+
+
+body.dark-mode .site-header,
+body.dark-mode .header-top,
+body.dark-mode .main-nav {
+
+    background: #171717;
+
+    border-color: #333;
+
+}
+
+
+body.dark-mode .nav-inner a {
+
+    color: white;
+
+}
+
+
+body.dark-mode .nav-inner a:hover,
+body.dark-mode .nav-inner a.active {
+
+    color: #ff3542;
+
+}
+
+
+body.dark-mode .tool-button {
+
+    background: #171717;
+
+    color: white;
+
+    border-color: #444;
+
+}
+
+
+body.dark-mode .search-panel {
+
+    background: #171717;
+
+    border-color: #333;
+
+}
+
+
+body.dark-mode .search-box {
+
+    border-color: white;
+
+}
+
+
+body.dark-mode .search-box input {
+
+    background: #171717;
+
+    color: white;
+
+}
+
+
+body.dark-mode .section {
+
+    background: #101010;
+
+}
+
+
+body.dark-mode .category-section {
+
+    background: #171717;
+
+}
+
+
+body.dark-mode .section-heading {
+
+    border-color: white;
+
+}
+
+
+body.dark-mode .news-card,
+body.dark-mode .popular-card,
+body.dark-mode .news-card-title {
+
+    background: #171717;
+
+    border-color: #333;
+
+}
+
+
+body.dark-mode .news-card-title h3,
+body.dark-mode .popular-card h3 {
+
+    color: white;
+
+}
+
+
+body.dark-mode .hero-page {
+
+    background: #171717;
+
+    color: white;
+
+    border-color: #444;
+
+}
+
+
+/* =========================================
    RESPONSIVE
 ========================================= */
+
+@media (max-width: 1200px) {
+
+    .news-grid,
+    .popular-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+    }
+
+}
+
 
 @media (max-width: 1000px) {
 
@@ -889,14 +1270,36 @@ img {
     .popular-grid {
 
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .news-image,
+    .popular-card img {
+
+        height: 220px;
+
+    }
+
+
+    .hero-card {
+
+        height: 500px;
+
+    }
+
+
+    .hero-content {
+
+        padding: 40px;
 
     }
 
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     .container {
 
@@ -955,9 +1358,20 @@ img {
     }
 
 
+    /* MANŞET */
+
+    .hero-section {
+
+        padding-top: 15px;
+
+    }
+
+
     .hero-card {
 
         height: 400px;
+
+        border-radius: 8px;
 
     }
 
@@ -973,8 +1387,43 @@ img {
 
         font-size: 31px;
 
+        line-height: 1.08;
+
+        letter-spacing: -.5px;
+
     }
 
+
+    .hero-category {
+
+        font-size: 10px;
+
+        padding: 5px 8px;
+
+    }
+
+
+    /* MANŞET BUTONLARI */
+
+    .hero-pagination {
+
+        gap: 5px;
+
+    }
+
+
+    .hero-page {
+
+        width: 32px;
+
+        height: 32px;
+
+        font-size: 12px;
+
+    }
+
+
+    /* HABER KARTLARI */
 
     .news-grid,
     .popular-grid {
@@ -984,9 +1433,96 @@ img {
     }
 
 
+    .news-image,
+    .popular-card img {
+
+        height: 230px;
+
+    }
+
+
+    .news-card-title {
+
+        min-height: auto;
+
+    }
+
+
+    .news-card-title h3 {
+
+        font-size: 17px;
+
+    }
+
+
+    /* BÖLÜM BAŞLIĞI */
+
+    .section {
+
+        padding: 30px 0;
+
+    }
+
+
     .section-heading h2 {
 
         font-size: 24px;
+
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .header-inner {
+
+        gap: 10px;
+
+    }
+
+
+    .site-logo img {
+
+        max-width: 150px;
+
+    }
+
+
+    .tool-button {
+
+        padding: 7px;
+
+        font-size: 10px;
+
+    }
+
+
+    .hero-card {
+
+        height: 350px;
+
+    }
+
+
+    .hero-content {
+
+        padding: 20px;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .news-image,
+    .popular-card img {
+
+        height: 215px;
 
     }
 
