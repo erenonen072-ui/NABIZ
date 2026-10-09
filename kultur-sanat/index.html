@@ -1,71 +1,226 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kültür-Sanat | NABIZ</title>
-<link rel="stylesheet" href="/css/style.css">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Kültür Sanat Haberleri | NABIZ</title>
+
+<meta name="description"
+content="Kültür, sanat, sinema, kitap ve sahne sanatlarından güncel haberler.">
+
+<link rel="canonical"
+href="https://nabiz-sandy.vercel.app/kultur-sanat/">
+
+<link rel="stylesheet"
+href="/css/kategori.css">
+
 </head>
-<body>
 
-<header class="site-header">
-<div class="header-inner">
+<body data-category="Kültür Sanat">
 
-<a href="/" class="logo">NABIZ</a>
+<header class="kn-header">
 
-<nav class="main-nav">
-<a href="/">Ana Sayfa</a>
-<a href="/gundem/">Gündem</a>
-<a href="/dunya/">Dünya</a>
-<a href="/ekonomi/">Ekonomi</a>
-<a href="/spor/">Spor</a>
-<a href="/teknoloji/">Teknoloji</a>
-<a href="/magazin/">Magazin</a>
-<a href="/kultur-sanat/">Kültür-Sanat</a>
+<div class="kn-top">
+<div class="kn-wrap kn-top-inner">
+
+<a class="kn-logo" href="/">
+<img src="/images/haber.jpg" alt="NABIZ">
+</a>
+
+<div class="kn-actions">
+
+<a class="kn-search-btn" href="/arama/">
+⌕ <span>Haber Ara</span>
+</a>
+
+<button id="knTheme"
+class="kn-theme">
+◐ Tema
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<nav class="kn-nav">
+
+<div class="kn-wrap">
+
+<button
+id="knMenuButton"
+class="kn-menu-button">
+☰ MENÜ
+</button>
+
+<div
+id="knNavLinks"
+class="kn-nav-links">
+
+<a href="/">SON HABERLER</a>
+<a href="/gundem/">GÜNDEM</a>
+<a href="/ekonomi/">EKONOMİ</a>
+<a href="/spor/">SPOR</a>
+<a href="/dunya/">DÜNYA</a>
+<a href="/magazin/">MAGAZİN</a>
+<a href="/teknoloji/">TEKNOLOJİ</a>
+
+<a href="/kultur-sanat/"
+class="is-active">
+KÜLTÜR SANAT
+</a>
+
+<a href="/arama/">HABER ARA</a>
+
+</div>
+
+</div>
+
 </nav>
 
-<a href="/arama/" class="search-button">⌕</a>
-
-</div>
 </header>
 
-<main class="category-page">
 
-<h1 class="category-title">Kültür-Sanat</h1>
+<main class="kn-wrap kn-main">
 
-<div class="news-grid">
-
-<article class="news-card">
-<div class="news-content">
-<span class="news-category">Kültür-Sanat</span>
-<h3>Kültür ve sanat dünyasından gelişmeler</h3>
-<p>Sanat, sinema, kitap ve kültür dünyasından haberler.</p>
+<div class="kn-breadcrumb">
+<a href="/">Ana Sayfa</a>
+<span>›</span>
+<span>Kültür Sanat</span>
 </div>
-</article>
+
+
+<section class="kn-category-intro">
+
+<div>
+
+<span class="kn-eyebrow">
+NABIZ • KÜLTÜR SANAT
+</span>
+
+<h1>Kültür Sanat</h1>
+
+<p>
+Kitap, sinema, müzik, sahne sanatları
+ve kültür dünyasından gelişmeler.
+</p>
 
 </div>
+
+<div class="kn-intro-mark">N</div>
+
+</section>
+
+
+<section
+id="knFeaturedSection"
+class="kn-featured-section">
+
+<div class="kn-section-title">
+
+<div>
+<span>ÖNE ÇIKAN</span>
+<h2>Öne Çıkan Haberler</h2>
+</div>
+
+</div>
+
+<div
+id="knFeatured"
+class="kn-featured">
+</div>
+
+</section>
+
+
+<section class="kn-list-section">
+
+<div class="kn-section-title">
+
+<div>
+<span>NABIZ GÜNCEL</span>
+<h2>Son Kültür Sanat Haberleri</h2>
+</div>
+
+<span id="knCount"
+class="kn-count"></span>
+
+</div>
+
+
+<div
+id="knNewsGrid"
+class="kn-news-grid">
+</div>
+
+
+<div
+id="knEmpty"
+class="kn-empty"
+hidden>
+
+<strong>
+Kültür Sanat kategorisinde henüz haber bulunmuyor.
+</strong>
+
+<p>
+Bu kategoriye haber eklendiğinde burada görünecek.
+</p>
+
+<a href="/">
+Ana sayfaya dön →
+</a>
+
+</div>
+
+</section>
 
 </main>
 
-<footer>
 
-<div class="footer-inner">
+<footer class="kn-footer">
+
+<div class="kn-wrap kn-footer-inner">
 
 <div>
-<div class="footer-logo">NABIZ</div>
-<p>Türkiye ve dünyadan gündemin nabzı.</p>
+
+<img
+src="/images/haber.jpg"
+alt="NABIZ"
+class="kn-footer-logo">
+
+<p>
+Güncel haberleri hızlı ve sade şekilde takip edin.
+</p>
+
 </div>
 
-<div class="footer-links">
+<div class="kn-footer-links">
+
 <a href="/hakkimizda/">Hakkımızda</a>
 <a href="/iletisim/">İletişim</a>
-<a href="/gizlilik/">Gizlilik Politikası</a>
+<a href="/gizlilik/">Gizlilik</a>
 <a href="/kullanim-sartlari/">Kullanım Şartları</a>
+
+</div>
+
+<div class="kn-copyright">
+© 2026 NABIZ
 </div>
 
 </div>
 
 </footer>
+
+
+<script src="/js/haberler.js"></script>
+<script src="/js/kategori.js"></script>
 
 </body>
 </html>
