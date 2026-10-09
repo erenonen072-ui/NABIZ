@@ -1604,3 +1604,181 @@ body.dark-mode .hero-pagination button.active {
         aspect-ratio: 16 / 9;
     }
 }
+/* =========================================
+   NABIZ - FOTOĞRAFLARI KARTA TAM OTURT
+========================================= */
+
+.hero-main-link,
+.hero-side-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+/* SOL MANŞET */
+.hero-main-link {
+    aspect-ratio: 16 / 9;
+}
+
+.hero-main-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    /* FOTOĞRAFIN TAMAMI GÖRÜNSÜN */
+    object-fit: contain;
+    object-position: center;
+
+    background: #000;
+}
+
+/* SAĞ MANŞET */
+.hero-side-link {
+    height: 100%;
+    min-height: 0;
+}
+
+.hero-side-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+    object-position: center;
+
+    background: #000;
+}
+
+
+/* =========================================
+   HABER KARTLARI
+========================================= */
+
+.news-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+    object-position: center;
+
+    background: #000;
+}
+
+
+/* ÇOK OKUNANLAR */
+.popular-card {
+    overflow: hidden;
+}
+
+.popular-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+    object-position: center;
+
+    background: #000;
+}
+
+
+/* =========================================
+   MOBİL
+========================================= */
+
+@media (max-width: 650px) {
+
+    .hero-main-link {
+        aspect-ratio: 16 / 9;
+    }
+
+    .hero-main-image {
+        object-fit: contain;
+    }
+
+    .news-image,
+    .popular-card img {
+        aspect-ratio: 16 / 9;
+    }
+}
+/* =========================================
+   HABER KARTLARI - FOTOĞRAF TAM OTURSUN
+========================================= */
+
+.news-card {
+    overflow: hidden;
+}
+
+.news-card .news-image {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    background: #111;
+}
+
+.news-card .news-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    /* Kartın tamamını doldur */
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Çok okunan haber kartları */
+.popular-card {
+    overflow: hidden;
+}
+
+.popular-card img {
+    width: 100%;
+    height: 210px;
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Küçük ekran */
+@media (max-width: 900px) {
+    .news-card .news-image {
+        height: 180px;
+    }
+
+    .popular-card img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 650px) {
+    .news-card .news-image {
+        height: 150px;
+    }
+
+    .popular-card img {
+        height: 150px;
+    }
+}
