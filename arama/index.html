@@ -1,135 +1,370 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
 <title>Haber Ara | NABIZ</title>
-<link rel="stylesheet" href="/css/style.css">
+
+<meta name="description"
+content="NABIZ haber arama sayfası. Haber başlıklarını ve konuları kolayca bulun.">
+
+<link rel="canonical"
+href="https://nabiz-sandy.vercel.app/arama/">
+
+<link rel="stylesheet"
+href="/css/kategori.css">
+
 </head>
 
-<body>
 
-<header class="site-header">
+<body data-search-page="true">
 
-<div class="header-inner">
 
-<a href="/" class="logo">NABIZ</a>
+<header class="kn-header">
 
-<nav class="main-nav">
-<a href="/">Ana Sayfa</a>
-<a href="/gundem/">Gündem</a>
-<a href="/dunya/">Dünya</a>
-<a href="/ekonomi/">Ekonomi</a>
-<a href="/spor/">Spor</a>
-<a href="/teknoloji/">Teknoloji</a>
-<a href="/magazin/">Magazin</a>
-<a href="/kultur-sanat/">Kültür-Sanat</a>
-</nav>
+<div class="kn-top">
 
-</div>
+<div class="kn-wrap kn-top-inner">
 
-</header>
+<a
+class="kn-logo"
+href="/">
 
-<main class="search-page">
-
-<h1 class="category-title">Haber Ara</h1>
-
-<form class="search-box" id="searchForm">
-
-<input
-id="searchInput"
-type="search"
-placeholder="Haber ara..."
-autocomplete="off"
->
-
-<button type="submit">Ara</button>
-
-</form>
-
-<div class="news-grid" id="results"></div>
-
-</main>
-
-<script src="/js/haberler.js"></script>
-
-<script>
-
-const form = document.getElementById("searchForm");
-const input = document.getElementById("searchInput");
-const results = document.getElementById("results");
-
-function slugify(text) {
-
-return text
-.toLowerCase()
-.replace(/ğ/g,"g")
-.replace(/ü/g,"u")
-.replace(/ş/g,"s")
-.replace(/ı/g,"i")
-.replace(/ö/g,"o")
-.replace(/ç/g,"c")
-.replace(/[^a-z0-9]+/g,"-")
-.replace(/^-+|-+$/g,"");
-
-}
-
-form.addEventListener("submit", function(e) {
-
-e.preventDefault();
-
-const query = input.value.toLowerCase().trim();
-
-if (!query) {
-results.innerHTML = "<p>Lütfen bir arama yapın.</p>";
-return;
-}
-
-const found = window.haberler.filter(h =>
-h.baslik.toLowerCase().includes(query) ||
-h.spot.toLowerCase().includes(query) ||
-h.kategori.toLowerCase().includes(query)
-);
-
-if (!found.length) {
-
-results.innerHTML = `
-<p>Aradığınız haber bulunamadı.</p>
-`;
-
-return;
-
-}
-
-results.innerHTML = found.map(h => `
-
-<article class="news-card">
-
-<a href="/haber/${h.id}-${slugify(h.baslik)}/">
-
-<img src="${h.gorsel}" alt="${h.baslik}">
-
-<div class="news-content">
-
-<span class="news-category">
-${h.kategori}
-</span>
-
-<h3>${h.baslik}</h3>
-
-<p>${h.spot}</p>
-
-</div>
+<img
+src="/images/haber.jpg"
+alt="NABIZ">
 
 </a>
 
-</article>
 
-`).join("");
+<div class="kn-actions">
 
-});
+<a
+class="kn-search-btn"
+href="/arama/">
 
-</script>
+⌕
+<span>Haber Ara</span>
+
+</a>
+
+
+<button
+id="knTheme"
+class="kn-theme">
+
+◐ Tema
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<nav class="kn-nav">
+
+<div class="kn-wrap">
+
+<button
+id="knMenuButton"
+class="kn-menu-button">
+
+☰ MENÜ
+
+</button>
+
+
+<div
+id="knNavLinks"
+class="kn-nav-links">
+
+<a href="/">
+SON HABERLER
+</a>
+
+<a href="/gundem/">
+GÜNDEM
+</a>
+
+<a href="/ekonomi/">
+EKONOMİ
+</a>
+
+<a href="/spor/">
+SPOR
+</a>
+
+<a href="/dunya/">
+DÜNYA
+</a>
+
+<a href="/magazin/">
+MAGAZİN
+</a>
+
+<a href="/teknoloji/">
+TEKNOLOJİ
+</a>
+
+<a href="/kultur-sanat/">
+KÜLTÜR SANAT
+</a>
+
+<a
+href="/arama/"
+class="is-active">
+
+HABER ARA
+
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+</header>
+
+
+<main class="kn-wrap kn-main">
+
+
+<div class="kn-breadcrumb">
+
+<a href="/">
+Ana Sayfa
+</a>
+
+<span>›</span>
+
+<span>
+Haber Ara
+</span>
+
+</div>
+
+
+<section class="kn-category-intro">
+
+<div>
+
+<span class="kn-eyebrow">
+NABIZ • ARAMA
+</span>
+
+<h1>
+Haber Ara
+</h1>
+
+<p>
+Aradığınız haber, konu veya kategoriyi
+kolayca bulun.
+</p>
+
+</div>
+
+
+<div class="kn-intro-mark">
+N
+</div>
+
+</section>
+
+
+<section class="kn-search-panel">
+
+<label for="knSearchInput">
+NABIZ'da haber ara
+</label>
+
+
+<div class="kn-search-field">
+
+<span>
+⌕
+</span>
+
+
+<input
+id="knSearchInput"
+type="search"
+placeholder="Haber, konu veya kategori ara..."
+autocomplete="off">
+
+
+<button
+id="knSearchClear"
+type="button">
+
+Temizle
+
+</button>
+
+</div>
+
+
+<p
+id="knSearchStatus"
+class="kn-search-status">
+
+Aramak için bir kelime yazın.
+
+</p>
+
+</section>
+
+
+<section
+id="knFeaturedSection"
+class="kn-featured-section">
+
+
+<div class="kn-section-title">
+
+<div>
+
+<span>
+ÖNE ÇIKAN
+</span>
+
+<h2>
+Arama sonucu
+</h2>
+
+</div>
+
+</div>
+
+
+<div
+id="knFeatured"
+class="kn-featured">
+
+</div>
+
+</section>
+
+
+<section class="kn-list-section">
+
+
+<div class="kn-section-title">
+
+<div>
+
+<span>
+NABIZ ARAMA
+</span>
+
+<h2 id="knListTitle">
+Haberler
+</h2>
+
+</div>
+
+
+<span
+id="knCount"
+class="kn-count">
+
+</span>
+
+</div>
+
+
+<div
+id="knNewsGrid"
+class="kn-news-grid">
+
+</div>
+
+
+<div
+id="knEmpty"
+class="kn-empty"
+hidden>
+
+<strong>
+Haber bulunamadı.
+</strong>
+
+<p>
+Aramak istediğiniz kelimeyi yukarıdaki
+alana yazın.
+</p>
+
+<a href="/">
+Ana sayfaya dön →
+</a>
+
+</div>
+
+
+</section>
+
+</main>
+
+
+<footer class="kn-footer">
+
+<div class="kn-wrap kn-footer-inner">
+
+<div>
+
+<img
+src="/images/haber.jpg"
+alt="NABIZ"
+class="kn-footer-logo">
+
+<p>
+Güncel haberleri hızlı ve sade şekilde takip edin.
+</p>
+
+</div>
+
+
+<div class="kn-footer-links">
+
+<a href="/hakkimizda/">
+Hakkımızda
+</a>
+
+<a href="/iletisim/">
+İletişim
+</a>
+
+<a href="/gizlilik/">
+Gizlilik
+</a>
+
+<a href="/kullanim-sartlari/">
+Kullanım Şartları
+</a>
+
+</div>
+
+
+<div class="kn-copyright">
+© 2026 NABIZ
+</div>
+
+</div>
+
+</footer>
+
+
+<script src="/js/haberler.js"></script>
+<script src="/js/kategori.js"></script>
 
 </body>
+
 </html>
