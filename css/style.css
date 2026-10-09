@@ -9,7 +9,6 @@
     --container: 1400px;
 }
 
-
 /* =========================================
    RESET
 ========================================= */
@@ -29,7 +28,6 @@ body {
         Arial,
         Helvetica,
         sans-serif;
-
     background: var(--gray);
     color: var(--text);
 }
@@ -49,7 +47,6 @@ img {
     max-width: 100%;
 }
 
-
 /* =========================================
    CONTAINER
 ========================================= */
@@ -59,10 +56,8 @@ img {
         var(--container),
         calc(100% - 40px)
     );
-
     margin: auto;
 }
-
 
 /* =========================================
    HEADER
@@ -80,12 +75,10 @@ img {
 
 .header-inner {
     height: 100%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-
 
 /* =========================================
    LOGO
@@ -100,10 +93,8 @@ img {
     width: auto;
     height: 65px;
     max-width: 260px;
-
     object-fit: contain;
 }
-
 
 /* =========================================
    HEADER BUTTONS
@@ -117,17 +108,12 @@ img {
 .tool-button {
     background: white;
     color: black;
-
     border: 1px solid #ddd;
     border-radius: 6px;
-
     padding: 10px 15px;
-
     font-size: 13px;
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         background .2s ease,
         color .2s ease,
@@ -140,14 +126,12 @@ img {
     border-color: #111;
 }
 
-
 /* =========================================
    BEYAZ MENÜ
 ========================================= */
 
 .main-nav {
     background: white;
-
     border-top: 1px solid #eee;
     border-bottom: 1px solid #ddd;
 }
@@ -155,9 +139,7 @@ img {
 .nav-inner {
     display: flex;
     align-items: center;
-
     overflow-x: auto;
-
     scrollbar-width: none;
 }
 
@@ -167,16 +149,11 @@ img {
 
 .nav-inner a {
     color: #111;
-
     padding: 17px 18px;
-
     white-space: nowrap;
-
     font-size: 13px;
     font-weight: 800;
-
     border-bottom: 3px solid transparent;
-
     transition:
         color .2s ease,
         border-color .2s ease;
@@ -191,18 +168,14 @@ img {
     border-bottom-color: var(--red);
 }
 
-
 /* =========================================
    ARAMA
 ========================================= */
 
 .search-panel {
     display: none;
-
     background: white;
-
     border-bottom: 1px solid #ddd;
-
     padding: 45px 0;
 }
 
@@ -217,10 +190,8 @@ img {
 
 .search-heading span {
     color: var(--red);
-
     font-size: 11px;
     font-weight: 900;
-
     letter-spacing: 2px;
 }
 
@@ -237,14 +208,10 @@ img {
 .search-box {
     display: flex;
     align-items: center;
-
     margin-top: 25px;
-
     height: 60px;
-
     border: 2px solid #111;
     border-radius: 8px;
-
     overflow: hidden;
 }
 
@@ -254,29 +221,20 @@ img {
 
 .search-box input {
     flex: 1;
-
     height: 100%;
-
     border: 0;
     outline: 0;
-
     padding: 0 15px;
-
     font-size: 16px;
 }
 
 .search-box button {
     height: 100%;
-
     padding: 0 20px;
-
     border: 0;
-
     background: #111;
     color: white;
-
     font-weight: 800;
-
     cursor: pointer;
 }
 
@@ -286,11 +244,8 @@ img {
 
 .search-result {
     display: block;
-
     padding: 18px;
-
     background: #fafafa;
-
     border-bottom: 1px solid #ddd;
 }
 
@@ -300,37 +255,29 @@ img {
 
 .search-result small {
     display: block;
-
     color: var(--muted);
-
     margin-top: 5px;
 }
 
 .search-empty {
     padding: 35px;
-
     text-align: center;
-
     background: #fafafa;
-
     border: 1px solid #ddd;
 }
 
 .search-empty strong {
     display: block;
-
     font-size: 20px;
 }
 
 .search-empty p {
     margin-top: 7px;
-
     color: #777;
 }
 
-
 /* =========================================
-   MANŞET
+   MANŞET ALANI
 ========================================= */
 
 .hero-section {
@@ -341,28 +288,21 @@ img {
     width: 100%;
 }
 
-
 /* =========================================
    ANA MANŞET
+   16:9
 ========================================= */
 
 .hero-link {
     position: relative;
-
     display: block;
-
     width: 100%;
-    height: 560px;
-
+    aspect-ratio: 16 / 9;
     overflow: hidden;
-
     background: #111;
-
     border-radius: 3px;
-
     text-decoration: none;
 }
-
 
 /* =========================================
    MANŞET FOTOĞRAFI
@@ -370,7 +310,6 @@ img {
 
 .hero-image {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
@@ -379,7 +318,7 @@ img {
     max-width: none;
 
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
 
     transition:
         transform .35s ease;
@@ -389,14 +328,12 @@ img {
     transform: scale(1.015);
 }
 
-
 /* =========================================
    MANŞET YAZI ALANI
 ========================================= */
 
 .hero-overlay {
     position: absolute;
-
     left: 0;
     right: 0;
     bottom: 0;
@@ -442,9 +379,8 @@ img {
         0 2px 8px rgba(0, 0, 0, .55);
 }
 
-
 /* =========================================
-   MANŞET 1-20 ŞERİDİ
+   MANŞET 1-20
 ========================================= */
 
 .hero-pagination {
@@ -472,7 +408,6 @@ img {
     display: none;
 }
 
-
 /* =========================================
    MANŞET NUMARALARI
 ========================================= */
@@ -481,21 +416,17 @@ img {
     flex: 1 0 45px;
 
     min-width: 45px;
-
     height: 48px;
 
     padding: 0;
 
     border: 0;
-
     border-right: 1px solid #333;
 
     background: #111;
-
     color: white;
 
     font-size: 15px;
-
     font-weight: 800;
 
     cursor: pointer;
@@ -513,10 +444,8 @@ img {
 .hero-pagination button.active {
     background: var(--red);
     color: white;
-
     border-color: var(--red);
 }
-
 
 /* =========================================
    MANŞET ALT BOŞLUK
@@ -525,7 +454,6 @@ img {
 .hero-section + .section {
     padding-top: 38px;
 }
-
 
 /* =========================================
    SECTION
@@ -539,21 +467,18 @@ img {
     background: white;
 }
 
-
 /* =========================================
    SECTION BAŞLIĞI
 ========================================= */
 
 .section-heading {
     display: flex;
-
     justify-content: space-between;
     align-items: end;
 
     border-bottom: 2px solid #111;
 
     padding-bottom: 12px;
-
     margin-bottom: 20px;
 }
 
@@ -563,7 +488,6 @@ img {
     color: var(--red);
 
     font-size: 10px;
-
     font-weight: 900;
 
     letter-spacing: 2px;
@@ -571,7 +495,6 @@ img {
 
 .section-heading h2 {
     font-size: 30px;
-
     margin-top: 3px;
 }
 
@@ -583,7 +506,6 @@ img {
 .section-heading a:hover {
     color: var(--red);
 }
-
 
 /* =========================================
    HABER KARTLARI
@@ -597,7 +519,6 @@ img {
 
     gap: 20px;
 }
-
 
 /* =========================================
    HABER KARTI
@@ -629,16 +550,17 @@ img {
         rgba(0, 0, 0, .12);
 }
 
-
 /* =========================================
    HABER FOTOĞRAFI
-   HER KART AYNI ÖLÇÜ
+   16:9
 ========================================= */
 
 .news-image {
     width: 100%;
 
-    height: 235px;
+    aspect-ratio: 16 / 9;
+
+    height: auto;
 
     overflow: hidden;
 
@@ -654,8 +576,7 @@ img {
     max-width: none;
 
     object-fit: cover;
-
-    object-position: center;
+    object-position: center center;
 
     transition:
         transform .35s ease;
@@ -666,7 +587,6 @@ img {
     transform:
         scale(1.04);
 }
-
 
 /* =========================================
    HABER BAŞLIĞI
@@ -687,12 +607,10 @@ img {
     color: #111;
 
     font-size: 18px;
-
     line-height: 1.3;
 
     font-weight: 800;
 }
-
 
 /* =========================================
    ÇOK OKUNANLAR
@@ -726,11 +644,15 @@ img {
     display: block;
 
     width: 100%;
-    height: 235px;
+
+    aspect-ratio: 16 / 9;
+
+    height: auto;
 
     max-width: none;
 
     object-fit: cover;
+    object-position: center;
 }
 
 .popular-number {
@@ -746,7 +668,6 @@ img {
     place-items: center;
 
     background: #111;
-
     color: white;
 
     border-radius: 50%;
@@ -759,10 +680,8 @@ img {
         13px 14px 16px;
 
     font-size: 17px;
-
     line-height: 1.3;
 }
-
 
 /* =========================================
    FOOTER
@@ -779,11 +698,9 @@ img {
 
 .footer-logo {
     width: 180px;
-
     max-height: 60px;
 
     object-fit: contain;
-
     object-position: left center;
 }
 
@@ -820,7 +737,6 @@ img {
     font-size: 12px;
 }
 
-
 /* =========================================
    DARK MODE
 ========================================= */
@@ -834,7 +750,6 @@ body.dark-mode .site-header,
 body.dark-mode .header-top,
 body.dark-mode .main-nav {
     background: #171717;
-
     border-color: #333;
 }
 
@@ -849,15 +764,12 @@ body.dark-mode .nav-inner a.active {
 
 body.dark-mode .tool-button {
     background: #171717;
-
     color: white;
-
     border-color: #444;
 }
 
 body.dark-mode .search-panel {
     background: #171717;
-
     border-color: #333;
 }
 
@@ -867,7 +779,6 @@ body.dark-mode .search-box {
 
 body.dark-mode .search-box input {
     background: #171717;
-
     color: white;
 }
 
@@ -887,7 +798,6 @@ body.dark-mode .news-card,
 body.dark-mode .popular-card,
 body.dark-mode .news-card-title {
     background: #171717;
-
     border-color: #333;
 }
 
@@ -898,18 +808,14 @@ body.dark-mode .popular-card h3 {
 
 body.dark-mode .hero-pagination button {
     background: #111;
-
     color: white;
-
     border-color: #333;
 }
 
 body.dark-mode .hero-pagination button.active {
     background: var(--red);
-
     border-color: var(--red);
 }
-
 
 /* =========================================
    TABLET
@@ -922,9 +828,7 @@ body.dark-mode .hero-pagination button.active {
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
     }
-
 }
-
 
 /* =========================================
    TABLET KÜÇÜK
@@ -938,15 +842,6 @@ body.dark-mode .hero-pagination button.active {
             repeat(2, minmax(0, 1fr));
     }
 
-    .news-image,
-    .popular-card img {
-        height: 220px;
-    }
-
-    .hero-link {
-        height: 500px;
-    }
-
     .hero-overlay {
         padding:
             70px
@@ -957,9 +852,41 @@ body.dark-mode .hero-pagination button.active {
     .hero-overlay h1 {
         font-size: 42px;
     }
-
 }
 
+/* =========================================
+   MOBİL MENÜ
+========================================= */
+
+.nav-mobile-bar {
+    display: none;
+}
+
+.menu-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 11px 16px;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: #111;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background: var(--red);
+}
 
 /* =========================================
    MOBİL
@@ -971,7 +898,6 @@ body.dark-mode .hero-pagination button.active {
         width:
             calc(100% - 24px);
     }
-
 
     /* HEADER */
 
@@ -985,7 +911,6 @@ body.dark-mode .hero-pagination button.active {
 
     .site-logo img {
         height: 50px;
-
         max-width: 190px;
     }
 
@@ -995,169 +920,127 @@ body.dark-mode .hero-pagination button.active {
 
     .tool-button {
         padding: 8px;
-
         font-size: 11px;
     }
 
+    /* MOBİL MENÜ BUTONU */
 
-    /* MENÜ */
+    .nav-mobile-bar {
+        display: flex;
 
-    .nav-inner a {
+        justify-content: flex-end;
+        align-items: center;
+
+        min-height: 52px;
+
+        padding: 5px 0;
+    }
+
+    .main-nav {
+        position: relative;
+
+        background: white;
+    }
+
+    /* MOBİL MENÜ KAPALI */
+
+    #mobileMenu {
+        display: none;
+
+        width: 100%;
+
         padding:
-            14px 12px;
+            0 12px 12px;
 
-        font-size: 11px;
+        flex-direction: column;
+        align-items: stretch;
+
+        overflow: visible;
+
+        background: white;
+
+        border-top:
+            1px solid #eee;
     }
 
+    /* MOBİL MENÜ AÇIK */
+
+    #mobileMenu.mobile-open {
+        display: flex;
+    }
+
+    #mobileMenu a {
+        display: block;
+
+        width: 100%;
+
+        padding:
+            14px 15px;
+
+        color: #111;
+
+        background: white;
+
+        font-size: 13px;
+
+        font-weight: 800;
+
+        border-bottom:
+            1px solid #eee;
+
+        border-left:
+            3px solid transparent;
+    }
+
+    #mobileMenu a:hover,
+    #mobileMenu a.active {
+        color: var(--red);
+
+        background: #fafafa;
+
+        border-left-color:
+            var(--red);
+    }
+
+    /* NORMAL MENÜ GİZLİ */
+
+    .nav-inner {
+        display: none;
+    }
 
     /* MANŞET */
 
     .hero-section {
-        padding-top: 12px;
-    }
-
-    .hero-link {
-        height: 390px;
-
-        border-radius: 3px;
-    }
-
-    .hero-overlay {
         padding:
-            60px
-            20px
-            55px;
-    }
-
-    .hero-overlay h1 {
-        font-size: 29px;
-
-        line-height: 1.08;
-
-        letter-spacing: -.5px;
-    }
-
-
-    /* NUMARALAR */
-
-    .hero-pagination {
-        height: 44px;
-
-        margin-top: -44px;
-    }
-
-    .hero-pagination button {
-        flex: 0 0 40px;
-
-        min-width: 40px;
-
-        height: 44px;
-
-        font-size: 13px;
-    }
-
-
-    /* KARTLAR */
-
-    .news-grid,
-    .popular-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .news-image,
-    .popular-card img {
-        height: 230px;
-    }
-
-    .news-card-title {
-        min-height: auto;
-    }
-
-    .news-card-title h3 {
-        font-size: 17px;
-    }
-
-
-    /* BÖLÜM */
-
-    .section {
-        padding: 30px 0;
-    }
-
-    .section-heading h2 {
-        font-size: 24px;
-    }
-
-}
-
-
-/* =========================================
-   ÇOK KÜÇÜK EKRAN
-========================================= */
-
-@media (max-width: 420px) {
-
-    .header-inner {
-        gap: 10px;
-    }
-
-    .site-logo img {
-        max-width: 150px;
-    }
-
-    .tool-button {
-        padding: 7px;
-
-        font-size: 10px;
-    }
-
-    .hero-link {
-        height: 350px;
-    }
-
-    .hero-overlay {
-        padding:
-            50px
-            20px
-            52px;
-    }
-
-    .hero-overlay h1 {
-        font-size: 27px;
-    }
-
-    .news-image,
-    .popular-card img {
-        height: 215px;
-    }
-
-}
-/* =========================================
-   TELEFON - MANŞET ÖZEL AYAR
-========================================= */
-
-@media (max-width: 600px) {
-
-    .hero-section {
-        padding: 10px 0 0;
+            10px 0 0;
     }
 
     .hero {
         width: 100%;
     }
 
+    /* BURADA DA 16:9 */
+
     .hero-link {
+        width: 100%;
+
         height: auto;
-        aspect-ratio: 16 / 10;
+
+        aspect-ratio: 16 / 9;
+
         min-height: 0;
+
         border-radius: 3px;
     }
 
     .hero-image {
         width: 100%;
         height: 100%;
+
         object-fit: cover;
-        object-position: center center;
+
+        object-position:
+            center center;
     }
 
     .hero-overlay {
@@ -1184,26 +1067,69 @@ body.dark-mode .hero-pagination button.active {
         max-width: 100%;
 
         font-size: 24px;
+
         line-height: 1.08;
 
         letter-spacing: -.3px;
     }
 
+    /* MANŞET NUMARALARI */
+
     .hero-pagination {
         height: 42px;
+
         margin-top: -42px;
     }
 
     .hero-pagination button {
-        flex: 0 0 38px;
+        flex:
+            0 0 38px;
+
         min-width: 38px;
 
         height: 42px;
 
         font-size: 12px;
     }
-}
 
+    /* KARTLAR */
+
+    .news-grid,
+    .popular-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .news-image,
+    .popular-card img {
+        width: 100%;
+
+        height: auto;
+
+        aspect-ratio: 16 / 9;
+
+        object-fit: cover;
+    }
+
+    .news-card-title {
+        min-height: auto;
+    }
+
+    .news-card-title h3 {
+        font-size: 17px;
+    }
+
+    /* BÖLÜM */
+
+    .section {
+        padding:
+            30px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+}
 
 /* =========================================
    ÇOK KÜÇÜK TELEFONLAR
@@ -1211,8 +1137,23 @@ body.dark-mode .hero-pagination button.active {
 
 @media (max-width: 420px) {
 
+    .header-inner {
+        gap: 10px;
+    }
+
+    .site-logo img {
+        max-width: 150px;
+    }
+
+    .tool-button {
+        padding: 7px;
+        font-size: 10px;
+    }
+
+    /* MANŞET YİNE 16:9 */
+
     .hero-link {
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 9;
     }
 
     .hero-overlay {
@@ -1224,115 +1165,39 @@ body.dark-mode .hero-pagination button.active {
 
     .hero-overlay h1 {
         font-size: 21px;
+
         line-height: 1.1;
     }
 
     .hero-pagination {
         height: 40px;
+
         margin-top: -40px;
     }
 
     .hero-pagination button {
-        flex: 0 0 36px;
+        flex:
+            0 0 36px;
+
         min-width: 36px;
 
         height: 40px;
 
         font-size: 11px;
     }
+
+    .news-image,
+    .popular-card img {
+        aspect-ratio: 16 / 9;
+    }
 }
+
 /* =========================================
-   NABIZ MOBİL MENÜ
+   MASAÜSTÜ MOBİL MENÜ GÖRÜNÜMÜ
 ========================================= */
 
-.nav-mobile-bar {
-    display: none;
-}
-
-.menu-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-
-    padding: 11px 16px;
-
-    border: 0;
-    border-radius: 5px;
-
-    background: #111;
-    color: white;
-
-    font-size: 14px;
-    font-weight: 800;
-
-    cursor: pointer;
-}
-
-.menu-button:hover {
-    background: var(--red);
-}
-
-@media (max-width: 600px) {
-    .nav-mobile-bar {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-
-        min-height: 52px;
-    }
-
-    .main-nav {
-        position: relative;
-        background: white;
-    }
-
-    #mobileMenu {
-        display: none;
-
-        width: 100%;
-
-        padding: 0 12px 12px;
-
-        flex-direction: column;
-        align-items: stretch;
-
-        overflow: visible;
-
-        background: white;
-
-        border-top: 1px solid #eee;
-    }
-
-    #mobileMenu.mobile-open {
-        display: flex;
-    }
-
-    #mobileMenu a {
-        display: block;
-        width: 100%;
-
-        padding: 14px 15px;
-
-        color: #111;
-        background: white;
-
-        font-size: 13px;
-        font-weight: 800;
-
-        border-bottom: 1px solid #eee;
-        border-left: 3px solid transparent;
-    }
-
-    #mobileMenu a:hover,
-    #mobileMenu a.active {
-        color: var(--red);
-        background: #fafafa;
-        border-left-color: var(--red);
-    }
-}
-
 @media (min-width: 601px) {
+
     .nav-mobile-bar {
         display: none;
     }
@@ -1341,6 +1206,41 @@ body.dark-mode .hero-pagination button.active {
         display: flex !important;
 
         flex-direction: row;
+
         align-items: center;
+    }
+}
+
+/* =========================================
+   MOBİL DARK MODE
+========================================= */
+
+@media (max-width: 600px) {
+
+    body.dark-mode .nav-mobile-bar,
+    body.dark-mode #mobileMenu {
+        background: #171717;
+    }
+
+    body.dark-mode #mobileMenu {
+        border-color: #333;
+    }
+
+    body.dark-mode #mobileMenu a {
+        color: white;
+        background: #171717;
+        border-color: #333;
+    }
+
+    body.dark-mode #mobileMenu a:hover,
+    body.dark-mode #mobileMenu a.active {
+        color: #ff3542;
+        background: #202020;
+        border-left-color: #ff3542;
+    }
+
+    body.dark-mode .menu-button {
+        background: white;
+        color: #111;
     }
 }
