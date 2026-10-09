@@ -1,307 +1,321 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    const haberler =
-        Array.isArray(window.haberler)
-            ? window.haberler
-            : [];
-
-
-    /* =====================================================
-       SLUG OLUŞTUR
-    ===================================================== */
-
-    function slugify(text) {
-
-        return String(text || "")
-            .toLocaleLowerCase("tr-TR")
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/ı/g, "i")
-            .replace(/ğ/g, "g")
-            .replace(/ü/g, "u")
-            .replace(/ş/g, "s")
-            .replace(/ö/g, "o")
-            .replace(/ç/g, "c")
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-+|-+$/g, "");
-
-    }
-
-
-    /* =====================================================
-       URL'DEN SLUG AL
-    ===================================================== */
-
-    const path =
-        window.location.pathname;
-
-
-    const parts =
-        path.split("/").filter(Boolean);
-
-
-    let slug =
-        "";
-
-
-    if (parts[0] === "haber") {
-
-        slug =
-            parts.slice(1).join("-");
-
-    }
-
-
-    /* =====================================================
-       ESKİ ?id= SİSTEMİ DE ÇALIŞSIN
-    ===================================================== */
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const oldId =
-        Number(params.get("id"));
-
-
-    /* =====================================================
-       HABERİ BUL
-    ===================================================== */
-
-    let haber = null;
-
-
-    if (slug) {
-
-        haber =
-            haberler.find(
-                item =>
-                    slugify(item.baslik) ===
-                    slug
-            );
-
-    }
-
-
-    if (!haber && oldId) {
-
-        haber =
-            haberler.find(
-                item =>
-                    Number(item.id) ===
-                    oldId
-            );
-
-    }
-
+    const haberler = window.NABIZ_HABERLER || [];
 
     const content =
-        document.getElementById(
-            "articleContent"
+        document.getElementById("articleContent");
+
+    if (!content) return;
+
+
+    /* =====================================
+       HABERİ BUL
+    ===================================== */
+
+    const dosyaAdi =
+        window.location.pathname
+            .split("/")
+            .pop()
+            .replace(".html", "");
+
+    let haber =
+        haberler.find(h =>
+            h.slug === dosyaAdi
         );
 
 
-    if (!content)
-        return;
-
-
-    /* =====================================================
+    /* =====================================
        HABER BULUNAMADI
-    ===================================================== */
+    ===================================== */
 
     if (!haber) {
 
         content.innerHTML = `
+            <div style="
+                padding:80px 30px;
+                text-align:center;
+            ">
 
-            <div class="article-not-found">
+                <div style="
+                    font-size:50px;
+                    margin-bottom:15px;
+                ">
+                    404
+                </div>
 
                 <h1>
                     Haber bulunamadı
                 </h1>
 
-                <p>
+                <p style="
+                    color:#777;
+                    margin:10px 0 25px;
+                ">
                     Aradığınız haber mevcut değil
-                    veya bağlantı hatalı.
+                    veya kaldırılmış olabilir.
                 </p>
 
-                <a href="/">
-                    Ana sayfaya dön
+                <a
+                    href="/"
+                    style="
+                        display:inline-flex;
+                        padding:12px 20px;
+                        background:#e30613;
+                        color:#fff;
+                        border-radius:6px;
+                        font-weight:800;
+                    "
+                >
+                    Ana Sayfaya Dön
                 </a>
 
             </div>
-
         `;
 
         return;
-
     }
 
 
-    /* =====================================================
-       DOĞRU URL
-    ===================================================== */
+    /* =====================================
+       GÜVENLİ HTML
+    ===================================== */
 
-    const correctUrl =
-        `/haber/${slugify(
-            haber.baslik
-        )}/`;
+    function temizle(metin) {
 
+        if (!metin) return "";
 
-    /* =====================================================
-       SAYFA BAŞLIĞI
-    ===================================================== */
-
-    document.title =
-        `${haber.baslik} | NABIZ`;
-
-
-    /* =====================================================
-       CANONICAL
-    ===================================================== */
-
-    let canonical =
-        document.querySelector(
-            'link[rel="canonical"]'
-        );
-
-
-    if (!canonical) {
-
-        canonical =
-            document.createElement("link");
-
-        canonical.rel =
-            "canonical";
-
-        document.head.appendChild(
-            canonical
-        );
-
+        return String(metin)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
 
-    canonical.href =
-        `${window.location.origin}${correctUrl}`;
+    /* =====================================
+       İÇERİK
+    ===================================== */
+
+    let paragraflar = "";
+
+    if (Array.isArray(haber.icerik)) {
+
+        paragraflar =
+            haber.icerik
+                .map(paragraf => `
+                    <p>
+                        ${temizle(paragraf)}
+                    </p>
+                `)
+                .join("");
+
+    } else {
+
+        paragraflar = `
+            <p>
+                ${temizle(haber.icerik)}
+            </p>
+        `;
+    }
 
 
-    /* =====================================================
-       HABER
-    ===================================================== */
+    /* =====================================
+       HABERİ OLUŞTUR
+    ===================================== */
 
     content.innerHTML = `
 
         <div class="article-category">
-            ${haber.kategori || "HABER"}
+            ${temizle(haber.kategori || "HABER")}
         </div>
 
 
         <h1 class="article-title">
-            ${haber.baslik}
+            ${temizle(haber.baslik)}
         </h1>
 
 
-        <p class="article-spot">
-            ${haber.spot || ""}
-        </p>
+        ${
+            haber.spot
+                ? `
+                    <div class="article-spot">
+                        ${temizle(haber.spot)}
+                    </div>
+                  `
+                : ""
+        }
 
 
         <div class="article-meta">
 
             <span>
-                ${haber.tarih || ""}
+                ${temizle(
+                    haber.yazar ||
+                    "NABIZ Haber Merkezi"
+                )}
             </span>
 
             <span>
-                ${haber.saat || ""}
+                ${temizle(haber.tarih || "")}
             </span>
 
+            ${
+                haber.saat
+                    ? `
+                        <span>
+                            ${temizle(haber.saat)}
+                        </span>
+                      `
+                    : ""
+            }
+
             <span>
-                ${haber.kaynak || "NABIZ"}
+                ${temizle(
+                    haber.kaynak ||
+                    "NABIZ"
+                )}
             </span>
 
         </div>
 
 
-        <img
-            class="article-image"
-            src="${haber.gorsel || "/images/haber11.png"}"
-            alt="${haber.baslik}"
-        >
+        <div class="article-image">
+
+            <img
+                src="${haber.gorsel || "/images/haber.jpg"}"
+                alt="${temizle(haber.baslik)}"
+                fetchpriority="high"
+                onerror="
+                    this.onerror=null;
+                    this.src='/images/haber.jpg';
+                "
+            >
+
+        </div>
 
 
         <div class="article-text">
-            ${haber.icerik || ""}
+
+            ${paragraflar}
+
         </div>
 
     `;
 
 
-    /* =====================================================
-       PAYLAŞIM URL
-    ===================================================== */
+    /* =====================================
+       PAYLAŞIM
+    ===================================== */
 
     const url =
-        window.location.origin +
-        correctUrl;
+        window.location.href;
+
+    const baslik =
+        haber.baslik || "NABIZ Haber";
 
 
-    const encodedUrl =
-        encodeURIComponent(url);
-
-
-    const encodedTitle =
-        encodeURIComponent(
-            haber.baslik
-        );
-
-
-    /* =====================================================
-       WHATSAPP
-    ===================================================== */
+    /* WhatsApp */
 
     const whatsapp =
         document.getElementById(
             "whatsappShare"
         );
 
-
     if (whatsapp) {
 
         whatsapp.href =
-            `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
-
+            "https://wa.me/?text=" +
+            encodeURIComponent(
+                `${baslik} ${url}`
+            );
     }
 
 
-    /* =====================================================
-       X
-    ===================================================== */
+    /* X */
 
     const x =
         document.getElementById(
             "xShare"
         );
 
-
     if (x) {
 
         x.href =
-            `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+            "https://twitter.com/intent/tweet?text=" +
+            encodeURIComponent(baslik) +
+            "&url=" +
+            encodeURIComponent(url);
+    }
+
+
+    /* Native Share */
+
+    const native =
+        document.getElementById(
+            "nativeShare"
+        );
+
+    if (native) {
+
+        native.addEventListener(
+            "click",
+            async () => {
+
+                if (
+                    navigator.share
+                ) {
+
+                    try {
+
+                        await navigator.share({
+                            title: baslik,
+                            text: haber.spot || baslik,
+                            url: url
+                        });
+
+                    } catch (error) {}
+
+                } else {
+
+                    try {
+
+                        await navigator.clipboard.writeText(
+                            url
+                        );
+
+                        native.textContent =
+                            "✓ Link Kopyalandı";
+
+                        setTimeout(() => {
+                            native.textContent =
+                                "↗ Paylaş";
+                        }, 1800);
+
+                    } catch (error) {
+
+                        alert(
+                            "Link: " + url
+                        );
+
+                    }
+
+                }
+
+            }
+        );
 
     }
 
 
-    /* =====================================================
-       LİNK KOPYALA
-    ===================================================== */
+    /* Link Kopyala */
 
     const copy =
         document.getElementById(
             "copyShare"
         );
-
 
     if (copy) {
 
@@ -311,24 +325,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 try {
 
-                    await navigator.clipboard
-                        .writeText(url);
+                    await navigator.clipboard.writeText(
+                        url
+                    );
 
                     copy.textContent =
-                        "Kopyalandı ✓";
-
+                        "✓ Kopyalandı";
 
                     setTimeout(() => {
 
                         copy.textContent =
-                            "Linki Kopyala";
+                            "🔗 Linki Kopyala";
 
-                    }, 2000);
+                    }, 1800);
 
-                } catch {
+                } catch (error) {
 
                     alert(
-                        "Link kopyalanamadı."
+                        "Link: " + url
                     );
 
                 }
@@ -339,71 +353,58 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       TELEFON PAYLAŞ
-    ===================================================== */
+    /* =====================================
+       ÇOK OKUNANLAR
+    ===================================== */
 
-    const share =
+    const popular =
         document.getElementById(
-            "nativeShare"
+            "articlePopular"
         );
 
+    if (
+        popular &&
+        haberler.length
+    ) {
 
-    if (share) {
-
-        share.addEventListener(
-            "click",
-            async () => {
-
-                if (navigator.share) {
-
-                    try {
-
-                        await navigator.share({
-
-                            title:
-                                haber.baslik,
-
-                            text:
-                                haber.spot || "",
-
-                            url:
-                                url
-
-                        });
-
-                    } catch {}
-
-                } else {
-
-                    try {
-
-                        await navigator.clipboard
-                            .writeText(url);
-
-                        share.textContent =
-                            "Link Kopyalandı ✓";
+        const liste =
+            [...haberler]
+                .filter(h =>
+                    h.slug !== haber.slug
+                )
+                .sort(
+                    (a, b) =>
+                        (b.goruntulenme || 0) -
+                        (a.goruntulenme || 0)
+                )
+                .slice(0, 5);
 
 
-                        setTimeout(() => {
+        popular.innerHTML =
+            liste.map(h => `
 
-                            share.textContent =
-                                "Paylaş";
+                <a
+                    href="/haberler/${h.slug}.html"
+                    class="article-popular-item"
+                >
 
-                        }, 2000);
+                    <img
+                        src="${h.gorsel || "/images/haber.jpg"}"
+                        alt="${temizle(h.baslik)}"
+                        loading="lazy"
+                        onerror="
+                            this.onerror=null;
+                            this.src='/images/haber.jpg';
+                        "
+                    >
 
-                    } catch {
+                    <h3>
+                        ${temizle(h.baslik)}
+                    </h3>
 
-                        alert(
-                            "Paylaşım desteklenmiyor."
-                        );
+                </a>
 
-                    }
-
-                }
-
-            }
-        );
+            `).join("");
 
     }
 
