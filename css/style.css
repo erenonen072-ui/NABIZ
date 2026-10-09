@@ -1241,3 +1241,106 @@ body.dark-mode .hero-pagination button.active {
         font-size: 11px;
     }
 }
+/* =========================================
+   NABIZ MOBİL MENÜ
+========================================= */
+
+.nav-mobile-bar {
+    display: none;
+}
+
+.menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 11px 16px;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: #111;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background: var(--red);
+}
+
+@media (max-width: 600px) {
+    .nav-mobile-bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        min-height: 52px;
+    }
+
+    .main-nav {
+        position: relative;
+        background: white;
+    }
+
+    #mobileMenu {
+        display: none;
+
+        width: 100%;
+
+        padding: 0 12px 12px;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        overflow: visible;
+
+        background: white;
+
+        border-top: 1px solid #eee;
+    }
+
+    #mobileMenu.mobile-open {
+        display: flex;
+    }
+
+    #mobileMenu a {
+        display: block;
+        width: 100%;
+
+        padding: 14px 15px;
+
+        color: #111;
+        background: white;
+
+        font-size: 13px;
+        font-weight: 800;
+
+        border-bottom: 1px solid #eee;
+        border-left: 3px solid transparent;
+    }
+
+    #mobileMenu a:hover,
+    #mobileMenu a.active {
+        color: var(--red);
+        background: #fafafa;
+        border-left-color: var(--red);
+    }
+}
+
+@media (min-width: 601px) {
+    .nav-mobile-bar {
+        display: none;
+    }
+
+    #mobileMenu {
+        display: flex !important;
+
+        flex-direction: row;
+        align-items: center;
+    }
+}
