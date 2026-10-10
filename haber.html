@@ -2,6 +2,7 @@
 <html lang="tr">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,21 +10,28 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <title>
+        Batman'da yeni proje için ilk adım atıldı | NABIZ
+    </title>
+
+    <meta
+        name="description"
+        content="Batman'da kent yaşamına katkı sağlaması planlanan yeni proje için hazırlık çalışmalarına başlandı."
+    >
+
     <meta
         name="robots"
         content="index, follow"
     >
 
-    <meta
-        name="theme-color"
-        content="#ffffff"
+    <link
+        rel="canonical"
+        href="https://haberisa.vercel.app/haberler/batmanda-yeni-proje-icin-ilk-adim-atildi.html"
     >
 
-    <title>NABIZ</title>
-
-    <meta
-        name="description"
-        content="NABIZ haber detay sayfası."
+    <link
+        rel="icon"
+        href="/images/haber.jpg"
     >
 
     <meta
@@ -32,23 +40,23 @@
     >
 
     <meta
-        property="og:site_name"
-        content="NABIZ"
-    >
-
-    <meta
         property="og:title"
-        content="NABIZ"
+        content="Batman'da yeni proje için ilk adım atıldı"
     >
 
     <meta
         property="og:description"
-        content="NABIZ haber detay sayfası."
+        content="Batman'da kent yaşamına katkı sağlaması planlanan yeni proje için hazırlık çalışmalarına başlandı."
     >
 
     <meta
         property="og:image"
-        content="/images/haber.jpg"
+        content="https://haberisa.vercel.app/images/haber.jpg"
+    >
+
+    <meta
+        property="og:site_name"
+        content="NABIZ"
     >
 
     <meta
@@ -56,233 +64,325 @@
         content="summary_large_image"
     >
 
+    <!-- ÖNCE GENEL CSS -->
     <link
         rel="stylesheet"
-        href="/css/style.css?v=10"
+        href="/css/style.css?v=20"
     >
 
+    <!-- SONRA HABER CSS -->
     <link
         rel="stylesheet"
-        href="/css/haber.css?v=10"
+        href="/css/haber.css?v=20"
     >
+
 </head>
+
 
 <body>
 
-<header class="news-header">
 
-    <div class="news-header-inner">
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+    <div class="header-inner">
 
         <a
             href="/"
-            class="news-logo"
+            class="site-logo"
             aria-label="NABIZ Ana Sayfa"
         >
+
             <img
                 src="/images/haber.jpg"
                 alt="NABIZ"
             >
+
         </a>
 
-        <nav class="news-navigation">
 
-            <a href="/">Ana Sayfa</a>
-            <a href="/gundem/">Gündem</a>
-            <a href="/dunya/">Dünya</a>
-            <a href="/ekonomi/">Ekonomi</a>
-            <a href="/spor/">Spor</a>
-            <a href="/teknoloji/">Teknoloji</a>
-            <a href="/magazin/">Magazin</a>
-            <a href="/kultur-sanat/">Kültür-Sanat</a>
+        <nav class="main-nav">
+
+            <a href="/">
+                Ana Sayfa
+            </a>
+
+            <a href="/gundem/">
+                Gündem
+            </a>
+
+            <a href="/ekonomi/">
+                Ekonomi
+            </a>
+
+            <a href="/dunya/">
+                Dünya
+            </a>
+
+            <a href="/spor/">
+                Spor
+            </a>
+
+            <a href="/teknoloji/">
+                Teknoloji
+            </a>
+
+            <a href="/magazin/">
+                Magazin
+            </a>
+
+            <a href="/kultur-sanat/">
+                Kültür Sanat
+            </a>
+
+            <a href="/arama/">
+                Haber Ara
+            </a>
 
         </nav>
-
-        <a
-            href="/arama/"
-            class="news-search"
-            aria-label="Ara"
-        >
-            <span></span>
-        </a>
 
     </div>
 
 </header>
 
 
-<main class="news-article-page">
 
-    <div class="news-breadcrumb">
+<!-- =====================================================
+     HABER
+===================================================== -->
 
-        <a href="/">Ana Sayfa</a>
-
-        <span>/</span>
-
-        <span id="breadcrumbCategory">
-            Haber
-        </span>
-
-    </div>
+<main class="article-page">
 
 
-    <div class="news-article-layout">
-
-        <article class="news-article-main">
-
-            <div id="articleContent"></div>
+    <div class="article-container">
 
 
-            <section class="news-share">
+        <!-- KATEGORİ -->
 
-                <div class="news-share-title">
-
-                    <span></span>
-
-                    <strong>
-                        Bu haberi paylaş
-                    </strong>
-
-                </div>
-
-                <div class="news-share-buttons">
-
-                    <button
-                        id="nativeShare"
-                        type="button"
-                    >
-                        Paylaş
-                    </button>
-
-                    <a
-                        id="whatsappShare"
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        WhatsApp
-                    </a>
-
-                    <a
-                        id="xShare"
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        𝕏
-                    </a>
-
-                    <button
-                        id="copyShare"
-                        type="button"
-                    >
-                        Linki Kopyala
-                    </button>
-
-                </div>
-
-            </section>
+        <div class="article-category">
+            GÜNDEM
+        </div>
 
 
-            <section class="related-news">
+        <!-- BAŞLIK -->
 
-                <div class="section-title">
+        <h1>
+            Batman'da yeni proje için ilk adım atıldı
+        </h1>
 
-                    <span></span>
 
-                    <h2>
-                        Benzer Haberler
-                    </h2>
+        <!-- SPOT -->
 
-                </div>
+        <p class="article-spot">
+            Batman'da kent yaşamına katkı sağlaması planlanan
+            yeni proje için hazırlık çalışmalarına başlandı.
+        </p>
 
-                <div
-                    id="relatedNews"
-                    class="related-news-grid"
-                ></div>
 
-            </section>
+        <!-- TARİH -->
+
+        <div class="article-meta">
+
+            <span>
+                9 Ekim 2026
+            </span>
+
+            <span>
+                17:20
+            </span>
+
+            <span>
+                NABIZ Haber Merkezi
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             ANA FOTOĞRAF
+        ================================================= -->
+
+        <div class="article-image">
+
+            <img
+                src="/images/haber.jpg"
+                alt="Batman'da yeni proje için ilk adım atıldı"
+                fetchpriority="high"
+                decoding="async"
+            >
+
+        </div>
+
+
+        <!-- =================================================
+             HABER METNİ
+        ================================================= -->
+
+        <article class="article-content">
+
+            <p>
+                Batman'da kent yaşamına katkı sağlaması planlanan
+                yeni proje için hazırlık çalışmalarına başlandı.
+            </p>
+
+            <p>
+                Proje kapsamında yapılacak çalışmaların önümüzdeki
+                dönemde aşamalı olarak yürütülmesi planlanıyor.
+            </p>
+
+            <p>
+                Yetkililer, çalışmaların tamamlanmasıyla birlikte
+                vatandaşların projeden faydalanacağını belirtti.
+            </p>
+
+            <p>
+                Projeyle ilgili yeni gelişmelerin önümüzdeki
+                günlerde kamuoyuyla paylaşılması bekleniyor.
+            </p>
 
         </article>
 
 
-        <aside class="news-sidebar">
-
-            <section class="sidebar-box">
-
-                <div class="sidebar-title">
-
-                    <span></span>
-
-                    <h2>
-                        Çok Okunanlar
-                    </h2>
-
-                </div>
-
-                <div
-                    id="articlePopular"
-                    class="popular-news-list"
-                ></div>
-
-            </section>
-
-        </aside>
-
     </div>
+
+
+
+    <!-- =====================================================
+         DİĞER HABERLER
+    ===================================================== -->
+
+    <section class="related-news">
+
+        <div class="section-heading">
+
+            <h2>
+                Diğer Haberler
+            </h2>
+
+        </div>
+
+
+        <div
+            id="related-news-grid"
+            class="news-grid"
+        ></div>
+
+    </section>
+
 
 </main>
 
 
-<footer class="news-footer">
 
-    <div class="news-footer-inner">
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-        <div class="footer-brand">
+<footer class="site-footer">
 
-            <img
-                src="/images/haber.jpg"
-                alt="NABIZ"
-            >
+    <div class="footer-inner">
 
-            <p>
-                Türkiye ve dünyadan güncel gelişmeler.
-            </p>
+        <img
+            src="/images/haber.jpg"
+            alt="NABIZ"
+        >
 
-        </div>
-
-
-        <div class="footer-menu">
-
-            <a href="/hakkimizda/">
-                Hakkımızda
-            </a>
-
-            <a href="/iletisim/">
-                İletişim
-            </a>
-
-            <a href="/gizlilik/">
-                Gizlilik
-            </a>
-
-            <a href="/kullanim-sartlari/">
-                Kullanım Şartları
-            </a>
-
-        </div>
-
-
-        <div class="footer-bottom">
-            © 2026 NABIZ
-        </div>
+        <p>
+            © 2026 NABIZ. Tüm hakları saklıdır.
+        </p>
 
     </div>
 
 </footer>
 
 
-<script src="/js/haberler.js?v=10"></script>
-<script src="/js/haber.js?v=10"></script>
+
+<script src="/js/haberler.js?v=20"></script>
+
+
+<script>
+
+"use strict";
+
+const haberler =
+    window.NABIZ_HABERLER || [];
+
+const mevcutSlug =
+    "batmanda-yeni-proje-icin-ilk-adim-atildi";
+
+
+const related =
+    haberler
+        .filter(haber =>
+            haber.slug !== mevcutSlug
+        )
+        .slice(0, 4);
+
+
+const alan =
+    document.querySelector(
+        "#related-news-grid"
+    );
+
+
+if (alan) {
+
+    alan.innerHTML =
+        related.map(haber => {
+
+            const gorsel =
+                haber.gorsel ||
+                "/images/haber.jpg";
+
+            return `
+
+                <article class="news-card">
+
+                    <a
+                        href="/haberler/${haber.slug}.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="news-image">
+
+                            <img
+                                src="${gorsel}"
+                                alt="${haber.baslik || "NABIZ Haber"}"
+                                loading="lazy"
+                                decoding="async"
+                                onerror="
+                                    this.onerror=null;
+                                    this.src='/images/haber.jpg';
+                                "
+                            >
+
+                        </div>
+
+                        <div class="news-card-title">
+
+                            <h3>
+                                ${haber.baslik || ""}
+                            </h3>
+
+                        </div>
+
+                    </a>
+
+                </article>
+
+            `;
+
+        }).join("");
+
+}
+
+</script>
+
 
 </body>
+
 </html>
