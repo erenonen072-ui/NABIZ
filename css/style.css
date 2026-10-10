@@ -1952,3 +1952,28 @@ footer {
         height: 230px;
     }
 }
+
+/* Manşetin altındaki siyah çizgiyi kaldır */
+.hero-main,
+.hero-side,
+.hero-main-wrapper,
+.hero-side-wrapper,
+.hero-main-link,
+.hero-side-link {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Görsel altındaki boşluk ve çizgiyi kaldır */
+.hero-main-image,
+.hero-side-image {
+    display: block;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Manşet bağlantılarındaki alt çizgiyi kaldır */
+.hero-main-link,
+.hero-side-link {
+    text-decoration: none !important;
+}
