@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,9 +8,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        NABIZ - Güncel Haberler
-    </title>
+    <title>NABIZ - Güncel Haberler</title>
 
     <meta
         name="description"
@@ -30,52 +26,44 @@
     >
 
     <link
-    rel="canonical"
-    href="https://nabiz-sandy.vercel.app/"
->
+        rel="canonical"
+        href="https://nabiz-sandy.vercel.app/"
+    >
+
+    <link
+        rel="icon"
+        href="/images/haber.jpg"
+    >
 
     <link
         rel="stylesheet"
-        href="/css/style.css"
+        href="/css/style.css?v=30"
     >
-
 </head>
-
 
 <body>
 
-
-<!-- =========================================
+<!-- =========================
      HEADER
-========================================= -->
+========================= -->
 
 <header class="site-header">
 
-
-    <!-- ÜST HEADER -->
-
     <div class="header-top">
-
         <div class="container header-inner">
-
-
-            <!-- LOGO -->
 
             <a
                 href="/"
                 class="site-logo"
                 aria-label="NABIZ Ana Sayfa"
             >
-
                 <img
                     src="/images/haber.jpg"
                     alt="NABIZ"
+                    width="180"
+                    height="60"
                 >
-
             </a>
-
-
-            <!-- HEADER BUTONLARI -->
 
             <div class="header-tools">
 
@@ -83,35 +71,35 @@
                     id="searchOpen"
                     class="tool-button"
                     type="button"
+                    aria-label="Haber ara"
                 >
-                    🔍 Haber Ara
+                    🔍 <span>Haber Ara</span>
                 </button>
-
 
                 <button
                     id="themeButton"
                     class="tool-button"
                     type="button"
+                    aria-label="Tema değiştir"
+                    aria-pressed="false"
                 >
-                    ◐ Tema
+                    ◐ <span>Tema</span>
                 </button>
 
             </div>
 
-
         </div>
-
     </div>
 
 
-    <!-- =====================================
-         MENÜ
-    ====================================== -->
+    <!-- =========================
+         NAVİGASYON
+    ========================== -->
 
-    <nav class="main-nav">
-
-
-        <!-- MOBİL MENÜ BUTONU -->
+    <nav
+        class="main-nav"
+        aria-label="Ana menü"
+    >
 
         <div class="container nav-mobile-bar">
 
@@ -122,21 +110,16 @@
                 aria-expanded="false"
                 aria-controls="mobileMenu"
             >
-
                 ☰ <span>MENÜ</span>
-
             </button>
 
         </div>
 
 
-        <!-- MENÜ LİNKLERİ -->
-
         <div
             id="mobileMenu"
             class="container nav-inner"
         >
-
 
             <a
                 href="/"
@@ -145,58 +128,48 @@
                 SON HABERLER
             </a>
 
-
             <a href="/gundem/">
                 GÜNDEM
             </a>
-
 
             <a href="/ekonomi/">
                 EKONOMİ
             </a>
 
-
             <a href="/spor/">
                 SPOR
             </a>
-
 
             <a href="/dunya/">
                 DÜNYA
             </a>
 
-
             <a href="/magazin/">
                 MAGAZİN
             </a>
-
 
             <a href="/teknoloji/">
                 TEKNOLOJİ
             </a>
 
-
             <a href="/kultur-sanat/">
                 KÜLTÜR SANAT
             </a>
-
 
             <a href="/arama/">
                 HABER ARA
             </a>
 
-
         </div>
 
     </nav>
 
-
 </header>
 
 
-<!-- =========================================
-     ARAMA PANELİ
-========================================= -->
+<!-- =========================
+     ARAMA
+========================= -->
 
 <section
     id="searchPanel"
@@ -205,19 +178,14 @@
 
     <div class="container search-container">
 
-
         <div class="search-heading">
 
-            <span>
-                NABIZ ARAMA
-            </span>
+            <span>NABIZ ARAMA</span>
 
-            <h2>
-                Haber Ara
-            </h2>
+            <h2>Haber Ara</h2>
 
             <p>
-                Aradığınız haber, konu veya kategoriyi bulun.
+                Haber, konu veya kategori arayın.
             </p>
 
         </div>
@@ -225,19 +193,20 @@
 
         <div class="search-box">
 
-
-            <div class="search-icon">
+            <div
+                class="search-icon"
+                aria-hidden="true"
+            >
                 🔍
             </div>
-
 
             <input
                 id="searchInput"
                 type="search"
                 placeholder="Haber ara..."
                 autocomplete="off"
+                aria-label="Haber ara"
             >
-
 
             <button
                 id="searchClear"
@@ -245,7 +214,6 @@
             >
                 TEMİZLE
             </button>
-
 
         </div>
 
@@ -255,27 +223,27 @@
             class="search-results"
         ></div>
 
-
     </div>
 
 </section>
 
 
-<!-- =========================================
+<!-- =========================
      ANA İÇERİK
-========================================= -->
+========================= -->
 
 <main>
 
-
-    <!-- =====================================
+    <!-- =========================
          MANŞET
-    ====================================== -->
+    ========================== -->
 
-    <section class="hero-section">
+    <section
+        class="hero-section"
+        aria-label="Manşet haberler"
+    >
 
         <div class="container">
-
 
             <div
                 id="hero"
@@ -283,48 +251,38 @@
             ></div>
 
 
-            <!-- 1-20 MANŞET SEÇİMİ -->
-
             <div
                 id="heroPagination"
                 class="hero-pagination"
+                aria-label="Manşet seçimi"
             ></div>
-
 
         </div>
 
     </section>
 
 
-    <!-- =====================================
+    <!-- =========================
          SON HABERLER
-    ====================================== -->
+    ========================== -->
 
     <section class="section">
 
         <div class="container">
 
-
             <div class="section-heading">
-
 
                 <div>
 
-                    <span>
-                        NABIZ
-                    </span>
+                    <span>NABIZ</span>
 
-                    <h2>
-                        Son Haberler
-                    </h2>
+                    <h2>Son Haberler</h2>
 
                 </div>
-
 
                 <a href="/arama/">
                     Tüm Haberler →
                 </a>
-
 
             </div>
 
@@ -334,41 +292,32 @@
                 class="news-grid"
             ></div>
 
-
         </div>
 
     </section>
 
 
-    <!-- =====================================
+    <!-- =========================
          GÜNDEM
-    ====================================== -->
+    ========================== -->
 
     <section class="section category-section">
 
         <div class="container">
 
-
             <div class="section-heading">
-
 
                 <div>
 
-                    <span>
-                        GÜNDEM
-                    </span>
+                    <span>GÜNDEM</span>
 
-                    <h2>
-                        Gündem
-                    </h2>
+                    <h2>Gündem</h2>
 
                 </div>
-
 
                 <a href="/gundem/">
                     Tümünü Gör →
                 </a>
-
 
             </div>
 
@@ -378,36 +327,28 @@
                 class="news-grid"
             ></div>
 
-
         </div>
 
     </section>
 
 
-    <!-- =====================================
+    <!-- =========================
          ÇOK OKUNANLAR
-    ====================================== -->
+    ========================== -->
 
-    <section class="section">
+    <section class="section popular-section">
 
         <div class="container">
 
-
             <div class="section-heading">
-
 
                 <div>
 
-                    <span>
-                        NABIZ
-                    </span>
+                    <span>NABIZ</span>
 
-                    <h2>
-                        Çok Okunanlar
-                    </h2>
+                    <h2>Çok Okunanlar</h2>
 
                 </div>
-
 
             </div>
 
@@ -417,41 +358,32 @@
                 class="popular-grid"
             ></div>
 
-
         </div>
 
     </section>
 
 
-    <!-- =====================================
+    <!-- =========================
          EKONOMİ
-    ====================================== -->
+    ========================== -->
 
     <section class="section category-section">
 
         <div class="container">
 
-
             <div class="section-heading">
-
 
                 <div>
 
-                    <span>
-                        EKONOMİ
-                    </span>
+                    <span>EKONOMİ</span>
 
-                    <h2>
-                        Ekonomi
-                    </h2>
+                    <h2>Ekonomi</h2>
 
                 </div>
-
 
                 <a href="/ekonomi/">
                     Tümünü Gör →
                 </a>
-
 
             </div>
 
@@ -461,41 +393,32 @@
                 class="news-grid"
             ></div>
 
-
         </div>
 
     </section>
 
 
-    <!-- =====================================
+    <!-- =========================
          SPOR
-    ====================================== -->
+    ========================== -->
 
     <section class="section">
 
         <div class="container">
 
-
             <div class="section-heading">
-
 
                 <div>
 
-                    <span>
-                        SPOR
-                    </span>
+                    <span>SPOR</span>
 
-                    <h2>
-                        Spor
-                    </h2>
+                    <h2>Spor</h2>
 
                 </div>
-
 
                 <a href="/spor/">
                     Tümünü Gör →
                 </a>
-
 
             </div>
 
@@ -505,41 +428,32 @@
                 class="news-grid"
             ></div>
 
-
         </div>
 
     </section>
 
 
-    <!-- =====================================
+    <!-- =========================
          DÜNYA
-    ====================================== -->
+    ========================== -->
 
     <section class="section category-section">
 
         <div class="container">
 
-
             <div class="section-heading">
-
 
                 <div>
 
-                    <span>
-                        DÜNYA
-                    </span>
+                    <span>DÜNYA</span>
 
-                    <h2>
-                        Dünya
-                    </h2>
+                    <h2>Dünya</h2>
 
                 </div>
-
 
                 <a href="/dunya/">
                     Tümünü Gör →
                 </a>
-
 
             </div>
 
@@ -549,41 +463,32 @@
                 class="news-grid"
             ></div>
 
-
         </div>
 
     </section>
 
 
-    <!-- =====================================
+    <!-- =========================
          TEKNOLOJİ
-    ====================================== -->
+    ========================== -->
 
     <section class="section">
 
         <div class="container">
 
-
             <div class="section-heading">
-
 
                 <div>
 
-                    <span>
-                        TEKNOLOJİ
-                    </span>
+                    <span>TEKNOLOJİ</span>
 
-                    <h2>
-                        Teknoloji
-                    </h2>
+                    <h2>Teknoloji</h2>
 
                 </div>
-
 
                 <a href="/teknoloji/">
                     Tümünü Gör →
                 </a>
-
 
             </div>
 
@@ -593,64 +498,60 @@
                 class="news-grid"
             ></div>
 
-
         </div>
 
     </section>
 
-
 </main>
 
 
-<!-- =========================================
+<!-- =========================
      FOOTER
-========================================= -->
+========================= -->
 
 <footer class="footer">
 
     <div class="container">
 
-
         <div class="footer-main">
 
-
-            <img
-                src="/images/haber.jpg"
-                alt="NABIZ"
-                class="footer-logo"
+            <a
+                href="/"
+                aria-label="NABIZ Ana Sayfa"
             >
-
+                <img
+                    src="/images/haber.jpg"
+                    alt="NABIZ"
+                    class="footer-logo"
+                    loading="lazy"
+                >
+            </a>
 
             <p>
-                Güncel haberleri hızlı ve sade şekilde takip edin.
+                Türkiye ve dünyadan güncel haberleri
+                hızlı ve sade şekilde takip edin.
             </p>
-
 
         </div>
 
 
         <div class="footer-links">
 
-
             <a href="/hakkimizda/">
                 Hakkımızda
             </a>
-
 
             <a href="/iletisim/">
                 İletişim
             </a>
 
-
             <a href="/gizlilik/">
                 Gizlilik
             </a>
 
-
             <a href="/kullanim-sartlari/">
                 Kullanım Şartları
             </a>
-
 
         </div>
 
@@ -658,24 +559,22 @@
         <div class="footer-bottom">
 
             © 2026 NABIZ
+            <span>•</span>
+            Tüm hakları saklıdır.
 
         </div>
-
 
     </div>
 
 </footer>
 
 
-<!-- =========================================
+<!-- =========================
      JAVASCRIPT
-========================================= -->
+========================= -->
 
-<script src="/js/haberler.js"></script>
-
-<script src="/js/app.js"></script>
-
+<script src="/js/haberler.js?v=30"></script>
+<script src="/js/app.js?v=30"></script>
 
 </body>
-
 </html>
