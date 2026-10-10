@@ -3,12 +3,20 @@
   "trailingSlash": true,
   "rewrites": [
     {
+      "source": "/haberler/:slug/",
+      "destination": "/haberler/:slug.html"
+    },
+    {
+      "source": "/haberler/:slug",
+      "destination": "/haberler/:slug.html"
+    },
+    {
       "source": "/haber/:slug/",
-      "destination": "/haber.html?slug=:slug"
+      "destination": "/haberler/:slug.html"
     },
     {
       "source": "/haber/:slug",
-      "destination": "/haber.html?slug=:slug"
+      "destination": "/haberler/:slug.html"
     }
   ]
 }
