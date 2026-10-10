@@ -1,106 +1,31 @@
 window.NABIZ_HABERLER = [
-    {
-        id: 1,
-        slug: "gundemden-yeni-gelismeler",
-        baslik: "Gündemden yeni gelişmeler",
-        spot: "Günün öne çıkan gelişmeleri ve gündem başlıkları NABIZ'da.",
-        kategori: "Gündem",
-        tarih: "9 Ekim 2026",
-        saat: "17:00",
-        tarihISO: "2026-10-09T17:00:00+03:00",
-        yazar: "NABIZ Haber Merkezi",
-        kaynak: "NABIZ",
-        gorsel: "/images/haber-1.jpg",
-        goruntulenme: 12500,
-        icerik: [
-            "Günün öne çıkan gelişmeleri gündemdeki yerini koruyor.",
-            "Türkiye ve dünyadan önemli gelişmeler haber merkezimiz tarafından takip ediliyor.",
-            "Gelişmeler yaşandıkça haberimiz güncellenecektir."
-        ]
-    },
+    
+{
+    id: 1,
+    slug: "15-yas-alti-sosyal-medya-duzenlemesi",
+    baslik: "15 Yaş Altına Sosyal Medya Düzenlemesi: Yeni Gelişmeler",
+    spot: "Çocukların sosyal medya kullanımına yönelik düzenleme iddiaları ve dijital güvenlik tartışmaları gündemde. Uygulamanın kapsamı ve yürürlük tarihi için resmî açıklamalar takip edilmeli.",
+    kategori: "Teknoloji",
+    tarih: "10 Ekim 2026",
+    saat: "09:00",
+    tarihISO: "2026-10-10T09:00:00+03:00",
+    yazar: "NABIZ Teknoloji",
+    kaynak: "NABIZ",
+    gorsel: "/images/haber-5.jpg",
+    goruntulenme: 0,
+    icerik: [
+        "Çocukların ve gençlerin sosyal medya kullanımı, dijital güvenlik ve internet ortamındaki riskler nedeniyle gündemdeki önemli konular arasında yer alıyor. Bu alanda gündeme gelen düzenleme haberlerinin kapsamı, yürürlük tarihi ve uygulanma biçimi resmî kaynaklardan doğrulanmalıdır.",
+        "Uzmanların dijital güvenlik tartışmalarında öne çıkardığı konular arasında yaşa uygun içeriklere erişim, kişisel verilerin korunması, çevrim içi zorbalıkla mücadele ve ailelerin çocukların internet kullanımına ilişkin bilinçlendirilmesi bulunuyor.",
+        "Yaşa dayalı sosyal medya düzenlemeleri gündeme geldiğinde, hangi hizmetlerin kapsama girdiği ve platformların hangi yükümlülükleri yerine getirmesi gerektiği özellikle önem taşıyor. Bu ayrıntılar yalnızca resmî mevzuat ve yetkili kurumların açıklamaları doğrultusunda değerlendirilmelidir.",
+        "Dijital platformların yaş doğrulama süreçleri de tartışmanın önemli başlıklarından biri. Bu tür sistemlerin uygulanmasında kullanıcıların kişisel verilerinin korunması ve güvenliğin sağlanması birlikte ele alınmalıdır.",
+        "Ailelerin çocuklarla internet kullanımı hakkında açık iletişim kurması, gizlilik ayarlarını birlikte gözden geçirmesi ve şüpheli içerikleri bildirme yollarını öğrenmesi dijital güvenlik açısından faydalı olabilir.",
+        "Düzenlemeye ilişkin kesin hükümler, yürürlük tarihleri ve uygulama koşulları için Resmî Gazete ile ilgili kamu kurumlarının duyuruları esas alınmalıdır. Resmî doğrulama yapılmadan belirli bir yasağın kesin olarak yürürlüğe girdiği ileri sürülmemelidir.",
+        "NABIZ, teknoloji ve dijital güvenlik alanındaki gelişmeleri takip ederek doğrulanmış bilgileri okurlarıyla paylaşmayı amaçlıyor. Yeni resmî açıklamalar yayımlandığında haberin güncellenmesi önem taşıyor."
+    ]
+},
 
     {
         id: 2,
-        slug: "ekonomide-gunun-one-cikan-gelismeleri",
-        baslik: "Ekonomide günün öne çıkan gelişmeleri",
-        spot: "Ekonomi gündeminde günün öne çıkan gelişmeleri.",
-        kategori: "Ekonomi",
-        tarih: "9 Ekim 2026",
-        saat: "16:40",
-        tarihISO: "2026-10-09T16:40:00+03:00",
-        yazar: "NABIZ Ekonomi",
-        kaynak: "NABIZ",
-        gorsel: "/images/haber-2.jpg",
-        goruntulenme: 11200,
-        icerik: [
-            "Ekonomi gündemindeki gelişmeler yakından takip ediliyor.",
-            "Piyasalardaki hareketlilik ve gün içerisinde yapılan açıklamalar ekonomi gündeminin başlıkları arasında yer alıyor.",
-            "NABIZ gelişmeleri okuyucularına aktarmaya devam ediyor."
-        ]
-    },
-
-    {
-        id: 3,
-        slug: "dunyadan-son-gelismeler",
-        baslik: "Dünyadan son gelişmeler",
-        spot: "Uluslararası gündemde öne çıkan gelişmeler.",
-        kategori: "Dünya",
-        tarih: "9 Ekim 2026",
-        saat: "16:20",
-        tarihISO: "2026-10-09T16:20:00+03:00",
-        yazar: "NABIZ Dünya",
-        kaynak: "NABIZ",
-        gorsel: "/images/haber-3.jpg",
-        goruntulenme: 9800,
-        icerik: [
-            "Dünya gündeminde gün içerisinde birçok gelişme yaşanıyor.",
-            "Uluslararası gelişmeler yakından takip edilirken yeni açıklamalar gündeme geliyor.",
-            "NABIZ haber merkezi gelişmeleri takip ediyor."
-        ]
-    },
-
-    {
-        id: 4,
-        slug: "spor-dunyasinda-gunun-gelismeleri",
-        baslik: "Spor dünyasında günün gelişmeleri",
-        spot: "Spor gündeminden öne çıkan son gelişmeler.",
-        kategori: "Spor",
-        tarih: "9 Ekim 2026",
-        saat: "15:55",
-        tarihISO: "2026-10-09T15:55:00+03:00",
-        yazar: "NABIZ Spor",
-        kaynak: "NABIZ",
-        gorsel: "/images/haber-4.jpg",
-        goruntulenme: 9100,
-        icerik: [
-            "Spor dünyasında günün öne çıkan gelişmeleri takip ediliyor.",
-            "Takımlar ve sporcularla ilgili gelişmeler sporseverlerin gündeminde.",
-            "NABIZ spor servisinden son gelişmeler."
-        ]
-    },
-
-    {
-        id: 5,
-        slug: "teknoloji-dunyasinda-dikkat-ceken-gelisme",
-        baslik: "Teknoloji dünyasında dikkat çeken gelişme",
-        spot: "Teknoloji sektöründeki yeni gelişmeler.",
-        kategori: "Teknoloji",
-        tarih: "9 Ekim 2026",
-        saat: "15:30",
-        tarihISO: "2026-10-09T15:30:00+03:00",
-        yazar: "NABIZ Teknoloji",
-        kaynak: "NABIZ",
-        gorsel: "/images/haber-5.jpg",
-        goruntulenme: 8700,
-        icerik: [
-            "Teknoloji dünyasında yeni gelişmeler yaşanmaya devam ediyor.",
-            "Yeni ürünler, yazılımlar ve teknoloji şirketlerinin açıklamaları gündemde.",
-            "NABIZ teknoloji gelişmelerini takip ediyor."
-        ]
-    },
-
-    {
-        id: 6,
         slug: "batmanda-yeni-proje-icin-ilk-adim-atildi",
         baslik: "Batman'da yeni proje için ilk adım atıldı",
         spot: "Batman'da kent yaşamına katkı sağlaması planlanan yeni proje için hazırlık çalışmalarına başlandı.",
