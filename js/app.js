@@ -20,20 +20,33 @@ function haberGorsel(haber) {
         : FALLBACK_IMAGE;
 }
 
+function htmlGuvenli(metin) {
+    return String(metin || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 /* =========================================
    HABER KARTI
    SADECE FOTOĞRAF + BAŞLIK
+   YENİ SEKMEDE AÇILIR
 ========================================= */
 
 function haberKart(haber) {
     return `
         <article class="news-card">
-            <a href="${haberUrl(haber)}">
-
+            <a
+                href="${haberUrl(haber)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <div class="news-image">
                     <img
                         src="${haberGorsel(haber)}"
-                        alt="${haber.baslik || "NABIZ Haber"}"
+                        alt="${htmlGuvenli(haber.baslik || "NABIZ Haber")}"
                         loading="lazy"
                         decoding="async"
                         onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}';"
@@ -41,9 +54,8 @@ function haberKart(haber) {
                 </div>
 
                 <div class="news-card-title">
-                    <h3>${haber.baslik || ""}</h3>
+                    <h3>${htmlGuvenli(haber.baslik)}</h3>
                 </div>
-
             </a>
         </article>
     `;
@@ -80,6 +92,7 @@ function sonHaberleriYukle() {
 
 /* =========================================
    ÇOK OKUNANLAR
+   YENİ SEKMEDE AÇILIR
 ========================================= */
 
 function cokOkunanlariYukle() {
@@ -99,12 +112,14 @@ function cokOkunanlariYukle() {
     alan.innerHTML = liste.length
         ? liste.map((haber, index) => `
             <article class="popular-card">
-
-                <a href="${haberUrl(haber)}">
-
+                <a
+                    href="${haberUrl(haber)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <img
                         src="${haberGorsel(haber)}"
-                        alt="${haber.baslik || "NABIZ Haber"}"
+                        alt="${htmlGuvenli(haber.baslik || "NABIZ Haber")}"
                         loading="lazy"
                         decoding="async"
                         onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}';"
@@ -114,10 +129,8 @@ function cokOkunanlariYukle() {
                         ${index + 1}
                     </span>
 
-                    <h3>${haber.baslik || ""}</h3>
-
+                    <h3>${htmlGuvenli(haber.baslik)}</h3>
                 </a>
-
             </article>
         `).join("")
         : '<p class="empty-news">Henüz haber bulunmuyor.</p>';
@@ -148,6 +161,8 @@ function kategoriYukle(id, kategori) {
    SOL = ANA HABER
    SAĞ = İKİNCİ HABER
    1-20 = MANŞET SEÇİCİ
+
+   HABERLER YENİ SEKMEDE AÇILIR
 ========================================= */
 
 function heroYukle() {
@@ -156,9 +171,6 @@ function heroYukle() {
 
     if (!alan) return;
 
-    /*
-       En fazla ilk 20 haber manşette kullanılacak.
-    */
     const liste = tariheGoreSirala(haberler).slice(0, 20);
 
     if (!liste.length) {
@@ -178,9 +190,7 @@ function heroYukle() {
     let aktif = 0;
     let zamanlayici = null;
 
-    /* -----------------------------------------
-       ANA MANŞET
-    ----------------------------------------- */
+    /* ANA MANŞET */
 
     function anaManşetHTML(haber) {
         if (!haber) return "";
@@ -189,12 +199,13 @@ function heroYukle() {
             <a
                 href="${haberUrl(haber)}"
                 class="hero-main-link"
-                aria-label="${haber.baslik || "Haberi oku"}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="${htmlGuvenli(haber.baslik || "Haberi oku")}"
             >
-
                 <img
                     src="${haberGorsel(haber)}"
-                    alt="${haber.baslik || "NABIZ Manşet"}"
+                    alt="${htmlGuvenli(haber.baslik || "NABIZ Manşet")}"
                     class="hero-main-image"
                     fetchpriority="high"
                     decoding="async"
@@ -202,18 +213,13 @@ function heroYukle() {
                 >
 
                 <div class="hero-main-overlay">
-                    <h1>
-                        ${haber.baslik || ""}
-                    </h1>
+                    <h1>${htmlGuvenli(haber.baslik)}</h1>
                 </div>
-
             </a>
         `;
     }
 
-    /* -----------------------------------------
-       SAĞ MANŞET
-    ----------------------------------------- */
+    /* SAĞ MANŞET */
 
     function yanManşetHTML(haber) {
         if (!haber) return "";
@@ -222,12 +228,13 @@ function heroYukle() {
             <a
                 href="${haberUrl(haber)}"
                 class="hero-side-link"
-                aria-label="${haber.baslik || "Haberi oku"}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="${htmlGuvenli(haber.baslik || "Haberi oku")}"
             >
-
                 <img
                     src="${haberGorsel(haber)}"
-                    alt="${haber.baslik || "NABIZ Haber"}"
+                    alt="${htmlGuvenli(haber.baslik || "NABIZ Haber")}"
                     class="hero-side-image"
                     loading="lazy"
                     decoding="async"
@@ -235,18 +242,13 @@ function heroYukle() {
                 >
 
                 <div class="hero-side-overlay">
-                    <h1>
-                        ${haber.baslik || ""}
-                    </h1>
+                    <h2>${htmlGuvenli(haber.baslik)}</h2>
                 </div>
-
             </a>
         `;
     }
 
-    /* -----------------------------------------
-       MANŞETİ GÖSTER
-    ----------------------------------------- */
+    /* MANŞETİ GÖSTER */
 
     function goster(index) {
         if (index < 0) {
@@ -259,20 +261,12 @@ function heroYukle() {
 
         aktif = index;
 
-        /*
-           Sol tarafta seçilen haber.
-           Sağ tarafta bir sonraki haber.
-        */
         const anaHaber = liste[aktif];
-
-        const yanIndex =
-            (aktif + 1) % liste.length;
-
+        const yanIndex = (aktif + 1) % liste.length;
         const yanHaber = liste[yanIndex];
 
         alan.innerHTML = `
             <div class="hero-layout">
-
                 <div class="hero-main">
                     ${anaManşetHTML(anaHaber)}
                 </div>
@@ -280,16 +274,13 @@ function heroYukle() {
                 <div class="hero-side">
                     ${yanManşetHTML(yanHaber)}
                 </div>
-
             </div>
         `;
 
         paginationGuncelle();
     }
 
-    /* -----------------------------------------
-       1 - 20 BUTONLARI
-    ----------------------------------------- */
+    /* 1-20 MANŞET BUTONLARI */
 
     function paginationGuncelle() {
         if (!pagination) return;
@@ -309,181 +300,119 @@ function heroYukle() {
         pagination
             .querySelectorAll("[data-hero]")
             .forEach(button => {
-
                 button.addEventListener("click", () => {
-
-                    const yeniIndex =
-                        Number(button.dataset.hero);
+                    const yeniIndex = Number(button.dataset.hero);
 
                     goster(yeniIndex);
-
                     zamanlayiciyiBaslat();
                 });
-
             });
     }
 
-    /* -----------------------------------------
-       OTOMATİK MANŞET GEÇİŞİ
-    ----------------------------------------- */
+    /* OTOMATİK MANŞET GEÇİŞİ */
 
     function zamanlayiciyiBaslat() {
         clearInterval(zamanlayici);
 
-        if (liste.length <= 1) {
-            return;
-        }
+        if (liste.length <= 1) return;
 
         zamanlayici = setInterval(() => {
-
-            const sonraki =
-                (aktif + 1) % liste.length;
-
+            const sonraki = (aktif + 1) % liste.length;
             goster(sonraki);
-
         }, 6500);
     }
 
-    /* -----------------------------------------
-       BAŞLAT
-    ----------------------------------------- */
+    /* BAŞLAT */
 
     goster(0);
-
     zamanlayiciyiBaslat();
 }
 
 /* =========================================
    ARAMA SİSTEMİ
+   SONUÇLAR YENİ SEKMEDE AÇILIR
 ========================================= */
 
 function aramaSistemi() {
-    const input =
-        document.getElementById("searchInput");
-
-    const results =
-        document.getElementById("searchResults");
-
-    const clear =
-        document.getElementById("searchClear");
-
-    const panel =
-        document.getElementById("searchPanel");
-
-    const open =
-        document.getElementById("searchOpen");
+    const input = document.getElementById("searchInput");
+    const results = document.getElementById("searchResults");
+    const clear = document.getElementById("searchClear");
+    const panel = document.getElementById("searchPanel");
+    const open = document.getElementById("searchOpen");
 
     if (input && results) {
-
         function ara() {
-
-            const kelime =
-                input.value
-                    .trim()
-                    .toLocaleLowerCase("tr-TR");
+            const kelime = input.value
+                .trim()
+                .toLocaleLowerCase("tr-TR");
 
             if (!kelime) {
                 results.innerHTML = "";
                 return;
             }
 
-            const bulunanlar =
-                haberler.filter(haber => {
+            const bulunanlar = haberler.filter(haber => {
+                const metin = [
+                    haber.baslik,
+                    haber.spot,
+                    haber.kategori,
+                    haber.kaynak,
+                    Array.isArray(haber.icerik)
+                        ? haber.icerik.join(" ")
+                        : haber.icerik || ""
+                ]
+                    .join(" ")
+                    .toLocaleLowerCase("tr-TR");
 
-                    const metin = [
+                return metin.includes(kelime);
+            });
 
-                        haber.baslik,
-                        haber.spot,
-                        haber.kategori,
-                        haber.kaynak,
+            results.innerHTML = bulunanlar.length
+                ? bulunanlar.map(haber => `
+                    <a
+                        class="search-result"
+                        href="${haberUrl(haber)}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <strong>
+                            ${htmlGuvenli(haber.baslik)}
+                        </strong>
 
-                        Array.isArray(haber.icerik)
-                            ? haber.icerik.join(" ")
-                            : haber.icerik || ""
-
-                    ]
-                        .join(" ")
-                        .toLocaleLowerCase("tr-TR");
-
-                    return metin.includes(kelime);
-                });
-
-            results.innerHTML =
-                bulunanlar.length
-
-                    ? bulunanlar.map(haber => `
-                        <a
-                            class="search-result"
-                            href="${haberUrl(haber)}"
-                        >
-
-                            <strong>
-                                ${haber.baslik || ""}
-                            </strong>
-
-                            <small>
-                                ${haber.kategori || "Haber"}
-                            </small>
-
-                        </a>
-                    `).join("")
-
-                    : `
-                        <div class="search-empty">
-
-                            <strong>
-                                Haber bulunamadı
-                            </strong>
-
-                            <p>
-                                Başka bir kelime deneyebilirsin.
-                            </p>
-
-                        </div>
-                    `;
+                        <small>
+                            ${htmlGuvenli(haber.kategori || "Haber")}
+                        </small>
+                    </a>
+                `).join("")
+                : `
+                    <div class="search-empty">
+                        <strong>Haber bulunamadı</strong>
+                        <p>Başka bir kelime deneyebilirsin.</p>
+                    </div>
+                `;
         }
 
-        input.addEventListener(
-            "input",
-            ara
-        );
+        input.addEventListener("input", ara);
 
         if (clear) {
-
-            clear.addEventListener(
-                "click",
-                () => {
-
-                    input.value = "";
-
-                    results.innerHTML = "";
-
-                    input.focus();
-                }
-            );
-
+            clear.addEventListener("click", () => {
+                input.value = "";
+                results.innerHTML = "";
+                input.focus();
+            });
         }
     }
 
-    /* -----------------------------------------
-       ARAMA PANELİNİ AÇ
-    ----------------------------------------- */
+    /* ARAMA PANELİNİ AÇ */
 
     if (open && panel) {
+        open.addEventListener("click", () => {
+            const acik = panel.classList.toggle("active");
 
-        open.addEventListener(
-            "click",
-            () => {
-
-                const acik =
-                    panel.classList.toggle("active");
-
-                if (acik && input) {
-                    input.focus();
-                }
+            if (acik && input) {
+                input.focus();
             }
-        );
-
+        });
     }
 }
 
@@ -492,108 +421,57 @@ function aramaSistemi() {
 ========================================= */
 
 function mobilMenu() {
-
-    const button =
-        document.getElementById("menuButton");
-
-    const menu =
-        document.getElementById("mobileMenu");
+    const button = document.getElementById("menuButton");
+    const menu = document.getElementById("mobileMenu");
 
     if (!button || !menu) return;
 
     function menuDurumunuAyarla(acik) {
-
-        menu.classList.toggle(
-            "mobile-open",
-            acik
-        );
+        menu.classList.toggle("mobile-open", acik);
 
         button.setAttribute(
             "aria-expanded",
             String(acik)
         );
 
-        button.innerHTML =
-            acik
-                ? '✕ <span>KAPAT</span>'
-                : '☰ <span>MENÜ</span>';
+        button.innerHTML = acik
+            ? '✕ <span>KAPAT</span>'
+            : '☰ <span>MENÜ</span>';
     }
 
-    /* Menü butonu */
+    button.addEventListener("click", () => {
+        const acik = !menu.classList.contains("mobile-open");
+        menuDurumunuAyarla(acik);
+    });
 
-    button.addEventListener(
-        "click",
-        () => {
-
-            const acik =
-                !menu.classList.contains(
-                    "mobile-open"
-                );
-
-            menuDurumunuAyarla(acik);
-        }
-    );
-
-    /* Menüdeki linklere basınca kapat */
-
-    menu.querySelectorAll("a")
-        .forEach(link => {
-
-            link.addEventListener(
-                "click",
-                () => {
-                    menuDurumunuAyarla(false);
-                }
-            );
-
+    menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            menuDurumunuAyarla(false);
         });
+    });
 
-    /* ESC ile kapat */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Escape") {
-                menuDurumunuAyarla(false);
-            }
-
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            menuDurumunuAyarla(false);
         }
-    );
+    });
 
-    /* Dışarı tıklayınca kapat */
-
-    document.addEventListener(
-        "click",
-        event => {
-
-            if (
-                window.innerWidth <= 600 &&
-                menu.classList.contains(
-                    "mobile-open"
-                ) &&
-                !menu.contains(event.target) &&
-                !button.contains(event.target)
-            ) {
-
-                menuDurumunuAyarla(false);
-            }
-
+    document.addEventListener("click", event => {
+        if (
+            window.innerWidth <= 600 &&
+            menu.classList.contains("mobile-open") &&
+            !menu.contains(event.target) &&
+            !button.contains(event.target)
+        ) {
+            menuDurumunuAyarla(false);
         }
-    );
+    });
 
-    /* Ekran büyüyünce mobil menüyü kapat */
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            if (window.innerWidth > 600) {
-                menuDurumunuAyarla(false);
-            }
-
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 600) {
+            menuDurumunuAyarla(false);
         }
-    );
+    });
 }
 
 /* =========================================
@@ -601,95 +479,42 @@ function mobilMenu() {
 ========================================= */
 
 function temaSistemi() {
-
-    const button =
-        document.getElementById("themeButton");
+    const button = document.getElementById("themeButton");
 
     if (!button) return;
 
-    button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener("click", () => {
+        const koyu = document.body.classList.toggle("dark-mode");
 
-            const koyu =
-                document.body.classList.toggle(
-                    "dark-mode"
-                );
-
-            button.setAttribute(
-                "aria-pressed",
-                String(koyu)
-            );
-        }
-    );
+        button.setAttribute(
+            "aria-pressed",
+            String(koyu)
+        );
+    });
 }
 
 /* =========================================
    SAYFAYI BAŞLAT
 ========================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", () => {
+    if (!haberler.length) {
+        console.error(
+            "NABIZ: haberler.js yüklenemedi veya haber listesi boş."
+        );
+    } else {
+        heroYukle();
+        sonHaberleriYukle();
+        cokOkunanlariYukle();
 
-        if (!haberler.length) {
-
-            console.error(
-                "NABIZ: haberler.js yüklenemedi veya haber listesi boş."
-            );
-
-        } else {
-
-            /* Manşet */
-
-            heroYukle();
-
-            /* Son haberler */
-
-            sonHaberleriYukle();
-
-            /* Çok okunanlar */
-
-            cokOkunanlariYukle();
-
-            /* Kategoriler */
-
-            kategoriYukle(
-                "gundemNews",
-                "Gündem"
-            );
-
-            kategoriYukle(
-                "ekonomiNews",
-                "Ekonomi"
-            );
-
-            kategoriYukle(
-                "sporNews",
-                "Spor"
-            );
-
-            kategoriYukle(
-                "dunyaNews",
-                "Dünya"
-            );
-
-            kategoriYukle(
-                "teknolojiNews",
-                "Teknoloji"
-            );
-        }
-
-        /* Arama */
-
-        aramaSistemi();
-
-        /* Mobil menü */
-
-        mobilMenu();
-
-        /* Tema */
-
-        temaSistemi();
+        kategoriYukle("gundemNews", "Gündem");
+        kategoriYukle("ekonomiNews", "Ekonomi");
+        kategoriYukle("sporNews", "Spor");
+        kategoriYukle("dunyaNews", "Dünya");
+        kategoriYukle("teknolojiNews", "Teknoloji");
     }
-);
+
+    aramaSistemi();
+    mobilMenu();
+    temaSistemi();
+});
