@@ -1758,3 +1758,145 @@ footer {
         min-height: 250px;
     }
 }
+/* =========================================
+   NABIZ MANŞET SEÇİCİLERİ
+========================================= */
+
+.hero-main-wrapper,
+.hero-side-wrapper {
+    min-width: 0;
+}
+
+
+/* Ana ve yan manşet */
+
+.hero-main,
+.hero-side {
+    position: relative;
+}
+
+
+/* Numara alanı */
+
+.hero-selectors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 3px;
+    padding: 0;
+}
+
+
+/* Küçük numaralar */
+
+.hero-selectors button {
+    width: 28px;
+    height: 25px;
+
+    padding: 0;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+
+    background: #fff;
+    color: #222;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+
+    line-height: 25px;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background .18s ease,
+        color .18s ease,
+        border-color .18s ease,
+        transform .18s ease;
+}
+
+
+/* Hover */
+
+.hero-selectors button:hover {
+    border-color: #e30613;
+    color: #e30613;
+}
+
+
+/* Aktif */
+
+.hero-selectors button.active {
+    background: #e30613;
+    border-color: #e30613;
+    color: #fff;
+}
+
+
+/* Ana manşet numaraları */
+
+.hero-selectors-main {
+    margin-top: 3px;
+}
+
+
+/* Sağ manşet numaraları */
+
+.hero-selectors-side {
+    margin-top: 3px;
+}
+
+
+/* Sağ taraf numaraları biraz daha kompakt */
+
+.hero-selectors-side button {
+    width: 25px;
+    height: 23px;
+    line-height: 23px;
+    font-size: 10px;
+}
+
+
+/* =========================================
+   MANŞET BOŞLUĞUNU KALDIR
+========================================= */
+
+.hero-layout {
+    align-items: start;
+    gap: 16px;
+}
+
+.hero-main-wrapper,
+.hero-side-wrapper {
+    align-self: start;
+}
+
+
+/* =========================================
+   MOBİL
+========================================= */
+
+@media (max-width: 650px) {
+
+    .hero-selectors {
+        gap: 3px;
+        margin-top: 2px;
+    }
+
+    .hero-selectors button {
+        width: 25px;
+        height: 23px;
+        line-height: 23px;
+        font-size: 10px;
+    }
+
+    .hero-selectors-side button {
+        width: 23px;
+        height: 22px;
+        line-height: 22px;
+        font-size: 9px;
+    }
+
+}
