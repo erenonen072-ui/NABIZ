@@ -167,7 +167,6 @@ function kategoriYukle(id, kategori) {
 
 function heroYukle() {
     const alan = document.getElementById("hero");
-    const pagination = document.getElementById("heroPagination");
 
     if (!alan) return;
 
@@ -179,33 +178,43 @@ function heroYukle() {
                 Henüz manşet haberi bulunmuyor.
             </p>
         `;
-
-        if (pagination) {
-            pagination.innerHTML = "";
-        }
-
         return;
     }
 
-    let aktif = 0;
-    let zamanlayici = null;
+    let anaAktif = 0;
+    let yanAktif = liste.length > 1 ? 1 : 0;
 
-    /* ANA MANŞET */
+    let anaTimer = null;
+    let yanTimer = null;
+
+
+    function haberLink(haber) {
+        return haber && haber.slug
+            ? `/haberler/${haber.slug}.html`
+            : "#";
+    }
+
+
+    function gorsel(haber) {
+        return haber && haber.gorsel
+            ? haber.gorsel
+            : FALLBACK_IMAGE;
+    }
+
 
     function anaManşetHTML(haber) {
-        if (!haber) return "";
-
         return `
             <a
-                href="${haberUrl(haber)}"
-                class="hero-main-link"
+                href="${haberLink(haber)}"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="${htmlGuvenli(haber.baslik || "Haberi oku")}"
+                class="hero-main-link"
+                aria-label="${haber.baslik || "Haberi oku"}"
             >
+
                 <img
-                    src="${haberGorsel(haber)}"
-                    alt="${htmlGuvenli(haber.baslik || "NABIZ Manşet")}"
+                    src="${gorsel(haber)}"
+                    alt="${haber.baslik || "NABIZ Manşet"}"
                     class="hero-main-image"
                     fetchpriority="high"
                     decoding="async"
@@ -213,28 +222,27 @@ function heroYukle() {
                 >
 
                 <div class="hero-main-overlay">
-                    <h1>${htmlGuvenli(haber.baslik)}</h1>
+                    <h1>${haber.baslik || ""}</h1>
                 </div>
+
             </a>
         `;
     }
 
-    /* SAĞ MANŞET */
 
     function yanManşetHTML(haber) {
-        if (!haber) return "";
-
         return `
             <a
-                href="${haberUrl(haber)}"
-                class="hero-side-link"
+                href="${haberLink(haber)}"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="${htmlGuvenli(haber.baslik || "Haberi oku")}"
+                class="hero-side-link"
+                aria-label="${haber.baslik || "Haberi oku"}"
             >
+
                 <img
-                    src="${haberGorsel(haber)}"
-                    alt="${htmlGuvenli(haber.baslik || "NABIZ Haber")}"
+                    src="${gorsel(haber)}"
+                    alt="${haber.baslik || "NABIZ Haber"}"
                     class="hero-side-image"
                     loading="lazy"
                     decoding="async"
@@ -242,90 +250,163 @@ function heroYukle() {
                 >
 
                 <div class="hero-side-overlay">
-                    <h2>${htmlGuvenli(haber.baslik)}</h2>
+                    <h2>${haber.baslik || ""}</h2>
                 </div>
+
             </a>
         `;
     }
 
-    /* MANŞETİ GÖSTER */
 
-    function goster(index) {
-        if (index < 0) {
-            index = 0;
-        }
+    function numaralar(tip, aktif) {
 
-        if (index >= liste.length) {
-            index = 0;
-        }
+        return `
+            <div
+                class="hero-selectors hero-selectors-${tip}"
+                aria-label="${tip === "main" ? "Ana manşet seçimi" : "Yan manşet seçimi"}"
+            >
 
-        aktif = index;
+                ${liste.map((haber, index) => `
+                    <button
+                        type="button"
+                        class="${index === aktif ? "active" : ""}"
+                        data-hero-type="${tip}"
+                        data-hero-index="${index}"
+                        aria-label="${index + 1}. haberi göster"
+                        aria-pressed="${index === aktif}"
+                    >
+                        ${index + 1}
+                    </button>
+                `).join("")}
 
-        const anaHaber = liste[aktif];
-        const yanIndex = (aktif + 1) % liste.length;
-        const yanHaber = liste[yanIndex];
-
-        alan.innerHTML = `
-            <div class="hero-layout">
-                <div class="hero-main">
-                    ${anaManşetHTML(anaHaber)}
-                </div>
-
-                <div class="hero-side">
-                    ${yanManşetHTML(yanHaber)}
-                </div>
             </div>
         `;
-
-        paginationGuncelle();
     }
 
-    /* 1-20 MANŞET BUTONLARI */
 
-    function paginationGuncelle() {
-        if (!pagination) return;
+    function render() {
 
-        pagination.innerHTML = liste.map((haber, index) => `
-            <button
-                type="button"
-                class="${index === aktif ? "active" : ""}"
-                data-hero="${index}"
-                aria-label="${index + 1}. manşeti göster"
-                aria-pressed="${index === aktif}"
-            >
-                ${index + 1}
-            </button>
-        `).join("");
+        const anaHaber = liste[anaAktif];
+        const yanHaber = liste[yanAktif];
 
-        pagination
-            .querySelectorAll("[data-hero]")
-            .forEach(button => {
-                button.addEventListener("click", () => {
-                    const yeniIndex = Number(button.dataset.hero);
+        alan.innerHTML = `
 
-                    goster(yeniIndex);
-                    zamanlayiciyiBaslat();
-                });
+            <div class="hero-layout">
+
+                <!-- ANA MANŞET -->
+
+                <div class="hero-main-wrapper">
+
+                    <div class="hero-main">
+                        ${anaManşetHTML(anaHaber)}
+                    </div>
+
+                    ${numaralar("main", anaAktif)}
+
+                </div>
+
+
+                <!-- YAN MANŞET -->
+
+                <div class="hero-side-wrapper">
+
+                    <div class="hero-side">
+                        ${yanManşetHTML(yanHaber)}
+                    </div>
+
+                    ${numaralar("side", yanAktif)}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        alan.querySelectorAll("[data-hero-type]").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const tip = button.dataset.heroType;
+                const index = Number(button.dataset.heroIndex);
+
+                if (tip === "main") {
+
+                    anaAktif = index;
+
+                    if (anaAktif === yanAktif && liste.length > 1) {
+                        yanAktif = (anaAktif + 1) % liste.length;
+                    }
+
+                    render();
+                    anaTimerBaslat();
+
+                } else {
+
+                    yanAktif = index;
+
+                    if (yanAktif === anaAktif && liste.length > 1) {
+                        yanAktif = (yanAktif + 1) % liste.length;
+                    }
+
+                    render();
+                    yanTimerBaslat();
+
+                }
+
             });
+
+        });
+
     }
 
-    /* OTOMATİK MANŞET GEÇİŞİ */
 
-    function zamanlayiciyiBaslat() {
-        clearInterval(zamanlayici);
+    function anaTimerBaslat() {
+
+        clearInterval(anaTimer);
 
         if (liste.length <= 1) return;
 
-        zamanlayici = setInterval(() => {
-            const sonraki = (aktif + 1) % liste.length;
-            goster(sonraki);
+        anaTimer = setInterval(() => {
+
+            anaAktif = (anaAktif + 1) % liste.length;
+
+            if (anaAktif === yanAktif && liste.length > 1) {
+                anaAktif = (anaAktif + 1) % liste.length;
+            }
+
+            render();
+
         }, 6500);
+
     }
 
-    /* BAŞLAT */
 
-    goster(0);
-    zamanlayiciyiBaslat();
+    function yanTimerBaslat() {
+
+        clearInterval(yanTimer);
+
+        if (liste.length <= 1) return;
+
+        yanTimer = setInterval(() => {
+
+            yanAktif = (yanAktif + 1) % liste.length;
+
+            if (yanAktif === anaAktif && liste.length > 1) {
+                yanAktif = (yanAktif + 1) % liste.length;
+            }
+
+            render();
+
+        }, 6500);
+
+    }
+
+
+    render();
+
+    anaTimerBaslat();
+    yanTimerBaslat();
 }
 
 /* =========================================
